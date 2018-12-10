@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using FinalCapstone.Models;
 
 namespace FinalCapstone.Dal
 {
@@ -44,6 +45,7 @@ namespace FinalCapstone.Dal
                     tool.Brand = Convert.ToString(reader["brand"]);
                     tool.Description = Convert.ToString(reader["description"]);
                     tool.CheckedOut = Convert.ToBoolean(reader["checked_out"]);
+                    tools.Add(tool);
                 }
             }
             return tools;
