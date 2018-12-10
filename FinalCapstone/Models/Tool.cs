@@ -12,13 +12,16 @@ namespace FinalCapstone.Models
             public string ToolName { get; set; }
             public string Description { get; set; }
             public bool CheckedOut { get; set; }
-            public string ImageName
+        public string ImageName
+        {
+            get
             {
-                get => ImageName = ImageName;
-                set
-                {
-                    ImageName = $"{Brand} {ToolName}";
-                }
+                return Brand + ToolName;
             }
+            set
+            {
+                ImageName = $"{Brand} {ToolName}";
+            }
+        }
     }
 }
