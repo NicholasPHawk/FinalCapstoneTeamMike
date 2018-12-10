@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalCapstone.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -39,7 +40,7 @@ namespace FinalCapstone.Dal
                 {
                     Tool tool = new Tool();
                     tool.Id = Convert.ToInt32(reader["id"]);
-                    tool.Name = Convert.ToString(reader["name"]);
+                    tool.ToolName = Convert.ToString(reader["name"]);
                     tool.Brand = Convert.ToString(reader["brand"]);
                     tool.Description = Convert.ToString(reader["description"]);
                     tool.CheckedOut = Convert.ToBoolean(reader["checked_out"]);
