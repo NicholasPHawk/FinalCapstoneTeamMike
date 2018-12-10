@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using FinalCapstone.Models;
 
 namespace FinalCapstone.Dal
 {
@@ -39,10 +40,11 @@ namespace FinalCapstone.Dal
                 {
                     Tool tool = new Tool();
                     tool.Id = Convert.ToInt32(reader["id"]);
-                    tool.Name = Convert.ToString(reader["name"]);
+                    tool.ToolName = Convert.ToString(reader["name"]);
                     tool.Brand = Convert.ToString(reader["brand"]);
                     tool.Description = Convert.ToString(reader["description"]);
                     tool.CheckedOut = Convert.ToBoolean(reader["checked_out"]);
+                    tools.Add(tool);
                 }
             }
             return tools;
