@@ -10,7 +10,7 @@
     @foreach (Tool tool in Model)
     {
         <a asp-controller="Tool" asp-action="ToolDetail" asp-route-id="@tool.Id">
-        <img src="~/images/@tool.ImageName" alt="Tool Photo"/>
+        <img src="~/images/@(tool.ImageName).jpg" alt="Tool Photo"/>
         </a>
         <p>@tool.Brand</p>
         <p>@tool.ToolName</p>
