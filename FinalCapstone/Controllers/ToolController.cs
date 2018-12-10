@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FinalCapstone.Dal;
 using Microsoft.AspNetCore.Mvc;
+using FinalCapstone.Models;
 
 namespace FinalCapstone.Controllers
 {
@@ -19,7 +20,8 @@ namespace FinalCapstone.Controllers
 
         public IActionResult Index()
         {//Shows all tools
-            return View();
+            IList<Tool> tools = _toolDal.GetTools();
+            return View(tools);
         }
 
         //public IActionResult getAllTools()
