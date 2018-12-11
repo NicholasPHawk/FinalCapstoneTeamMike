@@ -3,6 +3,12 @@
     ViewData["Title"] = "ToolDetail";
 }
 
-<h2>ToolDetail</h2>
+<h2>Tool Detail</h2>
 
-<p>@Model.ToolName</p>
+<section>
+    <img src="~/images/@(Model.ImageName).jpg" alt="Tool Photo" />
+    <p>Brand: @Model.Brand</p>
+    <p>Tool: @Model.ToolName</p>
+    <p>Checked out by: @Model.CurrentBorrower</p>
+    <p>Will be available: @Model.DueDate.ToString("MM/dd/yyyy")</p> 
+</section>

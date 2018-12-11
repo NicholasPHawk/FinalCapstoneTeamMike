@@ -38,7 +38,7 @@ namespace FinalCapstone.Dal
 
                 checkedOut = (bool)cmd.ExecuteScalar();
             }
- 
+
             return checkedOut;
         }
 
@@ -61,6 +61,30 @@ namespace FinalCapstone.Dal
                     tool.Brand = Convert.ToString(reader["brand"]);
                     tool.Description = Convert.ToString(reader["description"]);
                     tool.CheckedOut = Convert.ToBoolean(reader["checked_out"]);
+                    if ((reader["current_borrower"] is DBNull))
+                    {
+                        tool.CurrentBorrower = "";
+                    }
+                    else
+                    {
+                        tool.CurrentBorrower = Convert.ToString(reader["current_borrower"]);
+                    }
+                    if ((reader["date_borrowed"] is DBNull))
+                    {
+                        tool.DateBorrowed = DateTime.MinValue;
+                    }
+                    else
+                    {
+                        tool.DateBorrowed = Convert.ToDateTime(reader["date_borrowed"]);
+                    }
+                    if ((reader["due_date"] is DBNull))
+                    {
+                        tool.DueDate = DateTime.MinValue;
+                    }
+                    else
+                    {
+                        tool.DueDate = Convert.ToDateTime(reader["due_date"]);
+                    }
                     tools.Add(tool);
                 }
             }

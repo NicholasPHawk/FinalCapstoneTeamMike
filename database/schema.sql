@@ -1,62 +1,41 @@
-DROP TABLE tool_users;
 DROP TABLE tool;
-DROP TABLE users;
+DROP TABLE member;
+
+CREATE TABLE member
+(
+	id int identity(1,1),
+	name varchar(200) not null,
+	drivers_license varchar(200) not null,
+
+	CONSTRAINT pk_member_id PRIMARY KEY(id)
+);
 
 CREATE TABLE tool
 (
     id int identity(1,1),
-    name varchar(200) not null,
-    description varchar(200) not null,
-    checked_out bit not null,
-    brand varchar(200) not null,
-    
-    CONSTRAINT pk_tool_id primary key(id)
+	brand varchar(200) not null,
+	name varchar(200) not null,
+	description varchar(200) not null,
+	checked_out bit not null,
+	current_borrower varchar(200),
+	date_borrowed datetime,
+	due_date datetime,
+	   
+	CONSTRAINT pk_tool_id PRIMARY KEY(id)
 );
 
-CREATE TABLE users
-(
-   id int identity(1,1),
-   name varchar(200) not null,
-   drivers_license varchar(200) not null,
+SET IDENTITY_INSERT member ON;
+INSERT INTO member (id, name, drivers_license) VALUES (1, 'Honor Banvard', 'LH760387');
+INSERT INTO member (id, name, drivers_license) VALUES (2, 'Nick Hawk', 'LP581325');
+INSERT INTO member (id, name, drivers_license) VALUES (3, 'Russell McFadden', 'LM356094');
+INSERT INTO member (id, name, drivers_license) VALUES (4, 'Nathanael Foley', 'LW850785');
+SET IDENTITY_INSERT member OFF;
 
-   CONSTRAINT pk_users_id primary key(id)
-);
+INSERT INTO tool (name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Table Saw', 'DeWaltDisney', 'Used to make cuts that go with the grain', 0, null, null, null);
+INSERT INTO tool (name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Miter Saw', 'DeWaltDisney', 'Used to make cuts that go against the grain', 0, null, null, null);
+INSERT INTO tool (name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Belt Sander', 'Kobal', 'Handheld tool that grinds down the wood to a more fine finish', 0, null, null, null);
+INSERT INTO tool (name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Jig Saw', 'StanLee', 'Handheld tool used to make cuts at any angle', 1, 'Nick Hawk', '2018-12-11', '2018-12-18');
 
-CREATE TABLE tool_users
-(
-	tool_id int not null,
-	user_id int not null,
-	date_borrowed datetime not null,
-	date_returned datetime,
-	due_date datetime not null,
-	
-	CONSTRAINT tool_users_tool_id foreign key(tool_id) references tool(id),
-	CONSTRAINT tool_users_user_id foreign key(user_id) references users(id),
-);
-
-INSERT INTO users (name, drivers_license) VALUES ('Honor Banvard', 'LH760387');
-INSERT INTO users (name, drivers_license) VALUES ('Nick Hawk', 'LP581325');
-INSERT INTO users (name, drivers_license) VALUES ('Russell McFadden', 'LM356094');
-INSERT INTO users (name, drivers_license) VALUES ('Nathanael Foley', 'LW850785');
-
-INSERT INTO tool (name, brand, description, checked_out) VALUES ('Table Saw', 'DeWaltDisney', 'Used to make cuts that go with the grain', 0);
-INSERT INTO tool (name, brand, description, checked_out) VALUES ('Miter Saw', 'DeWaltDisney', 'Used to make cuts that go against the grain', 0);
-INSERT INTO tool (name, brand, description, checked_out) VALUES ('Belt Sander', 'Kobal', 'Handheld tool that grinds down the wood to a more fine finish', 0);
-INSERT INTO tool (name, brand, description, checked_out) VALUES ('Jig Saw', 'StanLee', 'Handheld tool used to make cuts at any angle', 1);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ALTER TABLE tool
+ADD FOREIGN KEY(current_borrower)
+REFERENCES member(name);

@@ -4,7 +4,7 @@
     ViewData["Title"] = "ToolList";
 }
 
-<h2>ToolList</h2>
+<h2>Available Tools</h2>
 
 <section>
     @foreach (Tool tool in Model)
@@ -12,7 +12,7 @@
         <a asp-controller="Tool" asp-action="ToolDetail" asp-route-id="@tool.Id">
         <img src="~/images/@(tool.ImageName).jpg" alt="Tool Photo"/>
         </a>
-        <p>@tool.Brand</p>
-        <p>@tool.ToolName</p>
+        <p>Brand: @tool.Brand</p>
+        <p>Tool: @tool.ToolName</p>
     }
 </section>

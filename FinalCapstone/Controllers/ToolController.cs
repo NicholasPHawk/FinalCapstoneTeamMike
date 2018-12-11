@@ -19,7 +19,7 @@ namespace FinalCapstone.Controllers
         }
 
         public IActionResult Index()
-        {//Shows all tools
+        {
             IList<Tool> tools = _toolDal.GetTools(false);
             return View(tools);
         }
