@@ -30,7 +30,7 @@ namespace FinalCapstone.Test.DALTests
                 var tools = _toolDal.GetTools(false);
                 Assert.IsFalse(tools.Any());
             }
-            
+
             [TestMethod]
             public void GetToolsCheckedOut()
             {
@@ -80,11 +80,11 @@ namespace FinalCapstone.Test.DALTests
                     cmd = conn.CreateCommand();
                     cmd.CommandText = sql2;
                     cmd.Parameters.AddWithValue("@current_borrower", memberId);
-                    
+
                     cmd.ExecuteNonQuery();
                 }
-                    var checkedOutTools = _toolDal.GetTools(false);
-                    Assert.AreEqual(1, checkedOutTools.Count);
+                var checkedOutTools = _toolDal.GetTools(false);
+                Assert.AreEqual(1, checkedOutTools.Count);
             }
         }
     }
