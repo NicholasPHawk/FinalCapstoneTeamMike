@@ -49,25 +49,39 @@ namespace FinalCapstone.Dal
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM tool WHERE checked_out = @checked_out;", conn);
-                cmd.Parameters.AddWithValue("@checked_out", checkedOut);
+                string sql = "";
+
+                if (checkedOut == true)
+                {
+                    sql = "SELECT m.member_name, t.* FROM member m, tool t WHERE m.id = t.current_borrower AND checked_out = 1;";
+                }
+                else
+                {
+                    sql = "SELECT * FROM tool WHERE checked_out = 0;";
+                }
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
                     Tool tool = new Tool();
                     tool.Id = Convert.ToInt32(reader["id"]);
-                    tool.ToolName = Convert.ToString(reader["name"]);
                     tool.Brand = Convert.ToString(reader["brand"]);
+                    tool.ToolName = Convert.ToString(reader["tool_name"]);
                     tool.Description = Convert.ToString(reader["description"]);
                     tool.CheckedOut = Convert.ToBoolean(reader["checked_out"]);
+                    if (checkedOut == true)
+                    {
+                        tool.CurrentBorrowerName = Convert.ToString(reader["member_name"]);
+                    }
                     if ((reader["current_borrower"] is DBNull))
                     {
-                        tool.CurrentBorrower = "";
+                        tool.CurrentBorrowerId = 0;
                     }
                     else
                     {
-                        tool.CurrentBorrower = Convert.ToString(reader["current_borrower"]);
+                        tool.CurrentBorrowerId = Convert.ToInt32(reader["current_borrower"]);
                     }
                     if ((reader["date_borrowed"] is DBNull))
                     {
@@ -85,6 +99,7 @@ namespace FinalCapstone.Dal
                     {
                         tool.DueDate = Convert.ToDateTime(reader["due_date"]);
                     }
+
                     tools.Add(tool);
                 }
             }
