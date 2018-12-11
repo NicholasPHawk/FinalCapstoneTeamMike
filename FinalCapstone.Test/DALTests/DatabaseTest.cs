@@ -24,8 +24,7 @@ namespace FinalCapstone.Test.DALTests
             {
                 var command = connection.CreateCommand();
                 command.CommandText =
-                    @"DELETE FROM tool_users; 
-                      DELETE FROM users; 
+                    @"DELETE FROM member; 
                       DELETE FROM tool;";
 
                 connection.Open();
