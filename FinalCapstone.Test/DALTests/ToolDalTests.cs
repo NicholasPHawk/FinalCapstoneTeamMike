@@ -1,67 +1,76 @@
-﻿using FinalCapstone.Models;
+﻿using FinalCapstone.Dal;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Data.SqlClient;
+using System.Linq;
+using FinalCapstone.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Data.SqlClient;
-using FinalCapstone.Dal;
 using System.Transactions;
-using System.Linq;
-
-
-
 
 namespace FinalCapstone.Test.DALTests
 {
     [TestClass]
-    public class ToolDalTests
+    public class ToolDalTests : DatabaseTest
     {
-        private TransactionScope tran;
-        private string connectionString = @"Data Source=.\sqlexpress01;Initial Catalog = toolDB; Integrated Security = True";
-        private int Id;
+        private IToolDal _toolDal;
 
         [TestInitialize]
-        public void Initialize()
+        public void Setup()
         {
-            tran = new TransactionScope();
+            _toolDal = new ToolDal(toolDBConnectionString);
+        }
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+        [TestClass]
+        public class GetAllTools : ToolDalTests
+        {
+            [TestMethod]
+            public void NoToolsExist()
             {
-                SqlCommand cmd;
+                var tools = _toolDal.GetTools(false);
+                Assert.IsFalse(tools.Any());
+            }
 
-                conn.Open();
+            [TestMethod]
+            public void GetToolsCheckedOut()
+            {
+                using (SqlConnection conn = new SqlConnection(toolDBConnectionString))
+                {
+                    const string sql =
+                        @"INSERT INTO tool VALUES ('TestTool1', 'Fake Description1', 0, 'fakeBrand1');
+                          INSERT INTO tool VALUES ('TestTool2', 'Fake Description2', 1, 'fakeBrand2');
+                          INSERT INTO tool VALUES ('TestTool3', 'Fake Description3', 1, 'fakeBrand3');";
 
-                cmd = new SqlCommand("INSERT INTO tool VALUES ('TestTool', 'Fake Description', '0', fakeBrand');", conn);
-                cmd.ExecuteNonQuery();
+                    var cmd = conn.CreateCommand();
+                    cmd.CommandText = sql;
 
-                cmd = new SqlCommand("INSERT INTO tool VALUES ('TestTool2', 'Fake Description2', '1', fakeBrand2');", conn);
-                cmd.ExecuteNonQuery();
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                var checkedOutTools = _toolDal.GetTools(true);
+                Assert.AreEqual(2, checkedOutTools.Count);
+            }
 
+            [TestMethod]
+            public void GetToolsCheckedIn()
+            {
+                using (SqlConnection conn = new SqlConnection(toolDBConnectionString))
+                {
+                    const string sql =
+                        @"INSERT INTO tool VALUES ('TestTool1', 'Fake Description1', 0, 'fakeBrand1');
+                          INSERT INTO tool VALUES ('TestTool2', 'Fake Description2', 1, 'fakeBrand2');
+                          INSERT INTO tool VALUES ('TestTool3', 'Fake Description3', 1, 'fakeBrand3');";
+
+                    var cmd = conn.CreateCommand();
+                    cmd.CommandText = sql;
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                    var checkedOutTools = _toolDal.GetTools(false);
+                    Assert.AreEqual(1, checkedOutTools.Count);
             }
         }
-
-        [TestCleanup]
-        public void Cleanup()
-        {
-            tran.Dispose();
-        }
-
-        [TestMethod]
-        public void Should_Be_Able_To_Be_Checked_Out()
-        {
-            IList<Tool> tools = new List<Tool>();
-            IToolDal _toolDal = new ToolDal(@"Data Source=.\sqlexpress01;Initial Catalog = toolDB; Integrated Security = True");
-
-        }
-
-        [TestMethod]
-        public void Should_Not_Be_Able_To_Be_Checked_Out()
-        {
-
-        }
-
-
-
     }
 }
 
