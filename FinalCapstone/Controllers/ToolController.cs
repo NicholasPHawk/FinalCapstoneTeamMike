@@ -20,18 +20,21 @@ namespace FinalCapstone.Controllers
 
         public IActionResult Index()
         {//Shows all tools
-            IList<Tool> tools = _toolDal.GetTools();
+            IList<Tool> tools = _toolDal.GetTools(false);
             return View(tools);
         }
 
-        //public IActionResult getAllTools()
-        //{
-        //    return View();
-        //}
-
-        public IActionResult ToolDetail()
+        public IActionResult CheckedOutTools()
         {
-            return View();
+            IList<Tool> tools = _toolDal.GetTools(true);
+            return View(tools);
+        }
+
+        public IActionResult ToolDetail(int id)
+        {
+            bool isCheckedOut = _toolDal.CheckToolAvailability(id);
+            Tool tool = _toolDal.GetToolDetails(id, isCheckedOut);
+            return View(tool);
         }
     }
 }
