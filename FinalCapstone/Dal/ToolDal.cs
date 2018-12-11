@@ -16,24 +16,41 @@ namespace FinalCapstone.Dal
             this.connectionString = connectionString;
         }
 
-        public IList<Tool> GetTools()
+        public IList<Tool> GetTools(bool checkedOut)
         {
-            return GetAllTools();
+            return GetAllTools(checkedOut);
         }
 
-        public Tool GetToolDetails(int id)
+        public Tool GetToolDetails(int id, bool checkedOut)
         {
-            return GetAllTools().FirstOrDefault(t => t.Id == id);
+            return GetAllTools(checkedOut).FirstOrDefault(t => t.Id == id);
         }
 
-        public IList<Tool> GetAllTools()
+        public bool CheckToolAvailability(int id)
+        {
+            bool checkedOut = false;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT checked_out FROM tool WHERE id = @id;", conn);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                checkedOut = (bool)cmd.ExecuteScalar();
+            }
+ 
+            return checkedOut;
+        }
+
+        public IList<Tool> GetAllTools(bool checkedOut)
         {
             IList<Tool> tools = new List<Tool>();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM tool", conn);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM tool WHERE checked_out = @checked_out;", conn);
+                cmd.Parameters.AddWithValue("@checked_out", checkedOut);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
