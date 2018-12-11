@@ -9,6 +9,9 @@
     <img src="~/images/@(Model.ImageName).jpg" alt="Tool Photo" />
     <p>Brand: @Model.Brand</p>
     <p>Tool: @Model.ToolName</p>
+    @if(@Model.CheckedOut)
+    {
     <p>Checked out by: @Model.CurrentBorrowerName</p>
     <p>Will be available: @Model.DueDate.ToString("MM/dd/yyyy")</p> 
+    }
 </section>
