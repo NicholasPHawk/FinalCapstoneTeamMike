@@ -42,7 +42,7 @@ INSERT INTO users (name, drivers_license) VALUES ('Nathanael Foley', 'LW850785')
 INSERT INTO tool (name, brand, description, checked_out) VALUES ('Table Saw', 'DeWaltDisney', 'Used to make cuts that go with the grain', 0);
 INSERT INTO tool (name, brand, description, checked_out) VALUES ('Miter Saw', 'DeWaltDisney', 'Used to make cuts that go against the grain', 0);
 INSERT INTO tool (name, brand, description, checked_out) VALUES ('Belt Sander', 'Kobal', 'Handheld tool that grinds down the wood to a more fine finish', 0);
-INSERT INTO tool (name, brand, description, checked_out) VALUES ('Jig Saw', 'StanLee', 'Handheld tool used to make cuts at any angle', 0);
+INSERT INTO tool (name, brand, description, checked_out) VALUES ('Jig Saw', 'StanLee', 'Handheld tool used to make cuts at any angle', 1);
 
 
 

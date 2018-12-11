@@ -8,7 +8,8 @@ namespace FinalCapstone.Dal
 {
     public interface IToolDal
     {
-        IList<Tool> GetTools();
-        Tool GetToolDetails(int id);
+        IList<Tool> GetTools(bool checkedOut);
+        Tool GetToolDetails(int id, bool checkedOut);
+        bool CheckToolAvailability(int id);
     }
 }
