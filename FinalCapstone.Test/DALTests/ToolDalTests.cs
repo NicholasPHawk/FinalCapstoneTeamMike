@@ -37,9 +37,9 @@ namespace FinalCapstone.Test.DALTests
                 using (SqlConnection conn = new SqlConnection(toolDBConnectionString))
                 {
                     const string sql =
-                        @"INSERT INTO tool (brand, name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand1', 'TestTool1', 'Fake Description1', 0, null, null, null);
-                          INSERT INTO tool (brand, name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand2', 'TestTool2', 'Fake Description2', 1, 'CustomerName1', '2018-12-11', '2018-12-18');
-                          INSERT INTO tool (brand, name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand3', 'TestTool3', 'Fake Description3', 1, 'CustomerName2', '2018-12-11', '2018-12-18');";
+                       @"INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand1', 'TestTool1', 'Fake Description1', 0, null, null, null);
+                          INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand2', 'TestTool2', 'Fake Description2', 1, '1', '2018-12-11', '2018-12-18');
+                          INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand3', 'TestTool3', 'Fake Description3', 1, '2', '2018-12-11', '2018-12-18');";
 
                     var cmd = conn.CreateCommand();
                     cmd.CommandText = sql;
@@ -57,9 +57,9 @@ namespace FinalCapstone.Test.DALTests
                 using (SqlConnection conn = new SqlConnection(toolDBConnectionString))
                 {
                     const string sql =
-                        @"INSERT INTO tool (brand, name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand1', 'TestTool1', 'Fake Description1', 0, null, null, null);
-                          INSERT INTO tool (brand, name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand2', 'TestTool2', 'Fake Description2', 1, 'CustomerName1', '2018-12-11', '2018-12-18');
-                          INSERT INTO tool (brand, name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand3', 'TestTool3', 'Fake Description3', 1, 'CustomerName2', '2018-12-11', '2018-12-18');";
+                        @"INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand1', 'TestTool1', 'Fake Description1', 0, null, null, null);
+                          INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand2', 'TestTool2', 'Fake Description2', 1, '1', '2018-12-11', '2018-12-18');
+                          INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand3', 'TestTool3', 'Fake Description3', 1, '2', '2018-12-11', '2018-12-18');";
 
                     var cmd = conn.CreateCommand();
                     cmd.CommandText = sql;
