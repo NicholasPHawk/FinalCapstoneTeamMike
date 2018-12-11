@@ -30,7 +30,7 @@ namespace FinalCapstone.Test.DALTests
                 var tools = _toolDal.GetTools(false);
                 Assert.IsFalse(tools.Any());
             }
-            //@"INSEET INTO member (member_name, drivers_license) VALUES ('Han Solo', 'BO085123')
+
             [TestMethod]
             public void GetToolsCheckedOut()
             {
@@ -46,11 +46,13 @@ namespace FinalCapstone.Test.DALTests
 
                     const string sql2 =
                        @"INSERT INTO tool (brand, tool_name, description, checked_out) VALUES ('fakeBrand1', 'TestTool1', 'Fake Description1', 0);
-                        INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand2', 'TestTool2', 'Fake Description2', 1, @current_borrower, '2018-12-11', '2018-12-18');
-                        INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand3', 'TestTool3', 'Fake Description3', 1, @current_borrower, '2018-12-11', '2018-12-18');";
+                         INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand2', 'TestTool2', 'Fake Description2', 1, @current_borrower, '2018-12-11', '2018-12-18');
+                         INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand3', 'TestTool3', 'Fake Description3', 1, @current_borrower, '2018-12-11', '2018-12-18');";
+                    
+                    cmd = conn.CreateCommand();
                     cmd.CommandText = sql2;
                     cmd.Parameters.AddWithValue("@current_borrower", memberId);
-
+                    
                     cmd.ExecuteNonQuery();
                 }
                 var checkedOutTools = _toolDal.GetTools(true);
@@ -72,12 +74,12 @@ namespace FinalCapstone.Test.DALTests
 
                     const string sql2 =
                        @"INSERT INTO tool (brand, tool_name, description, checked_out) VALUES ('fakeBrand1', 'TestTool1', 'Fake Description1', 0);
-                        INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand2', 'TestTool2', 'Fake Description2', 1, @current_borrower, '2018-12-11', '2018-12-18');
-                        INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand3', 'TestTool3', 'Fake Description3', 1, @current_borrower, '2018-12-11', '2018-12-18');";
-                    cmd.Parameters.AddWithValue("@current_borrower", memberId);
+                         INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand2', 'TestTool2', 'Fake Description2', 1, @current_borrower, '2018-12-11', '2018-12-18');
+                         INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand3', 'TestTool3', 'Fake Description3', 1, @current_borrower, '2018-12-11', '2018-12-18');";
+                    
                     cmd = conn.CreateCommand();
                     cmd.CommandText = sql2;
-
+                    cmd.Parameters.AddWithValue("@current_borrower", memberId);
 
                     cmd.ExecuteNonQuery();
                 }
