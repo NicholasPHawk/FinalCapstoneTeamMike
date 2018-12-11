@@ -35,3 +35,8 @@ body {
         display: none;
     }
 }
+
+.toolImages {
+    height: 100px;
+    width: 100px;
+}

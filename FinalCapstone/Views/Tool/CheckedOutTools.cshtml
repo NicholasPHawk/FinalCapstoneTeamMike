@@ -1,4 +1,5 @@
 ﻿@model List<Tool>
+
 @{
     ViewData["Title"] = "CheckedOutTools";
 }
@@ -8,10 +9,14 @@
 <section>
     @foreach (Tool tool in Model)
     {
-        <a asp-controller="Tool" asp-action="ToolDetail" asp-route-id="@tool.Id">
-            <img src="~/images/@(tool.ImageName).jpg" alt="Tool Photo" />
-        </a>
-        <p>Brand: @tool.Brand</p>
-        <p>Tool: @tool.ToolName</p>
+        <div class="col-xs-4">
+            <div class="productBorder">
+                <a asp-controller="Tool" asp-action="ToolDetail" asp-route-id="@tool.Id">
+                    <img class="toolImages" src="~/images/@(tool.ImageName).jpg" alt="Tool Photo" />
+                </a>
+                <p>Brand: @tool.Brand</p>
+                <p>Tool: @tool.ToolName</p>
+            </div>
+        </div>
     }
 </section>
