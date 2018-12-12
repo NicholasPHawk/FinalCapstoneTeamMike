@@ -161,8 +161,17 @@ namespace FinalCapstone.Dal
 
                 if (searchOption == "Tool Number")
                 {
+                    int x;
                     SqlCommand cmd = new SqlCommand("SELECT m.member_name, m.drivers_license, t.* FROM member m, tool t WHERE m.id = t.current_borrower AND checked_out = 1 AND t.id = @id;", conn);
-                    cmd.Parameters.AddWithValue("@id", Int32.Parse(searchString));
+                    try
+                    {
+                        x = Int32.Parse(searchString);
+                    }
+                    catch (Exception ex)
+                    {
+                        x = 0;
+                    }
+                    cmd.Parameters.AddWithValue("@id", x);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
