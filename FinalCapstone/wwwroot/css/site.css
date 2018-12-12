@@ -10,7 +10,7 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    background-color: #f2f2f2;
+    background-image: 
 }
 
 /* Carousel */
@@ -43,6 +43,11 @@ body {
     font-size: 2em;
 }
 
+.content {
+    width: 75%;
+    margin: 0 auto;
+}
+
 .tool_thumbnail {
     margin: 20px auto;
     padding: 20px 0;
@@ -70,6 +75,8 @@ body {
     height: 100px;
     width: 100px;
     display: inline-block;
+    border: 2px solid black;
+    border-radius: 8%;
     margin-bottom: 20px;
 }
 
@@ -136,7 +143,7 @@ button {
 
 
 
-        /*==========*/
+/*==========*/
 
 
 .CenterTextContainer {
@@ -150,4 +157,3 @@ button {
     transform: translate(-50%, -50%);
     font-size: 18px;
 }
-

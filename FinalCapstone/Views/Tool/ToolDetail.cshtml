@@ -3,16 +3,21 @@
     ViewData["Title"] = "ToolDetail";
 }
 
-<div class="caption">Tool Detail</div>
-<div class="detail">
-    <div class="detail_thumbnail">
-        <img class="tool_image" src="~/images/@(Model.ImageName).jpg" alt="Tool Photo" />
-        <p><strong>Brand:</strong> @Model.Brand</p>
-        <p><strong>Tool:</strong> @Model.ToolName</p>
-        @if (@Model.CheckedOut)
-        {
-            <p><strong>Checked out by:</strong> @Model.CurrentBorrowerName</p>
-            <p><strong>Will be available:</strong> @Model.DueDate.ToString("MM/dd/yyyy")</p>
-        }
+<div class="caption">
+    Tool Detail
+</div>
+
+<div class="content">
+    <div class="detail">
+        <div class="detail_thumbnail">
+            <img class="tool_image" src="~/images/@(Model.ImageName).jpg" alt="Tool Photo" />
+            <p><strong>Brand:</strong> @Model.Brand</p>
+            <p><strong>Tool:</strong> @Model.ToolName</p>
+            @if (@Model.CheckedOut)
+            {
+                <p><strong>Checked out by:</strong> @Model.CurrentBorrowerName</p>
+                <p><strong>Will be available:</strong> @Model.DueDate.ToString("MM/dd/yyyy")</p>
+            }
+        </div>
     </div>
 </div>
