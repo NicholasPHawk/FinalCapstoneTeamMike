@@ -3,7 +3,7 @@
     ViewData["Title"] = "ToolList";
 }
 
-<div class="CenterTextContainer">
+@*<div class="CenterTextContainer">
     <section style="background-image: url(&quot;http://wpweb02.webpresented.com/Portals/0/Images/stock/whousesus copy.jpg?ver=2017-07-12-104945-280&quot;);
             background-position: 0% -200px;"
              class="centerImageText">
@@ -12,22 +12,26 @@
             <h2>Avaliable Tools</h2>
         </div>
     </section>
+</div>*@
+
+<div class="caption">
+    Available Tools
 </div>
 
-<div class="caption">Available Tools</div>
-
-@foreach (Tool tool in Model)
-{
-    <div class="col-sm-4">
-        <div class="tool_thumbnail">
-            <img class="tool_image" src="~/images/@(tool.ImageName).jpg" alt="Tool Photo" />
-            <p><strong>Brand:</strong> @tool.Brand</p>
-            <p><strong>Tool:</strong> @tool.ToolName</p>
-            <a asp-controller="Tool" asp-action="ToolDetail" asp-route-id="@tool.Id">
-                <button>
-                    Details
-                </button>
-            </a>
+<div class="content">
+    @foreach (Tool tool in Model)
+    {
+        <div class="col-sm-4">
+            <div class="tool_thumbnail">
+                <img class="tool_image" src="~/images/@(tool.ImageName).jpg" alt="Tool Photo" />
+                <p><strong>Brand:</strong> @tool.Brand</p>
+                <p><strong>Tool:</strong> @tool.ToolName</p>
+                <a asp-controller="Tool" asp-action="ToolDetail" asp-route-id="@tool.Id">
+                    <button>
+                        Details
+                    </button>
+                </a>
+            </div>
         </div>
-    </div>
-}
+    }
+</div>
