@@ -35,9 +35,9 @@ namespace FinalCapstone.Models
 
         public static List<SelectListItem> SearchOptions = new List<SelectListItem>()
         {
-            new SelectListItem() { Text = "Name", Value = "Name" },
-            new SelectListItem() { Text = "License", Value = "License" },
-            new SelectListItem() { Text = "Tool Number", Value = "Tool Number" },
+            new SelectListItem() { Text = "Names", Value = "Name" },
+            new SelectListItem() { Text = "License Numbers", Value = "License" },
+            new SelectListItem() { Text = "Tool Numbers", Value = "Tool Number" },
         };
     }
 }

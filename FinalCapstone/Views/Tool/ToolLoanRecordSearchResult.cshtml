@@ -3,9 +3,16 @@
     ViewData["Title"] = "ToolLoanRecordSearchResultModel";
 }
 
-<h2>ToolLoanRecordSearchResultModel</h2>
+<h2>Search Results</h2>
 
 @foreach (ToolLoanRecordSearchModel loanRecord in Model)
 {
-    <p>@loanRecord.CurrentBorrowerName</p>
+    <p>Tool Number: @loanRecord.Id</p>
+    <p>Brand: @loanRecord.Brand</p>
+    <p>Tool: @loanRecord.ToolName</p>
+    <p>Current Borrower: @loanRecord.CurrentBorrowerName</p>
+    <p>License Number: @loanRecord.LicenseNumber</p>
+    <p>@loanRecord.DateBorrowed</p>
+    <p>@loanRecord.DueDate</p>
+
 }
