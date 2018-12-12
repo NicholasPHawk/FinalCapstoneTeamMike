@@ -40,3 +40,73 @@ body {
     height: 100px;
     width: 100px;
 }
+
+.center {
+    margin: auto;
+    width: 60%;
+}
+
+section {
+    color: black;
+}
+
+.mouseOver {
+    background: border-box;
+}
+
+button {
+    background: #ffffff;
+    color: black;
+    border: 1px solid darkGrey;
+    font-size: 12px;
+    border-radius: 4px;
+    transition: .7s;
+    overflow: hidden;
+}
+
+    button:focus {
+        outline: none;
+    }
+
+    button:before {
+        content: '';
+        display: block;
+        position: relative;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: .5;
+        filter: blur(30px);
+        transform: translateX(-130px) skewX(-15deg);
+    }
+
+    button:after {
+        content: '';
+        display: block;
+        position: relative;
+        background: lightblue;
+        width: 30px;
+        height: 100%;
+        left: 30px;
+        top: 0;
+        opacity: 0;
+        filter: blur(30px);
+        transform: translateX(-100px) scaleX(-15deg);
+    }
+
+    button:hover {
+        background: lightBlue;
+        cursor: pointer;
+    }
+
+        button:hover:before {
+            transform: translateX(300px) skewX(-15deg);
+            opacity: .6;
+            transition: .7s;
+        }
+
+        button:hover:after {
+            transform: translateX(300px) skewX(-15deg);
+            opacity: .1;
+            transition: .7s;
+        }
