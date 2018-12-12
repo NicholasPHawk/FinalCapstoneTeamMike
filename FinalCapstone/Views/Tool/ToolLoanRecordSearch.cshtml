@@ -1,0 +1,17 @@
+﻿@model ToolLoanRecordSearchModel
+
+@{
+    ViewData["Title"] = "ToolLoanRecordSearch";
+}
+
+<h2>ToolLoanRecordSearch</h2>
+
+<form asp-controller="Tool" asp-action="ToolLoanRecordSearch" method="post">
+<label asp-for="SearchString"></label>
+<input asp-for="SearchString" />
+
+<label asp-for="SearchType"></label>
+<select asp-for="SearchType" asp-items="ToolLoanRecordSearchModel.SearchOptions"></select>
+
+<button type="submit">Submit</button>
+</form>
