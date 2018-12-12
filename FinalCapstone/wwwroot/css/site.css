@@ -3,14 +3,15 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url('https://www.schattdecor.de/decor-images/14-02009-001_detail.2c9652407d.jpg');
 }
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
+    margin-top: 30px;
     padding-left: 15px;
     padding-right: 15px;
-    background-image: url(~/images/CuttingMetal.jpg);
 }
 
 /* Carousel */
@@ -38,9 +39,7 @@ body {
 }
 
 .caption {
-    margin: 10px auto;
-    padding-left: 2%;
-    font-size: 2em;
+    font-size: 3em;
 }
 
 .content {
@@ -78,6 +77,15 @@ body {
     border: 2px solid black;
     border-radius: 8%;
     margin-bottom: 20px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: inline-block;
+    width: 5%;
 }
 
 button {
@@ -176,9 +184,6 @@ button {
     height: 75px;
     margin-top: -15px;
 }
-.body-content{
-    margin-top: 30px;
- }
 
 .toolGeekTitle {
     font-family: "Comic Sans MS", cursive, sans-serif;
@@ -188,4 +193,8 @@ button {
 
 .navbar-collapse{
     margin-top: 15px;
+}
+
+section {
+    background-color: none;
 }
