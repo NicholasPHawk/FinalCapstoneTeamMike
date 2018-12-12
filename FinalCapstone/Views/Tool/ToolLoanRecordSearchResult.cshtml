@@ -9,16 +9,16 @@
 {
     <p>No results found with your search parameters.</p>
 }
-else {
-@foreach (ToolLoanRecordSearchModel loanRecord in Model)
+else
 {
-    <p>Tool Number: @loanRecord.Id</p>
-    <p>Brand: @loanRecord.Brand</p>
-    <p>Tool: @loanRecord.ToolName</p>
-    <p>Current Borrower: @loanRecord.CurrentBorrowerName</p>
-    <p>License Number: @loanRecord.LicenseNumber</p>
-    <p>@loanRecord.DateBorrowed</p>
-    <p>@loanRecord.DueDate</p>
-
-}
+    @foreach (ToolLoanRecordSearchModel loanRecord in Model)
+    {
+        <p>Tool Number: @loanRecord.Id</p>
+        <p>Brand: @loanRecord.Brand</p>
+        <p>Tool: @loanRecord.ToolName</p>
+        <p>Current Borrower: @loanRecord.CurrentBorrowerName</p>
+        <p>License Number: @loanRecord.LicenseNumber</p>
+        <p>@loanRecord.DateBorrowed.ToString("MM/dd/yyyy")</p>
+        <p>@loanRecord.DueDate.ToString("MM/dd/yyyy")</p>
+    }
 }
