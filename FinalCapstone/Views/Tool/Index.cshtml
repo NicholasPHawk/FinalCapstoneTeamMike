@@ -3,45 +3,20 @@
     ViewData["Title"] = "ToolList";
 }
 
-<h2>Available Tools</h2>
+<div class="caption">Available Tools</div>
 
-<section>
-
-    @foreach (Tool tool in Model)
-    {
-        <div class="mouseOver">
-            <div class="center">
-                <div class="col-sm-4">
-                    <div class="productBorder">
-                        <img class="toolImages" src="~/images/@(tool.ImageName).jpg" alt="Tool Photo" />
-                        <p>Brand: @tool.Brand</p>
-                        <p>Tool: @tool.ToolName</p>
-                        <a asp-controller="Tool" asp-action="ToolDetail" asp-route-id="@tool.Id">
-                            <button>
-                                Details
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
-</section>
-
-<section style="background-image: url(&quot;http://wpweb02.webpresented.com/Portals/0/Images/stock/whousesus copy.jpg?ver=2017-07-12-104945-280&quot;);
-background-position: 0% -106px;"
-         data-stellar-background-ratio="0"
-         class="parallax section section-text-light section-parallax section-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <br><br><h1 class="mb-none">
-                    <b>Nobody expects to like it this much</b>
-                </h1><br> <h4 class="mb-none">
-                    WPCRM is built to provide its users with the toolset that they actually need to drive sales and make smart business decisions in the wholesale distribution and manufacturing space.
-                </h4>
-                <br><br><br>
-            </div>
+@foreach (Tool tool in Model)
+{
+    <div class="col-sm-4">
+        <div class="tool_thumbnail">
+            <img class="tool_image" src="~/images/@(tool.ImageName).jpg" alt="Tool Photo" />
+            <p><strong>Brand:</strong> @tool.Brand</p>
+            <p><strong>Tool:</strong> @tool.ToolName</p>
+            <a asp-controller="Tool" asp-action="ToolDetail" asp-route-id="@tool.Id">
+                <button>
+                    Details
+                </button>
+            </a>
         </div>
     </div>
-</section>
+}

@@ -3,27 +3,21 @@
     ViewData["Title"] = "CheckedOutTools";
 }
 
-<h2>Checked Out Tools</h2>
+<div class="caption">Checked Out Tools</div>
 
-<section>
-
-    @foreach (Tool tool in Model)
-    {
-        <div class="mouseOver">
-            <div class="center">
-                <div class="col-sm-4">
-                    <div class="productBorder">
-                        <img class="toolImages" src="~/images/@(tool.ImageName).jpg" alt="Tool Photo" />
-                        <p>Brand: @tool.Brand</p>
-                        <p>Tool: @tool.ToolName</p>
-                        <a asp-controller="Tool" asp-action="ToolDetail" asp-route-id="@tool.Id">
-                            <button>
-                                Details
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </div>
+@foreach (Tool tool in Model)
+{
+    <div class="col-sm-4">
+        <div class="tool_thumbnail">
+            <img class="tool_image" src="~/images/@(tool.ImageName).jpg" alt="Tool Photo" />
+            <p><strong>Brand:</strong> @tool.Brand</p>
+            <p><strong>Tool:</strong> @tool.ToolName</p>
+            <a asp-controller="Tool" asp-action="ToolDetail" asp-route-id="@tool.Id">
+                <button>
+                    Details
+                </button>
+            </a>
         </div>
-    }
-</section>
+    </div>
+}
+

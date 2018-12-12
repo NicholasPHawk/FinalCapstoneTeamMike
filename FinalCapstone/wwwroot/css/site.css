@@ -10,6 +10,7 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    background-color: #f2f2f2;
 }
 
 /* Carousel */
@@ -36,22 +37,40 @@ body {
     }
 }
 
-.toolImages {
+.caption {
+    margin: 10px auto;
+    padding-left: 2%;
+    font-size: 2em;
+}
+
+.tool_thumbnail {
+    margin: 20px auto;
+    padding: 20px 0;
+    border: 2px solid black;
+    border-radius: 5%;
+    text-align: center;
+    background-color: #d9d9d9;
+}
+
+.detail {
+    margin: 20px auto;
+}
+
+.detail_thumbnail {
+    margin: 0px auto;
+    padding: 20px 0;
+    border: 2px solid black;
+    border-radius: 5%;
+    text-align: center;
+    background-color: #d9d9d9;
+    width: 25%;
+}
+
+.tool_image {
     height: 100px;
     width: 100px;
-}
-
-.center {
-    margin: auto;
-    width: 60%;
-}
-
-section {
-    color: black;
-}
-
-.mouseOver {
-    background: border-box;
+    display: inline-block;
+    margin-bottom: 20px;
 }
 
 button {
@@ -62,6 +81,7 @@ button {
     border-radius: 4px;
     transition: .7s;
     overflow: hidden;
+    margin-top: 5px;
 }
 
     button:focus {
