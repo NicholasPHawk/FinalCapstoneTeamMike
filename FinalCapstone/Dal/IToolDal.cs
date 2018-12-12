@@ -11,5 +11,6 @@ namespace FinalCapstone.Dal
         IList<Tool> GetTools(bool checkedOut);
         Tool GetToolDetails(int id, bool checkedOut);
         bool CheckToolAvailability(int id);
+        IList<ToolLoanRecordSearchModel> GetLoanRecords(string searchOptions, string searchString);
     }
 }

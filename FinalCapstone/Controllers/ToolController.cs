@@ -36,5 +36,19 @@ namespace FinalCapstone.Controllers
             Tool tool = _toolDal.GetToolDetails(id, isCheckedOut);
             return View(tool);
         }
+
+        [HttpGet]
+        public IActionResult ToolLoanRecordSearch()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ToolLoanRecordSearch(ToolLoanRecordSearchModel model)
+        {
+            IList<ToolLoanRecordSearchModel> tools = new List<ToolLoanRecordSearchModel>();
+            tools = _toolDal.GetLoanRecords(model.SearchType, model.SearchString);
+            return View("ToolLoanRecordSearchResult", tools);
+        }
     }
 }
