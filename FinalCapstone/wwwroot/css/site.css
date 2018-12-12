@@ -158,6 +158,12 @@ button {
     font-size: 18px;
 }
 
+.jumbotron {
+    background: url(/images/welding.jpg) center center no-repeat;
+    height: 300px;
+    width: 100%;
+}
+
 .navbar {
     height: 75px;
 }
