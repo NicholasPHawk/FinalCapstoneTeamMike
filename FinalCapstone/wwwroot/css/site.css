@@ -157,3 +157,11 @@ button {
     transform: translate(-50%, -50%);
     font-size: 18px;
 }
+
+.jumbotron {
+    background: url(/images/welding.jpg) center center no-repeat;
+    height: 300px;
+    width: 100%;
+}
+
+
