@@ -1,0 +1,11 @@
+﻿@model List<ToolLoanRecordSearchModel>
+@{
+    ViewData["Title"] = "ToolLoanRecordSearchResultModel";
+}
+
+<h2>ToolLoanRecordSearchResultModel</h2>
+
+@foreach (ToolLoanRecordSearchModel loanRecord in Model)
+{
+    <p>@loanRecord.CurrentBorrowerName</p>
+}
