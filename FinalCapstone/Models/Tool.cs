@@ -24,7 +24,7 @@ namespace FinalCapstone.Models
             }
             set
             {
-                ImageName = $"{Brand} {ToolName}";
+                ImageName = Brand + ToolName;
             }
         }
     }
