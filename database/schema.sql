@@ -31,11 +31,76 @@ INSERT INTO member (id, member_name, drivers_license) VALUES (3, 'Russell McFadd
 INSERT INTO member (id, member_name, drivers_license) VALUES (4, 'Nathanael Foley', 'LW850785');
 SET IDENTITY_INSERT member OFF;
 
-INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Table Saw', 'DeWaltDisney', 'Used to make cuts that go with the grain', 0, null, null, null);
-INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Miter Saw', 'DeWaltDisney', 'Used to make cuts that go against the grain', 0, null, null, null);
-INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Belt Sander', 'Kobal', 'Handheld tool that grinds down the wood to a more fine finish', 0, null, null, null);
-INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Jig Saw', 'StanLee', 'Handheld tool used to make cuts at any angle', 1, 2, '2018-12-11', '2018-12-18');
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Angle Grinder', 'DeWaltDisney', 'Handheld tool used to make cuts at any angle', 1, 2, '2018-12-11', '2018-12-18');
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Angle Grinder', 'GitBosch', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Angle Grinder', 'KOBOL', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Angle Grinder', 'SkillzFund', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Angle Grinder', 'StanLee', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Belt Sander', 'DeWaltDisney', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Belt Sander', 'GitBosch', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Belt Sander', 'KOBOL', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Belt Sander', 'SkillzFund', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Belt Sander', 'StanLee', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Drill', 'DeWaltDisney', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Drill', 'GitBosch', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Drill', 'KOBOL', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Drill', 'SkillzFund', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Drill', 'StanLee', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Jig Saw', 'DeWaltDisney', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Jig Saw', 'GitBosch', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Jig Saw', 'KOBOL', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Jig Saw', 'SkillzFund', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Jig Saw', 'StanLee', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Miter Saw', 'DeWaltDisney', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Miter Saw', 'GitBosch', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Miter Saw', 'KOBOL', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Miter Saw', 'SkillzFund', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Miter Saw', 'StanLee', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Table Saw', 'DeWaltDisney', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Table Saw', 'GitBosch', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Table Saw', 'KOBOL', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Table Saw', 'SkillzFund', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Table Saw', 'StanLee', 'Used', 0, null, null, null);
+INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Orbital Sander', 'KOBOL', 'Used', 0, null, null, null);
+
+
 
 ALTER TABLE tool
 ADD FOREIGN KEY(current_borrower)
 REFERENCES member(id);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
