@@ -142,7 +142,29 @@ namespace FinalCapstone.Test.DALTests
             [TestMethod]
             public void GetDetailsTest()
             {
-                
+                int toolId = 0;
+                using (SqlConnection conn = new SqlConnection(toolDBConnectionString))
+                {
+                    const string sql1 = "INSERT INTO member (member_name, drivers_license) VALUES ('Han Solo', 'BO085123'); SELECT CAST(SCOPE_IDENTITY() as int);";
+
+                    var cmd = conn.CreateCommand();
+                    cmd.CommandText = sql1;
+
+                    conn.Open();
+                    int memberId = (int)cmd.ExecuteScalar();
+
+                    const string sql2 =
+                       @"INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand2', 'TestTool2', 'Fake Description2', 0, @current_borrower, '2018-12-11', '2018-12-18'); SELECT CAST(SCOPE_IDENTITY() as int);";
+
+                    cmd = conn.CreateCommand();
+                    cmd.CommandText = sql2;
+                    cmd.Parameters.AddWithValue("@current_borrower", memberId);
+
+                    toolId = (int)cmd.ExecuteScalar();
+                }
+                Tool tool = new Tool();
+                tool = _toolDal.GetToolDetails(toolId, false);
+                Assert.AreEqual("Fake Description2", tool.Description);
             }
         }
     }
