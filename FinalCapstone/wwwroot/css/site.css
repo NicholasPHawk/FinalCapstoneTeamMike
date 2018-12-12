@@ -3,6 +3,7 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url('https://www.schattdecor.de/decor-images/14-02009-001_detail.2c9652407d.jpg');
 }
 
 /* Wrapping element */
@@ -188,4 +189,8 @@ button {
 
 .navbar-collapse{
     margin-top: 15px;
+}
+
+section {
+    background-color: none;
 }
