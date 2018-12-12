@@ -4,13 +4,20 @@
     ViewData["Title"] = "ToolLoanRecordSearch";
 }
 
-<h2>Tool Loan Records</h2>
+<div class="caption">
+    Tool Loan Records
+</div>
 
 <form asp-controller="Tool" asp-action="ToolLoanRecordSearch" method="post">
-    <label asp-for="SearchType">Search</label>
-    <select asp-for="SearchType" asp-items="ToolLoanRecordSearchModel.SearchOptions"></select>
-
-    <label asp-for="SearchString">For: </label>
-    <input asp-for="SearchString" />
-    <button type="submit">Submit</button>
+    <p>
+        <label asp-for="SearchType">Search</label>
+        <select asp-for="SearchType" asp-items="ToolLoanRecordSearchModel.SearchOptions"></select>
+    </p>
+    <p>
+        <label asp-for="SearchString">For</label>
+        <input asp-for="SearchString" />
+    </p>
+    <p>
+        <button type="submit">Submit</button>
+    </p>
 </form>
