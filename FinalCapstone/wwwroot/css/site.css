@@ -157,3 +157,29 @@ button {
     transform: translate(-50%, -50%);
     font-size: 18px;
 }
+
+.navbar {
+    height: 75px;
+}
+
+.navbar-header{
+    width: 300px;
+}
+
+.logoImage {
+    height: 75px;
+    margin-top: -15px;
+}
+.body-content{
+    margin-top: 30px;
+ }
+
+.toolGeekTitle {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 50px;
+    color: #ff6700;
+}
+
+.navbar-collapse{
+    margin-top: 15px;
+}
