@@ -9,9 +9,9 @@ body {
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
+    margin-top: 30px;
     padding-left: 15px;
     padding-right: 15px;
-    background-image: url(~/images/CuttingMetal.jpg);
 }
 
 /* Carousel */
@@ -39,9 +39,7 @@ body {
 }
 
 .caption {
-    margin: 10px auto;
-    padding-left: 2%;
-    font-size: 2em;
+    font-size: 3em;
 }
 
 .content {
@@ -79,6 +77,15 @@ body {
     border: 2px solid black;
     border-radius: 8%;
     margin-bottom: 20px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: inline-block;
+    width: 5%;
 }
 
 button {
@@ -177,9 +184,6 @@ button {
     height: 75px;
     margin-top: -15px;
 }
-.body-content{
-    margin-top: 30px;
- }
 
 .toolGeekTitle {
     font-family: "Comic Sans MS", cursive, sans-serif;
