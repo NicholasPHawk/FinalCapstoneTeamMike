@@ -1,6 +1,6 @@
 ﻿@model Tool
 @{
-   ViewData["Title"] = "ToolDetail";
+    ViewData["Title"] = "ToolDetail";
 }
 
 <h2>Tool Detail</h2>
@@ -8,9 +8,9 @@
     <img class="toolImages" src="~/images/@(Model.ImageName).jpg" alt="Tool Photo" />
     <p>Brand: @Model.Brand</p>
     <p>Tool: @Model.ToolName</p>
-    @if(@Model.CheckedOut)
+    @if (@Model.CheckedOut)
     {
-    <p>Checked out by: @Model.CurrentBorrowerName</p>
-    <p>Will be available: @Model.DueDate.ToString("MM/dd/yyyy")</p>
+        <p>Checked out by: @Model.CurrentBorrowerName</p>
+        <p>Will be available: @Model.DueDate.ToString("MM/dd/yyyy")</p>
     }
 </section>
