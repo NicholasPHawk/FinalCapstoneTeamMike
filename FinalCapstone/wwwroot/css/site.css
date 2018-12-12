@@ -55,10 +55,10 @@ section {
 }
 
 button {
-    background: #ffffff;
-    color: black;
+    background: Grey;
+    color: white;
     border: 1px solid darkGrey;
-    font-size: 12px;
+    font-size: 15px;
     border-radius: 4px;
     transition: .7s;
     overflow: hidden;
@@ -84,7 +84,8 @@ button {
         content: '';
         display: block;
         position: relative;
-        background: lightblue;
+        background: #4CAF50;
+        color: white;
         width: 30px;
         height: 100%;
         left: 30px;
@@ -95,7 +96,8 @@ button {
     }
 
     button:hover {
-        background: lightBlue;
+        background: #4CAF50;
+        color: white;
         cursor: pointer;
     }
 
