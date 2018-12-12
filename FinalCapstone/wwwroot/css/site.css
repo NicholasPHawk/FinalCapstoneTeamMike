@@ -8,9 +8,9 @@ body {
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
+    margin-top: 30px;
     padding-left: 15px;
     padding-right: 15px;
-    background-image: url(~/images/CuttingMetal.jpg);
 }
 
 /* Carousel */
@@ -170,9 +170,6 @@ button {
     height: 75px;
     margin-top: -15px;
 }
-.body-content{
-    margin-top: 30px;
- }
 
 .toolGeekTitle {
     font-family: "Comic Sans MS", cursive, sans-serif;
