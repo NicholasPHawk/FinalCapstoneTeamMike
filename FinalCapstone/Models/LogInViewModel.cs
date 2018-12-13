@@ -9,8 +9,8 @@ namespace FinalCapstone.Models
     public class LogInViewModel
     {
         [Required(ErrorMessage = "This field is required.")]
-        [Display(Name = "User Name:")]
-        public string Username { get; set; }
+        [Display(Name = "Email:")]
+        public string Email { get; set; }
 
         [Required(ErrorMessage = "This field is required.")]
         [Display(Name = "Password:")]

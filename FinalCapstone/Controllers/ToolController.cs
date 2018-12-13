@@ -12,7 +12,6 @@ namespace FinalCapstone.Controllers
     {
         private readonly IToolDal _toolDal;
 
-
         public ToolController(IToolDal toolDal)
         {
             _toolDal = toolDal;
