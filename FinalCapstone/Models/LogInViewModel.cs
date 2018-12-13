@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace FinalCapstone.Models
 {
-    public class LogInViewModel
+    public class LoginViewModel
     {
         [Required(ErrorMessage = "This field is required.")]
         [Display(Name = "Email:")]
-        public string Email { get; set; }
+        public string Username { get; set; }
 
         [Required(ErrorMessage = "This field is required.")]
         [Display(Name = "Password:")]

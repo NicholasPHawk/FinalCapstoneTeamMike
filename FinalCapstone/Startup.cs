@@ -32,7 +32,7 @@ namespace FinalCapstone
             });
 
             services.AddScoped<IToolDal>(x => new ToolDal(Configuration.GetConnectionString("Default")));
-            services.AddScoped<IUserDal>(x => new UserDal(Configuration.GetConnectionString("Default")));
+            services.AddScoped<ILibrarianDal>(x => new LibrarianDal(Configuration.GetConnectionString("Default")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
