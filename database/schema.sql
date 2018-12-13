@@ -1,3 +1,4 @@
+
 DROP TABLE tool;
 DROP TABLE member;
 
@@ -6,6 +7,9 @@ CREATE TABLE member
 	id int identity(1,1),
 	member_name varchar(200) not null,
 	drivers_license varchar(200) not null,
+	email varchar(200) not null,
+	username varchar(200) not null,
+	password_value varchar(200) not null,
 
 	CONSTRAINT pk_member_id PRIMARY KEY(id)
 );
@@ -25,10 +29,10 @@ CREATE TABLE tool
 );
 
 SET IDENTITY_INSERT member ON;
-INSERT INTO member (id, member_name, drivers_license) VALUES (1, 'Honor Banvard', 'LH760387');
-INSERT INTO member (id, member_name, drivers_license) VALUES (2, 'Nick Hawk', 'LP581325');
-INSERT INTO member (id, member_name, drivers_license) VALUES (3, 'Russell McFadden', 'LM356094');
-INSERT INTO member (id, member_name, drivers_license) VALUES (4, 'Nathanael Foley', 'LW850785');
+INSERT INTO member (id, member_name, drivers_license, email, username, password_value) VALUES (1, 'Honor Banvard', 'LH760387', 'hb@te.com', 'Honor', 'Password1!');
+INSERT INTO member (id, member_name, drivers_license, email, username, password_value) VALUES (2, 'Nick Hawk', 'LP581325', 'nh@te.com', 'Nick', 'Password1!');
+INSERT INTO member (id, member_name, drivers_license, email, username, password_value) VALUES (3, 'Russell McFadden', 'LM356094', 'rm@te.com', 'Russell', 'Password1!');
+INSERT INTO member (id, member_name, drivers_license, email, username, password_value) VALUES (4, 'Nathanael Foley', 'LW850785', 'nf@te.com', 'Nathanael', 'Password1!');
 SET IDENTITY_INSERT member OFF;
 
 INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Angle Grinder', 'DeWaltDisney', 'Used to Grind down metal or bricks in small amounts', 1, 2, '2018-12-11', '2018-12-18');
