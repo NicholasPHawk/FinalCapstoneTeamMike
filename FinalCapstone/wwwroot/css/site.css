@@ -45,15 +45,17 @@ body {
 .content {
     width: 75%;
     margin: 0 auto;
+    color: white;
 }
 
-.tool_thumbnail {
+.column_thumbnail {
     margin: 20px auto;
     padding: 20px 0;
-    border: 2px solid black;
+    border: 2px solid #392613;
     border-radius: 5%;
     text-align: center;
-    background-color: #d9d9d9;
+    background-color: #604020;
+    opacity: 0.8;
 }
 
 .detail {
@@ -63,29 +65,42 @@ body {
 .detail_thumbnail {
     margin: 0px auto;
     padding: 20px 0;
-    border: 2px solid black;
+    border: 2px solid #392613;
     border-radius: 5%;
     text-align: center;
-    background-color: #d9d9d9;
+    background-color: #604020;
     width: 25%;
+    min-width: 200px;
+    opacity: 0.8;
+}
+
+.search_thumbnail {
+    margin: 0px auto;
+    padding: 10px 0;
+    border: 2px solid #392613;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #604020;
+    width: 50%;
+    min-width: 300px;
+    opacity: 0.8;
+}
+
+.search {
+    margin: 10px 0;
+}
+
+label {
+    padding-right: 10px;
 }
 
 .tool_image {
     height: 100px;
     width: 100px;
     display: inline-block;
-    border: 2px solid black;
+    border: 2px solid #392613;
     border-radius: 8%;
     margin-bottom: 20px;
-}
-
-form {
-    margin-top: 20px;
-}
-
-label {
-    display: inline-block;
-    width: 5%;
 }
 
 button {
@@ -176,7 +191,7 @@ button {
     height: 75px;
 }
 
-.navbar-header{
+.navbar-header {
     width: 300px;
 }
 
@@ -191,7 +206,7 @@ button {
     color: #ff6700;
 }
 
-.navbar-collapse{
+.navbar-collapse {
     margin-top: 15px;
 }
 

@@ -8,16 +8,22 @@
     Tool Loan Records
 </div>
 
-<form asp-controller="Tool" asp-action="ToolLoanRecordSearch" method="post">
-    <p>
-        <label asp-for="SearchType">Search</label>
-        <select asp-for="SearchType" asp-items="ToolLoanRecordSearchModel.SearchOptions"></select>
-    </p>
-    <p>
-        <label asp-for="SearchString">For</label>
-        <input asp-for="SearchString" />
-    </p>
-    <p>
-        <button type="submit">Submit</button>
-    </p>
-</form>
+<div class="content">
+    <form asp-controller="Tool" asp-action="ToolLoanRecordSearch" method="post" class="search_thumbnail">
+        <div>
+            <div class="search">
+                <label asp-for="SearchType">Search</label>
+                <select asp-for="SearchType" asp-items="ToolLoanRecordSearchModel.SearchOptions"></select>
+            </div>
+            <div class="search">
+                <label asp-for="SearchString">For</label>
+                <input asp-for="SearchString"/>
+            </div>
+            <div class="search">
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
