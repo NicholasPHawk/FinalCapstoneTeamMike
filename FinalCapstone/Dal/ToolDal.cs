@@ -139,7 +139,7 @@ namespace FinalCapstone.Dal
                 if (searchOption == "License")
                 {
                     SqlCommand cmd = new SqlCommand("SELECT m.member_name, m.drivers_license, t.* FROM member m, tool t WHERE m.id = t.current_borrower AND checked_out = 1 AND m.drivers_license = @drivers_license;", conn);
-                    cmd.Parameters.AddWithValue("@drivers_license", searchString);
+                    cmd.Parameters.AddWithValue("@drivers_license", "%" + searchString + "%");
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
