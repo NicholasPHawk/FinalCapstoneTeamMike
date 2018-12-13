@@ -54,11 +54,11 @@ namespace FinalCapstone.Dal
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("INSERT INTO member (member_name, drivers_license, email, username, password_value) VALUES (@member_name, @drivers_license,  @email, @username, @password_value)", conn);
-                    cmd.Parameters.AddWithValue("@member_name", user.Email);
-                    cmd.Parameters.AddWithValue("@drivers_license", user.Email);
+                    cmd.Parameters.AddWithValue("@member_name", user.Name);
+                    cmd.Parameters.AddWithValue("@drivers_license", user.DriversLicense);
                     cmd.Parameters.AddWithValue("@email", user.Email);
-                    cmd.Parameters.AddWithValue("@username", user.Email);
-                    cmd.Parameters.AddWithValue("@password_value", user.Email);
+                    cmd.Parameters.AddWithValue("@username", user.Username);
+                    cmd.Parameters.AddWithValue("@password_value", user.Password);
                     cmd.ExecuteNonQuery();
                 }
             }

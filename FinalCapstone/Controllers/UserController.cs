@@ -28,7 +28,7 @@ namespace FinalCapstone.Controllers
         public IActionResult Login(User user)
         {
             _userDal.GetUser(user.Email);
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -49,7 +49,7 @@ namespace FinalCapstone.Controllers
             newUser.Email = model.Email;
             newUser.Salt = "?";
             _userDal.RegisterUser(newUser);
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Login","User");
         }
 
     }
