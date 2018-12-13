@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace FinalCapstone.Dal
 {
-    public class UserDAL : IUserDAL
+    public class UserDal : IUserDal
     {
         private readonly string connectionString;
 
-        public UserDAL(string connectionString)
+        public UserDal(string connectionString)
         {
             this.connectionString = connectionString;
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalCapstone.Dal
 {
-    public interface IUserDAL
+    public interface IUserDal
     {
         User GetUser(string email);
         void RegisterUser(User user);
