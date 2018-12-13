@@ -36,7 +36,7 @@ namespace FinalCapstone.Test.DALTests
             {
                 using (SqlConnection conn = new SqlConnection(toolDBConnectionString))
                 {
-                    const string sql1 = "INSERT INTO member (member_name, drivers_license) VALUES ('Han Solo', 'BO085123'); SELECT CAST(SCOPE_IDENTITY() as int);";
+                    const string sql1 = "INSERT INTO member (member_name, drivers_license, email, member_address) VALUES ('Han Solo', 'BO085123', 'han@starmail.com', '123 Corellian St'); SELECT CAST(SCOPE_IDENTITY() as int);";
 
                     var cmd = conn.CreateCommand();
                     cmd.CommandText = sql1;
@@ -64,7 +64,7 @@ namespace FinalCapstone.Test.DALTests
             {
                 using (SqlConnection conn = new SqlConnection(toolDBConnectionString))
                 {
-                    const string sql1 = "INSERT INTO member (member_name, drivers_license) VALUES ('Han Solo', 'BO085123'); SELECT CAST(SCOPE_IDENTITY() as int);";
+                    const string sql1 = "INSERT INTO member (member_name, drivers_license, email, member_address) VALUES ('Han Solo', 'BO085123', 'han@starmail.com', '123 Corellian St'); SELECT CAST(SCOPE_IDENTITY() as int);";
 
                     var cmd = conn.CreateCommand();
                     cmd.CommandText = sql1;
@@ -93,7 +93,7 @@ namespace FinalCapstone.Test.DALTests
                 int toolId = 0;
                 using (SqlConnection conn = new SqlConnection(toolDBConnectionString))
                 {
-                    const string sql1 = "INSERT INTO member (member_name, drivers_license) VALUES ('Han Solo', 'BO085123'); SELECT CAST(SCOPE_IDENTITY() as int);";
+                    const string sql1 = "INSERT INTO member (member_name, drivers_license, email, member_address) VALUES ('Han Solo', 'BO085123', 'han@starmail.com', '123 Corellian St'); SELECT CAST(SCOPE_IDENTITY() as int); SELECT CAST(SCOPE_IDENTITY() as int);";
 
                     var cmd = conn.CreateCommand();
                     cmd.CommandText = sql1;
@@ -119,7 +119,7 @@ namespace FinalCapstone.Test.DALTests
                 int toolId = 0;
                 using (SqlConnection conn = new SqlConnection(toolDBConnectionString))
                 {
-                    const string sql1 = "INSERT INTO member (member_name, drivers_license) VALUES ('Han Solo', 'BO085123'); SELECT CAST(SCOPE_IDENTITY() as int);";
+                    const string sql1 = "INSERT INTO member (member_name, drivers_license, email, member_address) VALUES ('Han Solo', 'BO085123', 'han@starmail.com', '123 Corellian St'); SELECT CAST(SCOPE_IDENTITY() as int); SELECT CAST(SCOPE_IDENTITY() as int);";
 
                     var cmd = conn.CreateCommand();
                     cmd.CommandText = sql1;
@@ -145,7 +145,7 @@ namespace FinalCapstone.Test.DALTests
                 int toolId = 0;
                 using (SqlConnection conn = new SqlConnection(toolDBConnectionString))
                 {
-                    const string sql1 = "INSERT INTO member (member_name, drivers_license) VALUES ('Han Solo', 'BO085123'); SELECT CAST(SCOPE_IDENTITY() as int);";
+                    const string sql1 = "INSERT INTO member (member_name, drivers_license, email, member_address) VALUES ('Han Solo', 'BO085123', 'han@starmail.com', '123 Corellian St'); SELECT CAST(SCOPE_IDENTITY() as int);";
 
                     var cmd = conn.CreateCommand();
                     cmd.CommandText = sql1;

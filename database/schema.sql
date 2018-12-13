@@ -1,6 +1,16 @@
-
+DROP TABLE librarian;
 DROP TABLE tool;
 DROP TABLE member;
+
+CREATE TABLE librarian
+(
+	id int identity(1,1),
+	username varchar(200) not null,
+	password_value varchar(200) not null,
+	salt varchar(200) not null,
+
+	CONSTRAINT pk_librarian_id PRIMARY KEY(id)
+);
 
 CREATE TABLE member
 (
@@ -8,8 +18,7 @@ CREATE TABLE member
 	member_name varchar(200) not null,
 	drivers_license varchar(200) not null,
 	email varchar(200) not null,
-	username varchar(200) not null,
-	password_value varchar(200) not null,
+	member_address varchar(200) not null,
 
 	CONSTRAINT pk_member_id PRIMARY KEY(id)
 );
@@ -29,10 +38,10 @@ CREATE TABLE tool
 );
 
 SET IDENTITY_INSERT member ON;
-INSERT INTO member (id, member_name, drivers_license, email, username, password_value) VALUES (1, 'Honor Banvard', 'LH760387', 'hb@te.com', 'Honor', 'Password1!');
-INSERT INTO member (id, member_name, drivers_license, email, username, password_value) VALUES (2, 'Nick Hawk', 'LP581325', 'nh@te.com', 'Nick', 'Password1!');
-INSERT INTO member (id, member_name, drivers_license, email, username, password_value) VALUES (3, 'Russell McFadden', 'LM356094', 'rm@te.com', 'Russell', 'Password1!');
-INSERT INTO member (id, member_name, drivers_license, email, username, password_value) VALUES (4, 'Nathanael Foley', 'LW850785', 'nf@te.com', 'Nathanael', 'Password1!');
+INSERT INTO member (id, member_name, drivers_license, email, member_address) VALUES (1, 'Honor Banvard', 'LH760387', 'hb@te.com', '123 Street');
+INSERT INTO member (id, member_name, drivers_license, email, member_address) VALUES (2, 'Nick Hawk', 'LP581325', 'nh@te.com', '456 Avenue');
+INSERT INTO member (id, member_name, drivers_license, email, member_address) VALUES (3, 'Russell McFadden', 'LM356094', 'rm@te.com', '789 Court');
+INSERT INTO member (id, member_name, drivers_license, email, member_address) VALUES (4, 'Nathanael Foley', 'LW850785', 'nf@te.com', '510 Place');
 SET IDENTITY_INSERT member OFF;
 
 INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Angle Grinder', 'DeWaltDisney', 'Used to Grind down metal or bricks in small amounts', 1, 2, '2018-12-11', '2018-12-18');
@@ -67,44 +76,11 @@ INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, 
 INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Table Saw', 'StanLee', 'A circular saw mounted under a table or bench so that the blade projects up through a slot.', 0, null, null, null);
 INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Orbital Sander', 'KOBOL', 'A circular sander that uses an abrasive circle to smooth surfaces; Takes off less than a belt sander. ', 0, null, null, null);
 
+SET IDENTITY_INSERT librarian ON;
+INSERT INTO librarian (id, username, password_value, salt) VALUES (1, 'DefaultLibrarian', 'Library1!', '?');
 
+SET IDENTITY_INSERT librarian OFF;
 
 ALTER TABLE tool
 ADD FOREIGN KEY(current_borrower)
 REFERENCES member(id);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

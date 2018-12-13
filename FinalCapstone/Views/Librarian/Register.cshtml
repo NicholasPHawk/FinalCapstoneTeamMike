@@ -3,9 +3,9 @@
     ViewData["Title"] = "RegisterUser";
 }
 
-<h2>Register</h2>
+<h2>Register A New User</h2>
 
-<form asp-controller="User" asp-action="Register" novalidation method="post">
+<form asp-controller="Librarian" asp-action="Register" novalidation method="post">
     <div>
         <label asp-for="Email">Email:</label>
         <input asp-for="Email" />
@@ -22,21 +22,11 @@
         <span asp-validation-for="DriversLicense" class="dangertext"></span>
     </div>
     <div>
-        <label asp-for="Username">Username:</label>
-        <input asp-for="Username" />
-        <span asp-validation-for="Username" class="dangertext"></span>
+        <label asp-for="Address">Address:</label>
+        <input asp-for="Address" />
+        <span asp-validation-for="Address" class="dangertext"></span>
     </div>
-    <div>
-        <label asp-for="Password">Password:</label>
-        <input asp-for="Password" />
-        <span asp-validation-for="Password" class="dangertext"></span>
-    </div>
-    <div>
-        <label asp-for="ConfirmPassword">Confirm Password:</label>
-        <input asp-for="ConfirmPassword" />
-        <span asp-validation-for="ConfirmPassword" class="dangertext"></span>
-    </div>
-    <button type="submit">Register</button>
+    <button type="submit">Register User</button>
 </form>
 
 @section Scripts {
