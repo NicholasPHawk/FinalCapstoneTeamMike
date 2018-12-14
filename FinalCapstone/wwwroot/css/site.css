@@ -117,54 +117,54 @@ button {
     margin-top: 5px;
 }
 
-    button:focus {
-        outline: none;
-    }
+button:focus {
+    outline: none;
+}
 
-    button:before {
-        content: '';
-        display: block;
-        position: relative;
-        height: 100%;
-        left: 0;
-        top: 0;
-        opacity: .5;
-        filter: blur(30px);
-        transform: translateX(-130px) skewX(-15deg);
-    }
+button:before {
+    content: '';
+    display: block;
+    position: relative;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: .5;
+    filter: blur(30px);
+    transform: translateX(-130px) skewX(-15deg);
+}
 
-    button:after {
-        content: '';
-        display: block;
-        position: relative;
-        background: #4CAF50;
-        color: white;
-        width: 30px;
-        height: 100%;
-        left: 30px;
-        top: 0;
-        opacity: 0;
-        filter: blur(30px);
-        transform: translateX(-100px) scaleX(-15deg);
-    }
+button:after {
+    content: '';
+    display: block;
+    position: relative;
+    background: #4CAF50;
+    color: white;
+    width: 30px;
+    height: 100%;
+    left: 30px;
+    top: 0;
+    opacity: 0;
+    filter: blur(30px);
+    transform: translateX(-100px) scaleX(-15deg);
+}
 
-    button:hover {
-        background: #4CAF50;
-        color: white;
-        cursor: pointer;
-    }
+button:hover {
+    background: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
 
-        button:hover:before {
-            transform: translateX(300px) skewX(-15deg);
-            opacity: .6;
-            transition: .7s;
-        }
+button:hover:before {
+    transform: translateX(300px) skewX(-15deg);
+    opacity: .6;
+    transition: .7s;
+}
 
-        button:hover:after {
-            transform: translateX(300px) skewX(-15deg);
-            opacity: .1;
-            transition: .7s;
-        }
+button:hover:after {
+    transform: translateX(300px) skewX(-15deg);
+    opacity: .1;
+    transition: .7s;
+}
 
 
 
@@ -191,7 +191,7 @@ button {
 }
 
 .navbar {
-    height: 75px;
+    height: 54px;
 }
 
 .navbar-header {
@@ -199,20 +199,136 @@ button {
 }
 
 .logoImage {
-    height: 75px;
+    height: 54px;
     margin-top: -15px;
 }
 
 .toolGeekTitle {
     font-family: "Comic Sans MS", cursive, sans-serif;
-    font-size: 50px;
+    font-size: 35px;
     color: #ff6700;
 }
 
 .navbar-collapse {
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 section {
     background-color: none;
 }
+
+/*====================*/
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+ 
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: #ff6700;
+    transition: 0.5s;
+}
+
+.dropbtn {
+    background-color: none;
+    color: white;
+    padding: 14px;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #111;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    opacity: .9;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+}
+
+.dropdown-content a:hover {
+    transition: 0.5s;
+    background-color: #444;
+} 
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #ff6700;
+}
+
+/*.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+    }
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}*/

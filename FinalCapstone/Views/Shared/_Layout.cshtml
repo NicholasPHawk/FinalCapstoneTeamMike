@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>@ViewData["Title"] - FinalCapstone</title>
 
     <environment include="Development">
@@ -29,19 +30,36 @@
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
                     <img src="~/images/logo.png" class="logoImage" />
                 </a>
-                    <p class="toolGeekTitle">Tool Geek</p>
+                <p class="toolGeekTitle">Tool Geek</p>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Tool" asp-action="Index">Available</a></li>
-                    <li><a asp-area="" asp-controller="Tool" asp-action="CheckedOutTools">Checked Out</a></li>
-                    <li><a asp-area="" asp-controller="Tool" asp-action="ToolLoanRecordSearch">Search Loan Records</a></li>
-                    <li><a asp-area="" asp-controller="Cart" asp-action="Index">Check Out Tools</a></li>
-                    <li><a asp-area="" asp-controller="Librarian" asp-action="Login">Log In</a></li>
-                    <li><a asp-area="" asp-controller="Librarian" asp-action="Register">New User</a></li>
-                    <li><a asp-area="" asp-controller="Librarian" asp-action="RegisterLibrarian">New Librarian</a></li>
-                </ul>
+
+
+
+            <div class="navbar">
+                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <div class="dropdown">
+                    <div class="dropbtn">
+                        Tools
+                        <i class="fa fa-caret-down"></i>
+                    </div>
+                    <div class="dropdown-content">
+                        <a asp-area="" asp-controller="Tool" asp-action="Index">Available</a>
+                        <a asp-area="" asp-controller="Tool" asp-action="CheckedOutTools">Checked Out</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropbtn">
+                        Librarian Functions
+                        <i class="fa fa-caret-down"></i>
+                    </div>
+                    <div class="dropdown-content">
+                        <a asp-area="" asp-controller="Librarian" asp-action="Login">Log In</a>
+                        <a asp-area="" asp-controller="Tool" asp-action="ToolLoanRecordSearch">Search Loan Records</a>
+                        <a asp-area="" asp-controller="Librarian" asp-action="Register">New User</a>
+                        <a asp-area="" asp-controller="Librarian" asp-action="RegisterLibrarian">New Librarian</a>
+                        <a asp-area="" asp-controller="Cart" asp-action="Index">Check Out Tools</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
