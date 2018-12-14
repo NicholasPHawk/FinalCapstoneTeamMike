@@ -78,31 +78,31 @@ namespace FinalCapstone.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("ChangePassword", model);
+                return View("RegisterLibrarian", model);
             }
 
             if (!Regex.IsMatch(model.Password, @"(?=.*[a-z])[a-z]{1,}"))
             {
                 model.ErrorMessage = "Missing a lower case letter.";
-                return View("ChangePassword", model);
+                return View("RegisterLibrarian", model);
             }
 
             if (!Regex.IsMatch(model.Password, @"(?=.*[A-Z])[A-Z]{1,}"))
             {
                 model.ErrorMessage = "Missing a capital letter.";
-                return View("ChangePassword", model);
+                return View("RegisterLibrarian", model);
             }
 
             if (!Regex.IsMatch(model.Password, @"(?=.*[0-9])[0-9]{1,}"))
             {
                 model.ErrorMessage = "Missing a number.";
-                return View("ChangePassword", model);
+                return View("RegisterLibrarian", model);
             }
 
             if (!Regex.IsMatch(model.Password, @"(?=.*[@$!%*?&])[@$!%*?&]{1,}"))
             {
                 model.ErrorMessage = "Missing a special character. (@ $ ! % * ? &)";
-                return View("ChangePassword", model);
+                return View("RegisterLibrarian", model);
             }
 
             Librarian newLibrarian = new Librarian();
