@@ -11,9 +11,9 @@ namespace FinalCapstone.Helper
     {
         public PasswordHelper() { }
 
-        public string GenerateSHA256Hash(string password, User user)
+        public string GenerateSHA256Hash(string password, Librarian librarian)
         {
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(password + user.Salt);
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(password + librarian.Salt);
             var sha256HashString = new System.Security.Cryptography.SHA256Managed();
             byte[] hash = sha256HashString.ComputeHash(bytes);
 
@@ -37,16 +37,16 @@ namespace FinalCapstone.Helper
             return hex.ToString();
         }
 
-        public Boolean ValidateHash(LogInViewModel logIn, User user)
+        public Boolean ValidateHash(LoginViewModel logIn, Librarian librarian)
         {
             bool match = false;
 
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(logIn.Password + user.Salt);
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(logIn.Password + librarian.Salt);
             var sha256HashString = new System.Security.Cryptography.SHA256Managed();
             byte[] hash = sha256HashString.ComputeHash(bytes);
             var hashedPassword = ByteArrayToHexString(hash);
 
-            if (hashedPassword == user.Password)
+            if (hashedPassword == librarian.Password)
             {
                 match = true;
             }

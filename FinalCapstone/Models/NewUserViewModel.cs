@@ -9,16 +9,19 @@ namespace FinalCapstone.Models
     public class NewUserViewModel
     {
         [Required(ErrorMessage = "This field is required")]
-        [Display(Name = "User Name:")]
-        public string Username { get; set; }
+        [Display(Name = "Email:")]
+        public string Email { get; set; }
 
         [Required(ErrorMessage = "This field is required")]
-        [Display(Name = "Password:")]
-        public string Password { get; set; }
+        [Display(Name = "Name:")]
+        public string Name { get; set; }
 
         [Required(ErrorMessage = "This field is required")]
-        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "Passwords do not match")]
-        [Display(Name = "Confirm Password:")]
-        public string ConfirmPassword { get; set; }
+        [Display(Name = "Drivers License Number:")]
+        public string DriversLicense { get; set; }
+
+        [Required(ErrorMessage = "This field is required")]
+        [Display(Name = "Address:")]
+        public string Address { get; set; }
     }
 }

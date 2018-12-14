@@ -1,0 +1,18 @@
+﻿@model Librarian
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login</h2>
+
+<form asp-controller="Librarian" asp-action="Login" method="post">
+    <div>
+        <label asp-for="Username">Username:</label>
+        <input asp-for="Username" />
+    </div>
+    <div>
+        <label asp-for="Password">Password:</label>
+        <input asp-for="Password" />
+    </div>
+    <button type="submit">Log In</button>
+</form>
