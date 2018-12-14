@@ -76,6 +76,35 @@ namespace FinalCapstone.Controllers
         [HttpPost]
         public IActionResult RegisterLibrarian(NewLibrarianModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("ChangePassword", model);
+            }
+
+            if (!Regex.IsMatch(model.Password, @"(?=.*[a-z])[a-z]{1,}"))
+            {
+                model.ErrorMessage = "Missing a lower case letter.";
+                return View("ChangePassword", model);
+            }
+
+            if (!Regex.IsMatch(model.Password, @"(?=.*[A-Z])[A-Z]{1,}"))
+            {
+                model.ErrorMessage = "Missing a capital letter.";
+                return View("ChangePassword", model);
+            }
+
+            if (!Regex.IsMatch(model.Password, @"(?=.*[0-9])[0-9]{1,}"))
+            {
+                model.ErrorMessage = "Missing a number.";
+                return View("ChangePassword", model);
+            }
+
+            if (!Regex.IsMatch(model.Password, @"(?=.*[@$!%*?&])[@$!%*?&]{1,}"))
+            {
+                model.ErrorMessage = "Missing a special character. (@ $ ! % * ? &)";
+                return View("ChangePassword", model);
+            }
+
             Librarian newLibrarian = new Librarian();
             newLibrarian.Username = model.Username;
             newLibrarian.Salt = passwordHelper.CreateSalt();
