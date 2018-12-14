@@ -31,6 +31,11 @@ namespace FinalCapstone
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+            });
+
             services.AddScoped<IToolDal>(x => new ToolDal(Configuration.GetConnectionString("Default")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

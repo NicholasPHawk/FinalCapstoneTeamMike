@@ -193,5 +193,26 @@ namespace FinalCapstone.Dal
             }
             return tools;
         }
+
+        public IList<User> GetUsers()
+        {
+            IList<User> users = new List<User>();
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT member_name FROM member;", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    User user = new User();
+                    user.Name = Convert.ToString(reader["member_name"]);
+                    users.Add(user);
+                }
+            }
+            return users;
+        }
     }
 }
