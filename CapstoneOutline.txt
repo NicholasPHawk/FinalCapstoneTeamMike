@@ -76,8 +76,10 @@ user stories:
 	
 	shopping cart should be session?
 		
-		
-		
+		look up: mvc asp.net
+authentication -- logging in
+authorization -- are they authorized to access this page
+
 		
 		
 		
