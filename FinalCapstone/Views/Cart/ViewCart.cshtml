@@ -1,0 +1,22 @@
+﻿@model FinalCapstone.Models.Cart.ViewCartModel
+@{
+    ViewData["Title"] = "ViewCart";
+}
+
+<h2>View Cart</h2>
+
+<div class="content">
+    @foreach (Tool tool in Model.Cart.Tools)
+    {
+        <div class="col-sm-4">
+            <div class="column_thumbnail">
+                <img class="tool_image" src="~/images/@(tool.ImageName).jpg" alt="Tool Photo"/>
+                <p><strong>Brand:</strong> @tool.Brand</p>
+                <p><strong>Tool:</strong> @tool.ToolName</p>
+                <p><strong>Borrower:</strong> @tool.CurrentBorrowerName</p>
+                <p><strong>Today's Date:</strong> @tool.DateBorrowed.ToString("MM/dd/yyyy")</p>
+                <p><strong>Due Date:</strong> @tool.DueDate.ToString("MM/dd/yyyy")</p>
+            </div>
+        </div>
+    }
+</div>

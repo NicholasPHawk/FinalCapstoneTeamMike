@@ -1,0 +1,36 @@
+﻿@model FinalCapstone.Models.Cart.AddToCartModel
+@{
+    ViewData["Title"] = "ToolList";
+}
+
+<div class="jumbotron caption" style="background-image: url(/images/AvailableTools.jpg); background-color: black; color: white; height: 200px;">Available Tools</div>
+
+<div class="content">
+    @foreach (Tool tool in Model.Tools)
+    {
+        <div class="col-sm-4">
+            <div class="column_thumbnail">
+                <img class="tool_image" src="~/images/@(tool.ImageName).jpg" alt="Tool Photo" />
+                <p><strong>Brand:</strong> @tool.Brand</p>
+                <p><strong>Tool:</strong> @tool.ToolName</p>
+                <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                    <input type="hidden" value="@tool.Id" asp-for="Id"/>
+                    <div>
+                        <div>
+                            <label asp-for="Borrower">Borrower</label>
+                            <select asp-for="Borrower" asp-items="Model.Borrowers"></select>
+                        </div>
+                        <div>
+                            <label asp-for="Days">Days</label>
+                            <select asp-for="Days" asp-items="Model.DayChoice"></select>
+                        </div>
+                        <div>
+                            <button type="submit">Add To Cart</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+
