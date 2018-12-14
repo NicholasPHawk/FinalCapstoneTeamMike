@@ -30,9 +30,9 @@ namespace FinalCapstone.Dal
                     while (reader.Read())
                     {
                         librarian.Id = Convert.ToInt32(reader["id"]);
-                        librarian.Username = Convert.ToString(reader["member_name"]);
-                        librarian.Password = Convert.ToString(reader["drivers_license"]);
-                        librarian.Salt = "?";
+                        librarian.Username = Convert.ToString(reader["username"]);
+                        librarian.Password = Convert.ToString(reader["password_value"]);
+                        librarian.Salt = Convert.ToString(reader["salt"]);
                     }
                     return librarian;
                 }
@@ -78,7 +78,7 @@ namespace FinalCapstone.Dal
                     SqlCommand cmd = new SqlCommand("INSERT INTO librarian (username, password_value, salt) VALUES (@username, @password_value,  @salt)", conn);
                     cmd.Parameters.AddWithValue("@username", librarian.Username);
                     cmd.Parameters.AddWithValue("@password_value", librarian.Password);
-                    cmd.Parameters.AddWithValue("@salt", "?");
+                    cmd.Parameters.AddWithValue("@salt", librarian.Salt);
                     if (cmd.ExecuteNonQuery() == 0)
                     {
                         return false;

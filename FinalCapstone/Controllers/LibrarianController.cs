@@ -5,13 +5,16 @@ using System.Threading.Tasks;
 using FinalCapstone.Dal;
 using FinalCapstone.Models;
 using Microsoft.AspNetCore.Mvc;
-
+using FinalCapstone.Helper;
+using System.Web;
+using System.Text.RegularExpressions;
 
 namespace FinalCapstone.Controllers
 {
     public class LibrarianController : Controller
     {
         private readonly ILibrarianDal _librarianDal;
+        PasswordHelper passwordHelper = new PasswordHelper();
 
         public LibrarianController(ILibrarianDal librarianDal)
         {
@@ -31,20 +34,19 @@ namespace FinalCapstone.Controllers
 
             if (user == null)
             {
-                ModelState.AddModelError("invalid-user", "The username provided does not exist");
-                return View("Login", model);
+                ModelState.AddModelError("invalid-user", "Invalid username or password");
+                return View("Login");
             }
             //else if (user.Password != model.Password)
-            //else if (!passwordHelper.ValidateHash(model, user))
-            //{
-            //    ModelState.AddModelError("invalid-password", "The password provided is not valid");
-            //    return View("Login", model);
-            //}
+            else if(!passwordHelper.ValidateHash(model, user))
+            {
+                ModelState.AddModelError("invalid-password", "Invalid username or password");
+                return View("Login");
+            }
 
             //base.LogLibrarianIn(user.Username);
 
-           // return RedirectToAction("Index", "Home");
-            return View();
+            return RedirectToAction("Index", "Tool");
         }
 
         [HttpGet]
@@ -74,10 +76,39 @@ namespace FinalCapstone.Controllers
         [HttpPost]
         public IActionResult RegisterLibrarian(NewLibrarianModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("RegisterLibrarian", model);
+            }
+
+            if (!Regex.IsMatch(model.Password, @"(?=.*[a-z])[a-z]{1,}"))
+            {
+                model.ErrorMessage = "Missing a lower case letter.";
+                return View("RegisterLibrarian", model);
+            }
+
+            if (!Regex.IsMatch(model.Password, @"(?=.*[A-Z])[A-Z]{1,}"))
+            {
+                model.ErrorMessage = "Missing a capital letter.";
+                return View("RegisterLibrarian", model);
+            }
+
+            if (!Regex.IsMatch(model.Password, @"(?=.*[0-9])[0-9]{1,}"))
+            {
+                model.ErrorMessage = "Missing a number.";
+                return View("RegisterLibrarian", model);
+            }
+
+            if (!Regex.IsMatch(model.Password, @"(?=.*[@$!%*?&])[@$!%*?&]{1,}"))
+            {
+                model.ErrorMessage = "Missing a special character. (@ $ ! % * ? &)";
+                return View("RegisterLibrarian", model);
+            }
+
             Librarian newLibrarian = new Librarian();
             newLibrarian.Username = model.Username;
-            newLibrarian.Password = model.Password;
-            newLibrarian.Salt = "?";
+            newLibrarian.Salt = passwordHelper.CreateSalt();
+            newLibrarian.Password = passwordHelper.GenerateSHA256Hash(model.Password, newLibrarian);
             _librarianDal.RegisterLibrarian(newLibrarian);
 
             return RedirectToAction("Index", "Tool");

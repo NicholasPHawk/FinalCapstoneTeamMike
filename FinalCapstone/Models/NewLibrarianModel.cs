@@ -19,5 +19,7 @@ namespace FinalCapstone.Models
         [Display(Name = "Confirm Password:")]
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "Passwqords do not match")]
         public string ConfirmPassword { get; set; }
+
+        public string  ErrorMessage { get; set; }
     }
 }
