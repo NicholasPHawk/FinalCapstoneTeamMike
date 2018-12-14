@@ -30,9 +30,9 @@ namespace FinalCapstone.Dal
                     while (reader.Read())
                     {
                         librarian.Id = Convert.ToInt32(reader["id"]);
-                        librarian.Username = Convert.ToString(reader["member_name"]);
-                        librarian.Password = Convert.ToString(reader["drivers_license"]);
-                        librarian.Salt = "?";
+                        librarian.Username = Convert.ToString(reader["username"]);
+                        librarian.Password = Convert.ToString(reader["password_value"]);
+                        librarian.Salt = Convert.ToString(reader["salt"]);
                     }
                     return librarian;
                 }
