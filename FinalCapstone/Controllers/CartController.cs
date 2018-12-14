@@ -80,7 +80,7 @@ namespace FinalCapstone.Controllers
         {
             Cart cart = null;
 
-            var temp = HttpContext.Session.Get<Cart>("Cart");
+            //var temp = HttpContext.Session.Get<Cart>("Cart");
             if (HttpContext.Session.Get<Cart>("Cart") == null)
             {
                 cart = new Cart();
