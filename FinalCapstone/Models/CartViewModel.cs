@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 
-namespace FinalCapstone.Models.Cart
+namespace FinalCapstone.Models
 {
-    public class AddToCartModel
+    public class CartViewModel
     {
         public IList<Tool> Tools { get; set; }
         public IList<User> Users { get; set; }

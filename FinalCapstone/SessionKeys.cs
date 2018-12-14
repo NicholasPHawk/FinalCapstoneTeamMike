@@ -7,7 +7,7 @@ namespace FinalCapstone
 {
     public class SessionKeys
     {
-        public static string Cart = "ShoppingCart";
+        public static string Cart = "Cart";
         public static string Username = "Username";
         public static string UserId = "UserId";
     }

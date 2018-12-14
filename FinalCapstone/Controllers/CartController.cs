@@ -4,9 +4,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using FinalCapstone.Dal;
-//using FinalCapstone.Extensions;
+using FinalCapstone.Extensions;
 using FinalCapstone.Models;
-using FinalCapstone.Models.Cart;
 
 namespace FinalCapstone.Controllers
 {
@@ -24,7 +23,7 @@ namespace FinalCapstone.Controllers
             IList<Tool> tools = _toolDal.GetTools(false);
             IList<User> users = _toolDal.GetUsers();
 
-            AddToCartModel model = new AddToCartModel
+            CartViewModel model = new CartViewModel
             {
                 Tools = tools,
                 Users = users
@@ -45,20 +44,20 @@ namespace FinalCapstone.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddToCart(AddToCartModel addModel)
+        public IActionResult AddToCart(CartViewModel model)
         {
-            Tool tool = _toolDal.GetToolDetails(addModel.Id, false);
+            Tool tool = _toolDal.GetToolDetails(model.Id, false);
             tool.CheckedOut = true;
-            tool.CurrentBorrowerName = addModel.Borrower;
+            tool.CurrentBorrowerName = model.Borrower;
             tool.DateBorrowed = DateTime.Now;
-            tool.DueDate = DateTime.Now.AddDays(addModel.Days);
+            tool.DueDate = DateTime.Now.AddDays(model.Days);
 
-            //Cart cart = GetActiveCart();
+            Cart cart = GetActiveCart();
+            cart.AddToCart(tool);
 
-            ViewCartModel viewModel = new ViewCartModel();
-            viewModel.Cart.AddToCart(tool);
+            SaveActiveCart(cart);
 
-            return RedirectToAction(nameof(ViewCart), viewModel);
+            return RedirectToAction("ViewCart");
         }
 
         //[HttpPost]
@@ -71,32 +70,33 @@ namespace FinalCapstone.Controllers
         //    return RedirectToAction("ViewCart");
         //}
 
-        public IActionResult ViewCart(ViewCartModel model)
+        public IActionResult ViewCart()
         {
-            //Cart cart = GetActiveCart();
-            return View(model);
+            Cart cart = GetActiveCart();
+            return View(cart);
         }
 
-        //private Cart GetActiveCart()
-        //{
-        //    Cart cart = null;
+        private Cart GetActiveCart()
+        {
+            Cart cart = null;
 
-        //    if (HttpContext.Session.Get<Cart>("Cart") == null)
-        //    {
-        //        cart = new Cart();
-        //        SaveActiveCart(cart);
-        //    }
-        //    else
-        //    {
-        //        cart = HttpContext.Session.Get<Cart>("Cart");
-        //    }
+            var temp = HttpContext.Session.Get<Cart>("Cart");
+            if (HttpContext.Session.Get<Cart>("Cart") == null)
+            {
+                cart = new Cart();
+                SaveActiveCart(cart);
+            }
+            else
+            {
+                cart = HttpContext.Session.Get<Cart>("Cart");
+            }
 
-        //    return cart;
-        //}
+            return cart;
+        }
 
-        //private void SaveActiveCart(Cart cart)
-        //{
-        //    HttpContext.Session.Set("Cart", cart);
-        //}
+        private void SaveActiveCart(Cart cart)
+        {
+            HttpContext.Session.Set("Cart", cart);
+        }
     }
 }
