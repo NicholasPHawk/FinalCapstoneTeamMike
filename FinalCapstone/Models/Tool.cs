@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
 
 namespace FinalCapstone.Models
@@ -27,5 +28,14 @@ namespace FinalCapstone.Models
                 ImageName = Brand + ToolName;
             }
         }
+        public string FilterType { get; set; }
+
+        public static List<SelectListItem> ToolFilter = new List<SelectListItem>()
+        {
+            new SelectListItem() { Text = "Tool Name", Value = "Tool Name" },
+            new SelectListItem() { Text = "Brand", Value = "Brand" },
+        };
+
+
     }
 }

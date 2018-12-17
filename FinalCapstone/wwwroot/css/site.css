@@ -7,6 +7,8 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
+    background-color: black;
+    min-height: 1000px;
 }
 
 /* Wrapping element */
@@ -59,6 +61,7 @@ body {
     text-align: center;
     background-color: #604020;
     opacity: 0.8;
+    color: black;
 }
 
 .detail {
@@ -87,6 +90,7 @@ body {
     width: 50%;
     min-width: 300px;
     opacity: 0.8;
+    color: black;
 }
 
 .search {
@@ -281,3 +285,5 @@ section {
 .pushRight {
     float: right;
 }
+
+
