@@ -24,14 +24,5 @@ namespace FinalCapstone.Models
                 return Brand + ToolName;
             }
         }
-        public string FilterType { get; set; }
-
-        public static List<SelectListItem> ToolFilter = new List<SelectListItem>()
-        {
-            new SelectListItem() { Text = "Tool Name", Value = "Tool Name" },
-            new SelectListItem() { Text = "Brand", Value = "Brand" },
-        };
-
-
     }
 }

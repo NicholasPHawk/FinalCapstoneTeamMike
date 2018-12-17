@@ -15,5 +15,7 @@ namespace FinalCapstone.Dal
         IList<User> GetUsers();
         bool ChangeCheckedOutStatus(int id, bool checkedOut);
         bool CheckOut(Cart cart);
+        void RemoveATool(Tool tool);
+        IList<Tool> RemoveAToolList();
     }
 }
