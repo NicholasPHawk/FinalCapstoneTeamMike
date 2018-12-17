@@ -49,5 +49,20 @@ namespace FinalCapstone.Controllers
             tools = _toolDal.GetLoanRecords(model.SearchType, model.SearchString);
             return View("ToolLoanRecordSearchResult", tools);
         }
+
+        [HttpGet]
+        public IActionResult RemoveATool()
+        {
+            IList<Tool> removeToolList = new List<Tool>();
+            removeToolList = _toolDal.RemoveAToolList();
+            return View(removeToolList);
+        }
+
+        [HttpPost]
+        public IActionResult RemoveATool(Tool tool)
+        {
+            _toolDal.RemoveATool(tool);
+            return RedirectToAction("RemoveATool");
+        }
     }
 }
