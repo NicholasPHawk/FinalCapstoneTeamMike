@@ -1,5 +1,6 @@
 ﻿
 using FinalCapstone.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -213,6 +214,39 @@ namespace FinalCapstone.Dal
                 }
             }
             return users;
+        }
+
+        
+        public IList<Tool> RemoveAToolList()
+        {
+            IList<Tool> allTools = new List<Tool>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM tool;", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Tool tool = new Tool();
+                    tool.Id = Convert.ToInt32(reader["id"]);
+                    tool.Brand = Convert.ToString(reader["brand"]);
+                    tool.ToolName = Convert.ToString(reader["tool_name"]);
+                    allTools.Add(tool);
+                }
+                return allTools;
+            }
+        }
+
+        public void RemoveATool(Tool tool)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("DELETE FROM tool WHERE id = @id;", conn);
+                cmd.Parameters.AddWithValue("@id", tool.Id);
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }
