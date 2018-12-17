@@ -52,6 +52,8 @@ namespace FinalCapstone.Controllers
             tool.DateBorrowed = DateTime.Now;
             tool.DueDate = DateTime.Now.AddDays(model.Days);
 
+            _toolDal.ChangeCheckedOutStatus(tool.Id, true);
+
             Cart cart = GetActiveCart();
             cart.AddToCart(tool);
 
@@ -60,15 +62,19 @@ namespace FinalCapstone.Controllers
             return RedirectToAction("ViewCart");
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult RemoveFromCart(int id)
-        //{
-        //    Cart cart = GetActiveCart();
-        //    cart.Items.RemoveAll(i => i.Tool.Id == id);
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult RemoveFromCart(int id)
+        {
+            _toolDal.ChangeCheckedOutStatus(id, false);
 
-        //    return RedirectToAction("ViewCart");
-        //}
+            Cart cart = GetActiveCart();
+            cart.RemoveFromCart(id);
+
+            SaveActiveCart(cart);
+
+            return RedirectToAction("ViewCart");
+        }
 
         public IActionResult ViewCart()
         {
@@ -76,11 +82,21 @@ namespace FinalCapstone.Controllers
             return View(cart);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Checkout()
+        {
+            Cart cart = GetActiveCart();
+            _toolDal.CheckOut(cart);
+            HttpContext.Session.Remove("Cart");
+
+            return RedirectToAction("Index");
+        }
+
         private Cart GetActiveCart()
         {
             Cart cart = null;
 
-            //var temp = HttpContext.Session.Get<Cart>("Cart");
             if (HttpContext.Session.Get<Cart>("Cart") == null)
             {
                 cart = new Cart();
