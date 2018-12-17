@@ -10,6 +10,15 @@ body {
     background-color: black;
     min-height: 1000px;
 }
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
