@@ -77,7 +77,7 @@ INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, 
 INSERT INTO tool (tool_name, brand, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('Orbital Sander', 'KOBOL', 'A circular sander that uses an abrasive circle to smooth surfaces; Takes off less than a belt sander. ', 0, null, null, null);
 
 SET IDENTITY_INSERT librarian ON;
-INSERT INTO librarian (id, username, password_value, salt) VALUES (1, 'DefaultLibrarian', 'Library1!', '?');
+INSERT INTO librarian (id, username, password_value, salt) VALUES (1, 'DefaultLibrarian', '04d80c2721f5e6b57c05efa0071842167f37969902c34c9e4381ac286e51dfb7', '?');
 
 SET IDENTITY_INSERT librarian OFF;
 
