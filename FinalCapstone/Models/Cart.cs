@@ -4,7 +4,12 @@ namespace FinalCapstone.Models
 {
     public class Cart
     {
-        public IList<CartItem> Items { get; } = new List<CartItem>();
+        public IList<CartItem> Items { get; set; } 
+
+        public Cart()
+        {
+            Items = new List<CartItem>();
+        }
 
         public void AddToCart(Tool tool)
         {
