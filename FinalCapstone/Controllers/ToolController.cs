@@ -8,7 +8,7 @@ using FinalCapstone.Models;
 
 namespace FinalCapstone.Controllers
 {
-    public class ToolController : Controller
+    public class ToolController : ParentController
     {
         private readonly IToolDal _toolDal;
 
