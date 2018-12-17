@@ -214,5 +214,52 @@ namespace FinalCapstone.Dal
             }
             return users;
         }
+
+        public bool ChangeCheckedOutStatus(int id, bool checkedOut)
+        {
+            bool success = false;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("UPDATE tool SET checked_out = @checked_out WHERE id = @id;", conn);
+                cmd.Parameters.AddWithValue("@checked_out", checkedOut);
+                cmd.Parameters.AddWithValue("@id", id);
+                success = Convert.ToBoolean(cmd.ExecuteNonQuery());
+            }
+
+            return success;
+        }
+
+        public bool CheckOut(Cart cart)
+        {
+            bool success = false;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string sql1 = "SELECT id FROM member WHERE member_name = @member_name;";
+                string sql2 = "UPDATE tool SET current_borrower = @current_borrower, date_borrowed = @date_borrowed, " +
+                    "due_date = @due_date WHERE id = @id;";
+
+                foreach (Tool tool in cart.Tools)
+                {
+                    SqlCommand cmd1 = new SqlCommand(sql1, conn);
+                    cmd1.Parameters.AddWithValue("@member_name", tool.CurrentBorrowerName);
+                    int memberId = (int)cmd1.ExecuteScalar();
+
+                    SqlCommand cmd2 = new SqlCommand(sql2, conn);
+                    cmd2.Parameters.AddWithValue("@current_borrower", memberId);
+                    cmd2.Parameters.AddWithValue("@date_borrowed", tool.DateBorrowed);
+                    cmd2.Parameters.AddWithValue("@due_date", tool.DueDate);
+                    cmd2.Parameters.AddWithValue("@id", tool.Id);
+                    cmd2.ExecuteNonQuery();
+                }
+
+                success = true;
+            }
+
+            return success;
+        }
     }
 }

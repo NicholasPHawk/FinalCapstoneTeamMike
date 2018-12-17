@@ -13,9 +13,7 @@
             <button type="submit">Submit</button>
         </div>
     </form>
-</div>
 
-<div class="content">
     @foreach (Tool tool in Model)
     {
         <div class="col-sm-4">
@@ -23,11 +21,11 @@
                 <img class="tool_image" src="~/images/@(tool.ImageName).jpg" alt="Tool Photo" />
                 <p><strong>Brand:</strong> @tool.Brand</p>
                 <p><strong>Tool:</strong> @tool.ToolName</p>
-                <a asp-controller="Tool" asp-action="ToolDetail" asp-route-id="@tool.Id">
+                <form asp-controller="Tool" asp-action="ToolDetail" asp-route-id="@tool.Id">
                     <button>
                         Details
                     </button>
-                </a>
+                </form>
             </div>
         </div>
     }
