@@ -98,11 +98,15 @@ namespace FinalCapstone.Controllers
         [HttpGet]
         public IActionResult AddTool()
         {
+            if (!IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             AddToolViewModel model = new AddToolViewModel
             {
                 SuccessMessage = TempData[ConfirmationKey] as string
             };
-
+            ViewBag.IsLoggedIn = IsAuthenticated;
             return View(model);
         }
 
