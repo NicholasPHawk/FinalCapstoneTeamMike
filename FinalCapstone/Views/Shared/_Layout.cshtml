@@ -32,7 +32,7 @@
                 </a>
                 <p class="toolGeekTitle">Tool Geek</p>
             </div>
-            
+
             <div class="navbar">
                 <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 <div class="dropdown">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="pushRight">
-                        <a asp-area="" asp-controller="Librarian" asp-action="Login">Log In</a>
+                    <a asp-area="" asp-controller="Librarian" asp-action="Login">Log In</a>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
         @RenderBody()
     </div>
 
-    <footer>
+    <footer class="footer">
         <p>&copy; 2018 - Mike's Hard</p>
     </footer>
 
@@ -93,9 +93,8 @@
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
     @RenderSection("Scripts", required: false)
 </body>
 </html>

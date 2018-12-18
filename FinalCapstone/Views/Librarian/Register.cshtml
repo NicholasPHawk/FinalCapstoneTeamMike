@@ -5,31 +5,35 @@
 
 <div class="jumbotron caption" style="background-image: url(/images/AvailableTools.jpg); background-color: black; color: white; height: 200px;">Register A New User</div>
 
+<div class="content">
 
-<form asp-controller="Librarian" asp-action="Register" novalidation method="post">
-    <div>
-        <label asp-for="Email">Email:</label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email" class="dangertext"></span>
+    <div class="column_thumbnail">
+        <form asp-controller="Librarian" asp-action="Register" novalidation method="post">
+            <div>
+                <label asp-for="Email">Email:</label>
+                <input asp-for="Email" />
+                <span asp-validation-for="Email" class="dangertext"></span>
+            </div>
+            <div>
+                <label asp-for="Name">Name:</label>
+                <input asp-for="Name" />
+                <span asp-validation-for="Name" class="dangertext"></span>
+            </div>
+            <div>
+                <label asp-for="DriversLicense">Drivers License Number:</label>
+                <input asp-for="DriversLicense" />
+                <span asp-validation-for="DriversLicense" class="dangertext"></span>
+            </div>
+            <div>
+                <label asp-for="Address">Address:</label>
+                <input asp-for="Address" />
+                <span asp-validation-for="Address" class="dangertext"></span>
+            </div>
+            <button type="submit">Register User</button>
+        </form>
     </div>
-    <div>
-        <label asp-for="Name">Name:</label>
-        <input asp-for="Name" />
-        <span asp-validation-for="Name" class="dangertext"></span>
-    </div>
-    <div>
-        <label asp-for="DriversLicense">Drivers License Number:</label>
-        <input asp-for="DriversLicense" />
-        <span asp-validation-for="DriversLicense" class="dangertext"></span>
-    </div>
-    <div>
-        <label asp-for="Address">Address:</label>
-        <input asp-for="Address" />
-        <span asp-validation-for="Address" class="dangertext"></span>
-    </div>
-    <button type="submit">Register User</button>
-</form>
+</div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
