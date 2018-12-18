@@ -96,6 +96,11 @@ namespace FinalCapstone.Controllers
         public IActionResult Checkout()
         {
             Cart cart = GetActiveCart();
+            if (cart.Tools.Count == 0 )
+            {
+                return RedirectToAction("ViewCart");
+            }
+
             _toolDal.CheckOut(cart);
             HttpContext.Session.Remove("Cart");
 

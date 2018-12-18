@@ -104,6 +104,7 @@ namespace FinalCapstone.Dal
                     tools.Add(tool);
                 }
             }
+
             return tools;
         }
 
@@ -192,6 +193,7 @@ namespace FinalCapstone.Dal
                     }
                 }
             }
+
             return tools;
         }
 
@@ -213,13 +215,12 @@ namespace FinalCapstone.Dal
                     users.Add(user);
                 }
             }
+
             return users;
         }
 
         public bool ChangeCheckedOutStatus(int id, bool checkedOut)
         {
-            bool success = false;
-
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -227,10 +228,12 @@ namespace FinalCapstone.Dal
                 SqlCommand cmd = new SqlCommand("UPDATE tool SET checked_out = @checked_out WHERE id = @id;", conn);
                 cmd.Parameters.AddWithValue("@checked_out", checkedOut);
                 cmd.Parameters.AddWithValue("@id", id);
-                success = Convert.ToBoolean(cmd.ExecuteNonQuery());
+                if (cmd.ExecuteNonQuery() == 0)
+                {
+                    return false;
+                }
+                return true;
             }
-
-            return success;
         }
 
         public bool CheckOut(Cart cart)
@@ -292,6 +295,24 @@ namespace FinalCapstone.Dal
                 SqlCommand cmd = new SqlCommand("DELETE FROM tool WHERE id = @id;", conn);
                 cmd.Parameters.AddWithValue("@id", tool.Id);
                 cmd.ExecuteNonQuery();
+            }
+        }
+
+        public bool AddTool(Tool tool)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO tool (brand, tool_name, description, checked_out) VALUES (@brand, @tool_name, @description, @checked_out);", conn);
+                cmd.Parameters.AddWithValue("@brand", tool.Brand);
+                cmd.Parameters.AddWithValue("@tool_name", tool.ToolName);
+                cmd.Parameters.AddWithValue("@description", tool.Description);
+                cmd.Parameters.AddWithValue("@checked_out", 0);
+                if (cmd.ExecuteNonQuery() == 0)
+                {
+                    return false;
+                }
+                return true;
             }
         }
     }

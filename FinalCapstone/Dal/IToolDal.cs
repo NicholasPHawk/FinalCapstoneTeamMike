@@ -17,5 +17,6 @@ namespace FinalCapstone.Dal
         bool CheckOut(Cart cart);
         void RemoveATool(Tool tool);
         IList<Tool> RemoveAToolList();
+        bool AddTool(Tool tool);
     }
 }
