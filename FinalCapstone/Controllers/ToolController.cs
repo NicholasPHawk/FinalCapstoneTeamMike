@@ -8,7 +8,7 @@ using FinalCapstone.Models;
 
 namespace FinalCapstone.Controllers
 {
-    public class ToolController : Controller
+    public class ToolController : ParentController
     {
         private readonly IToolDal _toolDal;
 
@@ -63,6 +63,19 @@ namespace FinalCapstone.Controllers
         {
             _toolDal.RemoveATool(tool);
             return RedirectToAction("RemoveATool");
+        }
+
+        [HttpGet]
+        public IActionResult AddTool()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddTool(Tool tool)
+        {
+            _toolDal.AddTool(tool);
+            return RedirectToAction("AddTool");
         }
     }
 }
