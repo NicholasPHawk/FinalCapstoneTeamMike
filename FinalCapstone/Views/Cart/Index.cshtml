@@ -6,6 +6,14 @@
 <div class="jumbotron caption" style="background-image: url(/images/AvailableTools.jpg); background-color: black; color: white; height: 200px;">Available Tools</div>
 
 <div class="content">
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="new-item-confirm alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>@Model.SuccessMessage</strong>
+        </div>
+    }
+
     @foreach (Tool tool in Model.Tools)
     {
         <div class="col-sm-4">
@@ -14,7 +22,7 @@
                 <p><strong>Brand:</strong> @tool.Brand</p>
                 <p><strong>Tool:</strong> @tool.ToolName</p>
                 <form asp-controller="Cart" asp-action="AddToCart" method="post">
-                    <input type="hidden" value="@tool.Id" asp-for="Id"/>
+                    <input type="hidden" value="@tool.Id" asp-for="Id" />
                     <div>
                         <div>
                             <label asp-for="Borrower">Borrower</label>

@@ -24,5 +24,7 @@ namespace FinalCapstone.Models
             new SelectListItem() { Text = "6", Value = "6" },
             new SelectListItem() { Text = "7", Value = "7" }
         };
+
+        public string SuccessMessage { get; set; }
     }
 }

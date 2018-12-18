@@ -229,8 +229,15 @@ button:hover:after {
     transition: .7s;
 }
 
-
-
+.new-item-confirm {
+    margin: 10px 0;
+    border: 2px solid #392613;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    background-color: #604020;
+    opacity: 0.8;
+}
 
 /*==========*/
 

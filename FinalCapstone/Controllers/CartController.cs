@@ -11,6 +11,8 @@ namespace FinalCapstone.Controllers
 {
     public class CartController : ParentController
     {
+        private const string ConfirmationKey = nameof(ConfirmationKey);
+
         private readonly IToolDal _toolDal;
 
         public CartController(IToolDal toolDal)
@@ -26,7 +28,8 @@ namespace FinalCapstone.Controllers
             CartViewModel model = new CartViewModel
             {
                 Tools = tools,
-                Users = users
+                Users = users,
+                SuccessMessage = TempData[ConfirmationKey] as string
             };
 
             List<SelectListItem> borrowers = new List<SelectListItem>();
@@ -88,6 +91,16 @@ namespace FinalCapstone.Controllers
 
             _toolDal.CheckOut(cart);
             HttpContext.Session.Remove("Cart");
+
+            if (cart.Tools.Count == 1)
+            {
+                TempData[ConfirmationKey] = "Tool was successfully checked out.";
+            }
+
+            else
+            {
+                TempData[ConfirmationKey] = "Tools were successfully checked out.";
+            }
 
             return RedirectToAction("Index");
         }
