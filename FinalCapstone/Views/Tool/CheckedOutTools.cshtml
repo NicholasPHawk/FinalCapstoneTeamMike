@@ -21,13 +21,10 @@
                 <p><strong>Brand:</strong> @tool.Brand</p>
                 <p><strong>Tool:</strong> @tool.ToolName</p>
                 <p>@tool.Description</p>
-                @if (tool.CheckedOut)
+                <p><strong>Due Date:</strong> @tool.DueDate.ToString("MM/dd/yyyy")</p>
+                @if ((bool)isLoggedIn)
                 {
-                    <p><strong>Due Date:</strong> @tool.DueDate.ToString("MM/dd/yyyy")</p>
-                    @if ((bool)isLoggedIn)
-                    {
-                        <p><strong>Checked out by:</strong> @tool.CurrentBorrowerName</p>
-                    }
+                    <p><strong>Checked out by:</strong> @tool.CurrentBorrowerName</p>
                 }
             </div>
         </div>
