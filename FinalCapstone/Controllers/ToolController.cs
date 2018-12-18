@@ -10,6 +10,8 @@ namespace FinalCapstone.Controllers
 {
     public class ToolController : ParentController
     {
+        private const string ConfirmationKey = nameof(ConfirmationKey);
+
         private readonly IToolDal _toolDal;
 
         public ToolController(IToolDal toolDal)
@@ -20,8 +22,15 @@ namespace FinalCapstone.Controllers
         public IActionResult Index()
         {
             IList<Tool> tools = _toolDal.GetTools(false);
+
+            AvailableToolsViewModel model = new AvailableToolsViewModel
+            {
+                Tools = tools,
+                SuccessMessage = TempData[ConfirmationKey] as string
+            };
+
             ViewBag.IsLoggedIn = IsAuthenticated;
-            return View(tools);
+            return View(model);
         }
 
         public IActionResult CheckedOutTools()
@@ -64,29 +73,52 @@ namespace FinalCapstone.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            IList<Tool> removeToolList = new List<Tool>();
-            removeToolList = _toolDal.RemoveAToolList();
+
+            IList<Tool> tools = _toolDal.RemoveAToolList();
+
+            RemoveAToolViewModel model = new RemoveAToolViewModel
+            {
+                Tools = tools,
+                SuccessMessage = TempData[ConfirmationKey] as string
+            };
+
             ViewBag.IsLoggedIn = IsAuthenticated;
-            return View(removeToolList);
+            return View(model);
         }
 
         [HttpPost]
         public IActionResult RemoveATool(Tool tool)
         {
             _toolDal.RemoveATool(tool);
+            TempData[ConfirmationKey] = "Tool was successfully removed.";
+
             return RedirectToAction("RemoveATool");
         }
 
         [HttpGet]
         public IActionResult AddTool()
         {
-            return View();
+            AddToolViewModel model = new AddToolViewModel
+            {
+                SuccessMessage = TempData[ConfirmationKey] as string
+            };
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult AddTool(Tool tool)
+        public IActionResult AddTool(AddToolViewModel model)
         {
+            Tool tool = new Tool
+            {
+                Brand = model.Brand,
+                ToolName = model.ToolName,
+                Description = model.Description
+            };
+
             _toolDal.AddTool(tool);
+            TempData[ConfirmationKey] = "Tool was successfully added.";
+
             return RedirectToAction("AddTool");
         }
     }

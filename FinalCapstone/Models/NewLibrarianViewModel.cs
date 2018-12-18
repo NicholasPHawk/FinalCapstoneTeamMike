@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalCapstone.Models
 {
-    public class NewLibrarianModel
+    public class NewLibrarianViewModel
     {
         [Required(ErrorMessage = "This field is required")]
         [Display(Name = "Username:")]
