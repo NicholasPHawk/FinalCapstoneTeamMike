@@ -1,5 +1,12 @@
 ﻿@model List<Tool>
 @{
+    bool? isLoggedIn = ViewBag.IsLoggedIn as bool?;
+    if (isLoggedIn == null)
+    {
+        isLoggedIn = false;
+    }
+}
+@{
     ViewData["Title"] = "ToolList";
 }
 
@@ -13,11 +20,15 @@
                 <img class="tool_image" src="~/images/@(tool.ImageName).jpg" alt="Tool Photo" />
                 <p><strong>Brand:</strong> @tool.Brand</p>
                 <p><strong>Tool:</strong> @tool.ToolName</p>
-                <form asp-controller="Tool" asp-action="ToolDetail" asp-route-id="@tool.Id">
-                    <button>
-                        Details
-                    </button>
-                </form>
+                <p>@tool.Description</p>
+                @if (tool.CheckedOut)
+                {
+                    <p><strong>Due Date:</strong> @tool.DueDate.ToString("MM/dd/yyyy")</p>
+                    @if ((bool)isLoggedIn)
+                    {
+                        <p><strong>Checked out by:</strong> @tool.CurrentBorrowerName</p>
+                    }
+                }
             </div>
         </div>
     }
