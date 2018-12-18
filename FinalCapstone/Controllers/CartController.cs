@@ -9,7 +9,7 @@ using FinalCapstone.Models;
 
 namespace FinalCapstone.Controllers
 {
-    public class CartController : Controller
+    public class CartController : ParentController
     {
         private readonly IToolDal _toolDal;
 

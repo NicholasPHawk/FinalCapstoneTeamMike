@@ -8,7 +8,7 @@ using FinalCapstone.Models;
 
 namespace FinalCapstone.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ParentController
     {
         public IActionResult Index()
         {
