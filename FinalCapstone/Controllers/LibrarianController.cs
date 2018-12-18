@@ -8,10 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 using FinalCapstone.Helper;
 using System.Web;
 using System.Text.RegularExpressions;
+using FinalCapstone.Extensions;
 
 namespace FinalCapstone.Controllers
 {
-    public class LibrarianController : Controller
+    public class LibrarianController : ParentController
     {
         private readonly ILibrarianDal _librarianDal;
         PasswordHelper passwordHelper = new PasswordHelper();
@@ -44,7 +45,7 @@ namespace FinalCapstone.Controllers
                 return View("Login");
             }
 
-            //base.LogLibrarianIn(user.Username);
+            LogLibrarianIn(user.Username);
 
             return RedirectToAction("Index", "Tool");
         }
@@ -112,6 +113,58 @@ namespace FinalCapstone.Controllers
             _librarianDal.RegisterLibrarian(newLibrarian);
 
             return RedirectToAction("Index", "Tool");
+        }
+
+        private const string UsernameKey = "Tool_Geek_UserName";
+
+        /// Gets the value from the Session
+        public string CurrentUser
+        {
+            get
+            {
+                string username = string.Empty;
+
+                //Check to see if user session exists, if not create it
+                if (HttpContext.Session.Get<string>("Tool_Geek_UserName") != null)
+                {
+                    username = HttpContext.Session.Get<string>("Tool_Geek_UserName");
+                }
+
+                return username;
+            }
+        }
+
+        /// Returns bool if user has authenticated in       
+        public bool IsAuthenticated
+        {
+            get
+            {
+                return HttpContext.Session.Get<string>("Tool_Geek_UserName") != null;
+            }
+        }
+
+        /// "Logs" the current user in
+        public void LogLibrarianIn(string username)
+        {
+            HttpContext.Session.Set<string>("Tool_Geek_UserName", username);
+        }
+
+        /// "Logs out" a user by removing the cookie.
+        public void LogLibrarianOut()
+        {
+            HttpContext.Session.Remove("Tool_Geek_UserName");
+        }
+
+        public ActionResult GetAuthenticatedUser()
+        {
+            Librarian librarian = null;
+
+            if (IsAuthenticated)
+            {
+                librarian = _librarianDal.GetLibrarian(CurrentUser);
+            }
+
+            return View("_AuthenticationBar", librarian);
         }
     }
 }

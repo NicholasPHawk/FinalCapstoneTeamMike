@@ -3,19 +3,47 @@
     ViewData["Title"] = "ViewCart";
 }
 
-<h2>View Cart</h2>
+<div class="jumbotron caption" style="background-image: url(/images/AvailableTools.jpg); background-color: black; color: white; height: 200px;">Cart</div>
 
 <div class="content">
-    @foreach (CartItem item in Model.Items)
+    <div class="search_thumbnail">
+        <form>
+            @if (Model.Tools.Count == 0)
+            {
+                <button asp-controller="Cart" asp-action="Index">
+                    Add Tools
+                </button>
+            }
+            @if (Model.Tools.Count > 0)
+            {
+                <button asp-controller="Cart" asp-action="Index">
+                    Add More Tools
+                </button>
+            }
+        </form>
+        <form asp-controller="Cart" asp-action="Checkout" method="post">
+            <button>
+                Check Out
+            </button>
+        </form>
+    </div>
+
+    @foreach (Tool tool in Model.Tools)
     {
         <div class="col-sm-4">
             <div class="column_thumbnail">
-                <img class="tool_image" src="~/images/@(item.Tool.ImageName).jpg" alt="Tool Photo"/>
-                <p><strong>Brand:</strong> @item.Tool.Brand</p>
-                <p><strong>Tool:</strong> @item.Tool.ToolName</p>
-                <p><strong>Borrower:</strong> @item.Tool.CurrentBorrowerName</p>
-                <p><strong>Today's Date:</strong> @item.Tool.DateBorrowed.ToString("MM/dd/yyyy")</p>
-                <p><strong>Due Date:</strong> @item.Tool.DueDate.ToString("MM/dd/yyyy")</p>
+                <img class="tool_image" src="~/images/@(tool.ImageName).jpg" alt="Tool Photo" />
+                <p><strong>Brand:</strong> @tool.Brand</p>
+                <p><strong>Tool:</strong> @tool.ToolName</p>
+                <p><strong>Borrower:</strong> @tool.CurrentBorrowerName</p>
+                <p><strong>Today's Date:</strong> @tool.DateBorrowed.ToString("MM/dd/yyyy")</p>
+                <p><strong>Due Date:</strong> @tool.DueDate.ToString("MM/dd/yyyy")</p>
+                <form asp-controller="Cart" asp-action="RemoveFromCart" method="post">
+                    <input type="hidden" value="@tool.Id" name="id" />
+                    <button>
+                        Remove From Cart
+                    </button>
+                </form>
             </div>
         </div>
     }
