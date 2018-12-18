@@ -64,5 +64,18 @@ namespace FinalCapstone.Controllers
             _toolDal.RemoveATool(tool);
             return RedirectToAction("RemoveATool");
         }
+
+        [HttpGet]
+        public IActionResult AddTool()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddTool(Tool tool)
+        {
+            _toolDal.AddTool(tool);
+            return RedirectToAction("AddTool");
+        }
     }
 }

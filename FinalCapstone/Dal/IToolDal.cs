@@ -15,5 +15,6 @@ namespace FinalCapstone.Dal
         IList<User> GetUsers();
         void RemoveATool(Tool tool);
         IList<Tool> RemoveAToolList();
+        bool AddTool(Tool tool);
     }
 }

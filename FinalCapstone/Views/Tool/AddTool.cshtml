@@ -1,0 +1,19 @@
+﻿@model Tool
+@{
+    ViewData["Title"] = "AddTool";
+}
+
+<h2>Add A Tool</h2>
+
+<form asp-action="AddTool" asp-controller="Tool" method="POST">
+    <label asp-for="Brand">Brand:</label>
+    <input asp-for="Brand" />
+
+    <label asp-for="ToolName">Tool Name:</label>
+    <input asp-for="ToolName" />
+
+    <label asp-for="Description">Description:</label>
+    <input asp-for="Description" />
+
+    <button type="Submit">Add</button>
+</form>

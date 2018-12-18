@@ -248,5 +248,23 @@ namespace FinalCapstone.Dal
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public bool AddTool(Tool tool)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO tool (brand, tool_name, description, checked_out) VALUES (@brand, @tool_name, @description, @checked_out);", conn);
+                cmd.Parameters.AddWithValue("@brand", tool.Brand);
+                cmd.Parameters.AddWithValue("@tool_name", tool.ToolName);
+                cmd.Parameters.AddWithValue("@description", tool.Description);
+                cmd.Parameters.AddWithValue("@checked_out", 0);
+                if (cmd.ExecuteNonQuery() == 0)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
     }
 }
