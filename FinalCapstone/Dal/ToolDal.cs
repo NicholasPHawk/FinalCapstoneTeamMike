@@ -104,6 +104,7 @@ namespace FinalCapstone.Dal
                     tools.Add(tool);
                 }
             }
+
             return tools;
         }
 
@@ -192,6 +193,7 @@ namespace FinalCapstone.Dal
                     }
                 }
             }
+
             return tools;
         }
 
@@ -213,13 +215,12 @@ namespace FinalCapstone.Dal
                     users.Add(user);
                 }
             }
+
             return users;
         }
 
         public bool ChangeCheckedOutStatus(int id, bool checkedOut)
         {
-            bool success = false;
-
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -227,10 +228,12 @@ namespace FinalCapstone.Dal
                 SqlCommand cmd = new SqlCommand("UPDATE tool SET checked_out = @checked_out WHERE id = @id;", conn);
                 cmd.Parameters.AddWithValue("@checked_out", checkedOut);
                 cmd.Parameters.AddWithValue("@id", id);
-                success = Convert.ToBoolean(cmd.ExecuteNonQuery());
+                if (cmd.ExecuteNonQuery() == 0)
+                {
+                    return false;
+                }
+                return true;
             }
-
-            return success;
         }
 
         public bool CheckOut(Cart cart)
