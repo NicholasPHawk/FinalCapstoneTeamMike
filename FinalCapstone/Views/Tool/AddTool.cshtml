@@ -13,15 +13,17 @@
     </div>
 }
 
-<form asp-action="AddTool" asp-controller="Tool" method="post">
-    <label asp-for="Brand">Brand:</label>
-    <input asp-for="Brand" />
+<div class="search_thumbnail">
+    <form asp-action="AddTool" asp-controller="Tool" method="post">
+        <label asp-for="Brand">Brand:</label>
+        <input asp-for="Brand" />
 
-    <label asp-for="ToolName">Tool Name:</label>
-    <input asp-for="ToolName" />
+        <label asp-for="ToolName">Tool Name:</label>
+        <input asp-for="ToolName" />
 
-    <label asp-for="Description">Description:</label>
-    <input asp-for="Description" />
+        <label asp-for="Description">Description:</label>
+        <input asp-for="Description" />
 
-    <button type="Submit">Add</button>
-</form>
+        <button type="Submit">Add</button>
+    </form>
+</div>
