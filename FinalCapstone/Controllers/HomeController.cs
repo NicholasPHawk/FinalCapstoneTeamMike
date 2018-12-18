@@ -12,6 +12,7 @@ namespace FinalCapstone.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.IsLoggedIn = IsAuthenticated;
             return View();
         }
 

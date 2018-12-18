@@ -11,6 +11,13 @@ namespace FinalCapstone.Controllers
 {
     public class ParentController : Controller
     {
-        
+        /// Returns bool if user has authenticated in       
+        public bool IsAuthenticated
+        {
+            get
+            {
+                return HttpContext.Session.Get<string>("Tool_Geek_UserName") != null;
+            }
+        }
     }
 }

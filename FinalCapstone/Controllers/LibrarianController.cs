@@ -47,12 +47,23 @@ namespace FinalCapstone.Controllers
 
             LogLibrarianIn(user.Username);
 
-            return RedirectToAction("Index", "Tool");
+            return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult Logout()
+        {
+            LogLibrarianOut();
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
         public IActionResult Register()
         {
+            if (!IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.IsLoggedIn = IsAuthenticated;
             return View();
         }
 
@@ -71,6 +82,11 @@ namespace FinalCapstone.Controllers
         [HttpGet]
         public IActionResult RegisterLibrarian()
         {
+            if (!IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.IsLoggedIn = IsAuthenticated;
             return View();
         }
 
@@ -85,24 +101,28 @@ namespace FinalCapstone.Controllers
             if (!Regex.IsMatch(model.Password, @"(?=.*[a-z])[a-z]{1,}"))
             {
                 model.ErrorMessage = "Missing a lower case letter.";
+                ViewBag.IsLoggedIn = IsAuthenticated;
                 return View("RegisterLibrarian", model);
             }
 
             if (!Regex.IsMatch(model.Password, @"(?=.*[A-Z])[A-Z]{1,}"))
             {
                 model.ErrorMessage = "Missing a capital letter.";
+                ViewBag.IsLoggedIn = IsAuthenticated;
                 return View("RegisterLibrarian", model);
             }
 
             if (!Regex.IsMatch(model.Password, @"(?=.*[0-9])[0-9]{1,}"))
             {
                 model.ErrorMessage = "Missing a number.";
+                ViewBag.IsLoggedIn = IsAuthenticated;
                 return View("RegisterLibrarian", model);
             }
 
             if (!Regex.IsMatch(model.Password, @"(?=.*[@$!%*?&])[@$!%*?&]{1,}"))
             {
                 model.ErrorMessage = "Missing a special character. (@ $ ! % * ? &)";
+                ViewBag.IsLoggedIn = IsAuthenticated;
                 return View("RegisterLibrarian", model);
             }
 
@@ -134,15 +154,6 @@ namespace FinalCapstone.Controllers
             }
         }
 
-        /// Returns bool if user has authenticated in       
-        public bool IsAuthenticated
-        {
-            get
-            {
-                return HttpContext.Session.Get<string>("Tool_Geek_UserName") != null;
-            }
-        }
-
         /// "Logs" the current user in
         public void LogLibrarianIn(string username)
         {
@@ -155,16 +166,16 @@ namespace FinalCapstone.Controllers
             HttpContext.Session.Remove("Tool_Geek_UserName");
         }
 
-        public ActionResult GetAuthenticatedUser()
-        {
-            Librarian librarian = null;
+        //public bool GetAuthenticatedUser()
+        //{
+        //    Librarian librarian = null;
 
-            if (IsAuthenticated)
-            {
-                librarian = _librarianDal.GetLibrarian(CurrentUser);
-            }
+        //    if (IsAuthenticated)
+        //    {
+        //        librarian = _librarianDal.GetLibrarian(CurrentUser);
+        //    }
 
-            return View("_AuthenticationBar", librarian);
-        }
+        //    return View();
+        //}
     }
 }

@@ -20,6 +20,10 @@ namespace FinalCapstone.Controllers
 
         public IActionResult Index()
         {
+            if (!IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             IList<Tool> tools = _toolDal.GetTools(false);
             IList<User> users = _toolDal.GetUsers();
 
@@ -38,7 +42,7 @@ namespace FinalCapstone.Controllers
             }
 
             model.Borrowers = borrowers;
-
+            ViewBag.IsLoggedIn = IsAuthenticated;
             return View(model);
         }
 
@@ -78,7 +82,12 @@ namespace FinalCapstone.Controllers
 
         public IActionResult ViewCart()
         {
+            if (!IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             Cart cart = GetActiveCart();
+            ViewBag.IsLoggedIn = IsAuthenticated;
             return View(cart);
         }
 

@@ -20,12 +20,14 @@ namespace FinalCapstone.Controllers
         public IActionResult Index()
         {
             IList<Tool> tools = _toolDal.GetTools(false);
+            ViewBag.IsLoggedIn = IsAuthenticated;
             return View(tools);
         }
 
         public IActionResult CheckedOutTools()
         {
             IList<Tool> tools = _toolDal.GetTools(true);
+            ViewBag.IsLoggedIn = IsAuthenticated;
             return View(tools);
         }
 
@@ -39,6 +41,11 @@ namespace FinalCapstone.Controllers
         [HttpGet]
         public IActionResult ToolLoanRecordSearch()
         {
+            if (!IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.IsLoggedIn = IsAuthenticated;
             return View();
         }
 
@@ -53,8 +60,13 @@ namespace FinalCapstone.Controllers
         [HttpGet]
         public IActionResult RemoveATool()
         {
+            if (!IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             IList<Tool> removeToolList = new List<Tool>();
             removeToolList = _toolDal.RemoveAToolList();
+            ViewBag.IsLoggedIn = IsAuthenticated;
             return View(removeToolList);
         }
 
