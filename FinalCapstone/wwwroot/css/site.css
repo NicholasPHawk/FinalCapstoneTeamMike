@@ -1,5 +1,6 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;
@@ -10,15 +11,31 @@ body {
     background-color: black;
     min-height: 1000px;
 }
-@-webkit-keyframes fadein {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+
+body.HomePageBackground {
+    background-image: url("HomePageBackground.jpg") !important;
+    background: no-repeat center center fixed;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
+#HomePageTitle {
+    color: #cccccc;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 10px 0;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    float: none;
+    text-align: center;
+    position: sticky;
+    background-color: #222222;
+    border: solid 1px white;
+    border-radius: 5px;
+}
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
@@ -140,54 +157,54 @@ button {
     margin-top: 5px;
 }
 
-    button:focus {
-        outline: none;
-    }
+button:focus {
+    outline: none;
+}
 
-    button:before {
-        content: '';
-        display: block;
-        position: relative;
-        height: 100%;
-        left: 0;
-        top: 0;
-        opacity: .5;
-        filter: blur(30px);
-        transform: translateX(-130px) skewX(-15deg);
-    }
+button:before {
+    content: '';
+    display: block;
+    position: relative;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: .5;
+    filter: blur(30px);
+    transform: translateX(-130px) skewX(-15deg);
+}
 
-    button:after {
-        content: '';
-        display: block;
-        position: relative;
-        background: #4CAF50;
-        color: white;
-        width: 30px;
-        height: 100%;
-        left: 30px;
-        top: 0;
-        opacity: 0;
-        filter: blur(30px);
-        transform: translateX(-100px) scaleX(-15deg);
-    }
+button:after {
+    content: '';
+    display: block;
+    position: relative;
+    background: #4CAF50;
+    color: white;
+    width: 30px;
+    height: 100%;
+    left: 30px;
+    top: 0;
+    opacity: 0;
+    filter: blur(30px);
+    transform: translateX(-100px) scaleX(-15deg);
+}
 
-    button:hover {
-        background: #4CAF50;
-        color: white;
-        cursor: pointer;
-    }
+button:hover {
+background: #4CAF50;
+color: white;
+cursor: pointer;
+}
 
-        button:hover:before {
-            transform: translateX(300px) skewX(-15deg);
-            opacity: .6;
-            transition: .7s;
-        }
+button:hover:before {
+    transform: translateX(300px) skewX(-15deg);
+    opacity: .6;
+    transition: .7s;
+}
 
-        button:hover:after {
-            transform: translateX(300px) skewX(-15deg);
-            opacity: .1;
-            transition: .7s;
-        }
+button:hover:after {
+    transform: translateX(300px) skewX(-15deg);
+    opacity: .1;
+    transition: .7s;
+}
 
 
 
@@ -215,6 +232,7 @@ button {
 
 .navbar {
     height: 54px;
+    opacity: .9;
 }
 
 .navbar-header {
@@ -276,7 +294,7 @@ section {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    opacity: .9;
+    /*opacity: .9;*/
 }
 
     .dropdown-content a {
