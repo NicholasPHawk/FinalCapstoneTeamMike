@@ -31,17 +31,18 @@ namespace FinalCapstone
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddSessionStateTempDataProvider();
+
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromSeconds(600);
                 options.Cookie.HttpOnly = true;
             });
 
             services.AddScoped<IToolDal>(x => new ToolDal(Configuration.GetConnectionString("Default")));
             services.AddScoped<ILibrarianDal>(x => new LibrarianDal(Configuration.GetConnectionString("Default")));
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

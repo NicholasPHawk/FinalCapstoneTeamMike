@@ -1,4 +1,4 @@
-﻿@model List<Tool>
+﻿@model AvailableToolsViewModel
 @{
     ViewData["Title"] = "ToolList";
 }
@@ -6,7 +6,15 @@
 <div class="jumbotron caption" style="background-image: url(/images/AvailableTools.jpg); background-color: black; color: white; height: 200px;">Available Tools</div>
 
 <div class="content">
-    @foreach (Tool tool in Model)
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="new-item-confirm alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>@Model.SuccessMessage</strong>
+        </div>
+    }
+
+    @foreach (Tool tool in Model.Tools)
     {
         <div class="col-sm-4">
             <div class="column_thumbnail">

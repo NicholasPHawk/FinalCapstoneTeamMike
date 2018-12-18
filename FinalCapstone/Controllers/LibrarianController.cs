@@ -14,6 +14,8 @@ namespace FinalCapstone.Controllers
 {
     public class LibrarianController : ParentController
     {
+        private const string ConfirmationKey = nameof(ConfirmationKey);
+
         private readonly ILibrarianDal _librarianDal;
         PasswordHelper passwordHelper = new PasswordHelper();
 
@@ -65,6 +67,8 @@ namespace FinalCapstone.Controllers
             newUser.DriversLicense = model.DriversLicense;
             newUser.Address = model.Address;
             _librarianDal.RegisterUser(newUser);
+            TempData[ConfirmationKey] = "User was successfully registered.";
+
             return RedirectToAction("Index","Tool");
         }
 
@@ -111,6 +115,7 @@ namespace FinalCapstone.Controllers
             newLibrarian.Salt = passwordHelper.CreateSalt();
             newLibrarian.Password = passwordHelper.GenerateSHA256Hash(model.Password, newLibrarian);
             _librarianDal.RegisterLibrarian(newLibrarian);
+            TempData[ConfirmationKey] = "Librarian was successfully registered.";
 
             return RedirectToAction("Index", "Tool");
         }

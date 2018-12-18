@@ -10,6 +10,8 @@ namespace FinalCapstone.Controllers
 {
     public class ToolController : ParentController
     {
+        private const string ConfirmationKey = nameof(ConfirmationKey);
+
         private readonly IToolDal _toolDal;
 
         public ToolController(IToolDal toolDal)
@@ -20,7 +22,14 @@ namespace FinalCapstone.Controllers
         public IActionResult Index()
         {
             IList<Tool> tools = _toolDal.GetTools(false);
-            return View(tools);
+
+            AvailableToolsViewModel model = new AvailableToolsViewModel
+            {
+                Tools = tools,
+                SuccessMessage = TempData[ConfirmationKey] as string
+            };
+
+            return View(model);
         }
 
         public IActionResult CheckedOutTools()
