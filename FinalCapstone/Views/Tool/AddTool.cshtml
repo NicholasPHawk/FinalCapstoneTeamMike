@@ -1,11 +1,19 @@
-﻿@model Tool
+﻿@model AddToolViewModel
 @{
     ViewData["Title"] = "AddTool";
 }
 
 <h2>Add A Tool</h2>
 
-<form asp-action="AddTool" asp-controller="Tool" method="POST">
+@if (!string.IsNullOrEmpty(Model.SuccessMessage))
+{
+    <div class="new-item-confirm alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>@Model.SuccessMessage</strong>
+    </div>
+}
+
+<form asp-action="AddTool" asp-controller="Tool" method="post">
     <label asp-for="Brand">Brand:</label>
     <input asp-for="Brand" />
 

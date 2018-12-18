@@ -1,11 +1,19 @@
-﻿@model List<Tool>
+﻿@model RemoveAToolViewModel
 @{
     ViewData["Title"] = "RemoveATool";
 }
 
 <h2>Remove A Tool</h2>
 <div class="content">
-    @foreach (Tool tool in Model)
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="new-item-confirm alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>@Model.SuccessMessage</strong>
+        </div>
+    }
+
+    @foreach (Tool tool in Model.Tools)
     {
         <div class="col-sm-4">
             <div class="column_thumbnail">
@@ -14,10 +22,10 @@
                 <p><strong>Brand:</strong> @tool.Brand</p>
                 <p><strong>Tool:</strong> @tool.ToolName</p>
                 <form asp-controller="Tool" asp-action="RemoveATool" method="post">
-                        <input type="hidden" value="@tool.Id" asp-for="@tool.Id" />
-                        <button>
-                            Remove
-                        </button>
+                    <input type="hidden" value="@tool.Id" asp-for="@tool.Id" />
+                    <button>
+                        Remove
+                    </button>
                 </form>
             </div>
         </div>

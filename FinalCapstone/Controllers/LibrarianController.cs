@@ -79,7 +79,7 @@ namespace FinalCapstone.Controllers
         }
 
         [HttpPost]
-        public IActionResult RegisterLibrarian(NewLibrarianModel model)
+        public IActionResult RegisterLibrarian(NewLibrarianViewModel model)
         {
             if (!ModelState.IsValid)
             {
