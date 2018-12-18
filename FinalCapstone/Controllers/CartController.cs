@@ -76,21 +76,26 @@ namespace FinalCapstone.Controllers
             return RedirectToAction("ViewCart");
         }
 
-        public IActionResult ViewCart()
-        {
-            Cart cart = GetActiveCart();
-            return View(cart);
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Checkout()
         {
             Cart cart = GetActiveCart();
+            if (cart.Tools.Count == 0 )
+            {
+                return RedirectToAction("ViewCart");
+            }
+
             _toolDal.CheckOut(cart);
             HttpContext.Session.Remove("Cart");
 
             return RedirectToAction("Index");
+        }
+
+        public IActionResult ViewCart()
+        {
+            Cart cart = GetActiveCart();
+            return View(cart);
         }
 
         private Cart GetActiveCart()
