@@ -61,8 +61,13 @@ namespace FinalCapstone.Controllers
         [HttpPost]
         public IActionResult ToolLoanRecordSearch(ToolLoanRecordSearchModel model)
         {
+            if (!IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             IList<ToolLoanRecordSearchModel> tools = new List<ToolLoanRecordSearchModel>();
             tools = _toolDal.GetLoanRecords(model.SearchType, model.SearchString);
+            ViewBag.IsLoggedIn = IsAuthenticated;
             return View("ToolLoanRecordSearchResult", tools);
         }
 
