@@ -104,15 +104,20 @@ section.HomePageBackground {
 
 .jumbotron {
     height: 200px;
+    margin: 0 auto;
     font-size: 3em;
     color: white;
 }
 
 .content {
     width: 75%;
-    margin: 0 auto;
+    margin: 30px auto;
     text-align: center;
     color: white;
+}
+
+.new-item-confirm {
+    border: 2px solid #3c763d;
 }
 
 .thumbnail {
