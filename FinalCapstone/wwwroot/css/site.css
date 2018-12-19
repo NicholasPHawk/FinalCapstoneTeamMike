@@ -11,7 +11,7 @@ body {
     background-color: black;
     min-height: 1000px;
     background-size: cover;
-    
+
 }
 
 /*.center {
@@ -46,7 +46,6 @@ body.HomePageBackground {
 }
 
 section.HomePageBackground {
-    background-image: url("HomePageBackground.jpg") !important;
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -66,7 +65,7 @@ section.HomePageBackground {
     text-align: center;
     position: sticky;
     background-color: #222222;
-    border: solid 1px white;
+    border: solid 5px white;
     border-radius: 5px;
 }
 
@@ -282,7 +281,7 @@ navbar:hover:after {
 }
 
 .toolGeekTitle {
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: "bookman Old Style";
     font-size: 35px;
     color: #ff6700;
 }
