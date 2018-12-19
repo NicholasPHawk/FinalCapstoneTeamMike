@@ -22,9 +22,9 @@
                 <p><strong>Tool ID:</strong> @tool.Id</p>
                 <p><strong>Brand:</strong> @tool.Brand</p>
                 <p><strong>Tool:</strong> @tool.ToolName</p>
-                <form asp-controller="Tool" asp-action="RemoveATool" method="post">
+                <form asp-controller="Tool" asp-action="RemoveATool" onclick="return confirm('Do you really want to remove this tool?');" method="post">
                     <input type="hidden" value="@tool.Id" asp-for="@tool.Id" />
-                    <button>
+                    <button >
                         Remove
                     </button>
                 </form>
