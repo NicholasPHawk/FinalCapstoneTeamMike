@@ -40,13 +40,6 @@ namespace FinalCapstone.Controllers
             return View(tools);
         }
 
-        public IActionResult ToolDetail(int id)
-        {
-            bool isCheckedOut = _toolDal.CheckToolAvailability(id);
-            Tool tool = _toolDal.GetToolDetails(id, isCheckedOut);
-            return View(tool);
-        }
-
         [HttpGet]
         public IActionResult ToolLoanRecordSearch()
         {

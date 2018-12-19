@@ -3,11 +3,15 @@
     ViewData["Title"] = "ViewCart";
 }
 
-<div class="jumbotron caption" style="background-image: url(/images/AvailableTools.jpg); background-color: black; color: white; height: 200px;">Cart</div>
+<div class="jumbotron" style="background-image: url(/images/AvailableTools.jpg)">Cart</div>
 
 <div class="content">
-    <div class="search_thumbnail">
-        <form>
+    @if (Model.Tools.Count == 0)
+    {
+        <p class="bold">Your cart is empty.</p>
+    }
+    <div class="thumbnail centered_thumbnail">
+        <form class="form_line">
             @if (Model.Tools.Count == 0)
             {
                 <button asp-controller="Cart" asp-action="Index">
@@ -21,7 +25,7 @@
                 </button>
             }
         </form>
-        <form asp-controller="Cart" asp-action="Checkout" method="post">
+        <form asp-controller="Cart" asp-action="Checkout" method="post" class="form_line">
             <button>
                 Check Out
             </button>
@@ -31,13 +35,13 @@
     @foreach (Tool tool in Model.Tools)
     {
         <div class="col-sm-4">
-            <div class="column_thumbnail">
+            <div class="thumbnail column_thumbnail">
                 <img class="tool_image" src="~/images/@(tool.ImageName).jpg" alt="Tool Photo" />
-                <p><strong>Brand:</strong> @tool.Brand</p>
-                <p><strong>Tool:</strong> @tool.ToolName</p>
-                <p><strong>Borrower:</strong> @tool.CurrentBorrowerName</p>
-                <p><strong>Today's Date:</strong> @tool.DateBorrowed.ToString("MM/dd/yyyy")</p>
-                <p><strong>Due Date:</strong> @tool.DueDate.ToString("MM/dd/yyyy")</p>
+                <p><strong class="bold">Brand:</strong> @tool.Brand</p>
+                <p><strong class="bold">Tool:</strong> @tool.ToolName</p>
+                <p><strong class="bold">Borrower:</strong> @tool.CurrentBorrowerName</p>
+                <p><strong class="bold">Today's Date:</strong> @tool.DateBorrowed.ToString("MM/dd/yyyy")</p>
+                <p><strong class="bold">Due Date:</strong> @tool.DueDate.ToString("MM/dd/yyyy")</p>
                 <form asp-controller="Cart" asp-action="RemoveFromCart" method="post">
                     <input type="hidden" value="@tool.Id" name="id" />
                     <button>

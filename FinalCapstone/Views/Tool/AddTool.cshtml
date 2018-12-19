@@ -3,27 +3,32 @@
     ViewData["Title"] = "AddTool";
 }
 
-<div class="jumbotron caption" style="background-image: url(/images/AvailableTools.jpg); background-color: black; color: white; height: 200px;">Add A Tool</div>
+<div class="jumbotron" style="background-image: url(/images/AvailableTools.jpg)">Add A Tool</div>
 
-@if (!string.IsNullOrEmpty(Model.SuccessMessage))
-{
-    <div class="new-item-confirm alert alert-success">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>@Model.SuccessMessage</strong>
-    </div>
-}
+<div class="content">
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="new-item-confirm alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>@Model.SuccessMessage</strong>
+        </div>
+    }
 
-<div class="search_thumbnail" style="color: white;">
-    <form asp-action="AddTool" asp-controller="Tool" method="post">
-        <label asp-for="Brand">Brand:</label>
-        <input asp-for="Brand" />
-
-        <label asp-for="ToolName">Tool Name:</label>
-        <input asp-for="ToolName" />
-
-        <label asp-for="Description">Description:</label>
-        <input asp-for="Description" />
-
-        <button type="Submit">Add</button>
+    <form asp-controller="Tool" asp-action="AddTool" method="post" class="thumbnail centered_thumbnail">
+        <div class="form_line">
+            <label asp-for="Brand">Brand:</label>
+            <input asp-for="Brand" />
+        </div>
+        <div class="form_line">
+            <label asp-for="ToolName">Tool Name:</label>
+            <input asp-for="ToolName" />
+        </div>
+        <div class="form_line">
+            <label asp-for="Description">Description:</label>
+            <input asp-for="Description" />
+        </div>
+        <div class="form_line">
+            <button type="Submit">Add</button>
+        </div>
     </form>
 </div>

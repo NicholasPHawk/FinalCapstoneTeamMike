@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     bool? isLoggedIn = ViewBag.IsLoggedIn as bool?;
     if (isLoggedIn == null)
     {
@@ -58,27 +58,28 @@
                         <a asp-area="" asp-controller="Librarian" asp-action="Login">Log In</a>
                     </div>
                 }
-                else {
-                <div class="dropdown">
-                    <div class="dropbtn">
-                        Librarian Functions
-                        <i class="fa fa-caret-down"></i>
+                else
+                {
+                    <div class="dropdown">
+                        <div class="dropbtn">
+                            Librarian Functions
+                            <i class="fa fa-caret-down"></i>
+                        </div>
+                        <div class="dropdown-content">
+                            <a asp-area="" asp-controller="Tool" asp-action="ToolLoanRecordSearch">Search Loan Records</a>
+                            <a asp-area="" asp-controller="Librarian" asp-action="Register">New User</a>
+                            <a asp-area="" asp-controller="Librarian" asp-action="RegisterLibrarian">New Librarian</a>
+                            <a asp-area="" asp-controller="Cart" asp-action="Index">Check Out Tools</a>
+                            <a asp-area="" asp-controller="Tool" asp-action="AddTool">Add A Tool</a>
+                            <a asp-area="" asp-controller="Cart" asp-action="ViewCart">View Cart</a>
+                            <a asp-area="" asp-controller="Tool" asp-action="RemoveATool">Remove A Tool</a>
+                        </div>
                     </div>
-                    <div class="dropdown-content">
-                        <a asp-area="" asp-controller="Tool" asp-action="ToolLoanRecordSearch">Search Loan Records</a>
-                        <a asp-area="" asp-controller="Librarian" asp-action="Register">New User</a>
-                        <a asp-area="" asp-controller="Librarian" asp-action="RegisterLibrarian">New Librarian</a>
-                        <a asp-area="" asp-controller="Cart" asp-action="Index">Check Out Tools</a>
-                        <a asp-area="" asp-controller="Tool" asp-action="AddTool">Add A Tool</a>
-                        <a asp-area="" asp-controller="Cart" asp-action="ViewCart">View Cart</a>
-                        <a asp-area="" asp-controller="Tool" asp-action="RemoveATool">Remove A Tool</a>
-                    </div>
-                </div>
-                <div class="pushRight">
-                    <a asp-area="" asp-controller="Librarian" asp-action="Logout">Log Out</a>
+                    <div class="pushRight">
+                        <a asp-area="" asp-controller="Librarian" asp-action="Logout">Log Out</a>
 
-                </div>
-                }               
+                    </div>
+                }
             </div>
         </div>
     </nav>
@@ -87,9 +88,11 @@
         @RenderBody()
     </div>
 
-    <footer class="footer">
-        <p>&copy; 2018 - Mike's Hard</p>
-    </footer>
+    <div class="footer">
+        <footer>
+            <p>&copy; 2018 - Mike's Hard Hat</p>
+        </footer>
+    </div>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -109,7 +112,7 @@
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
-            <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
     @RenderSection("Scripts", required: false)
 </body>

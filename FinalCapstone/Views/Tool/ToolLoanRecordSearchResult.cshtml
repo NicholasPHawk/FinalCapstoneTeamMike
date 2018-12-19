@@ -3,29 +3,29 @@
     ViewData["Title"] = "ToolLoanRecordSearchResultModel";
 }
 
-<div class="jumbotron caption" style="background-image: url(/images/LoanRecords.jpg); background-color: black; color: white; height: 200px;">Loan Records</div>
+<div class="jumbotron" style="background-image: url(/images/LoanRecords.jpg)">Loan Records</div>
 
-@if (Model.Count == 0)
-{
-    <p>No results found with your search parameters.</p>
-}
-else
-{
-    <div class="content">
+<div class="content">
+    @if (Model.Count == 0)
+    {
+        <p class="bold">No results found with your search parameters.</p>
+    }
+    else
+    {
         @foreach (ToolLoanRecordSearchModel loanRecord in Model)
         {
             <div class="col-sm-4">
-                <div class="column_thumbnail">
+                <div class="thumbnail column_thumbnail">
                     <img class="tool_image" src="~/images/@(loanRecord.ImageName).jpg" alt="Tool Photo" />
-                    <p><strong>Tool Number:</strong> @loanRecord.Id</p>
-                    <p><strong>Brand:</strong> @loanRecord.Brand</p>
-                    <p><strong>Tool:</strong> @loanRecord.ToolName</p>
-                    <p><strong>Current Borrower:</strong> @loanRecord.CurrentBorrowerName</p>
-                    <p><strong>License Number:</strong> @loanRecord.LicenseNumber</p>
-                    <p><strong>Date Borrowed:</strong> @loanRecord.DateBorrowed.ToString("MM/dd/yyyy")</p>
-                    <p><strong>Due Date:</strong> @loanRecord.DueDate.ToString("MM/dd/yyyy")</p>
+                    <p><strong class="bold">Tool Number:</strong> @loanRecord.Id</p>
+                    <p><strong class="bold">Brand:</strong> @loanRecord.Brand</p>
+                    <p><strong class="bold">Tool:</strong> @loanRecord.ToolName</p>
+                    <p><strong class="bold">Current Borrower:</strong> @loanRecord.CurrentBorrowerName</p>
+                    <p><strong class="bold">License Number:</strong> @loanRecord.LicenseNumber</p>
+                    <p><strong class="bold">Date Borrowed:</strong> @loanRecord.DateBorrowed.ToString("MM/dd/yyyy")</p>
+                    <p><strong class="bold">Due Date:</strong> @loanRecord.DueDate.ToString("MM/dd/yyyy")</p>
                 </div>
             </div>
         }
-    </div>
-}
+    }
+</div>

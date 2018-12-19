@@ -3,21 +3,20 @@
     ViewData["Title"] = "Login";
 }
 
-<div class="jumbotron caption" style="background-image: url(/images/AvailableTools.jpg); background-color: black; color: white; height: 200px;">Login</div>
+<div class="jumbotron" style="background-image: url(/images/AvailableTools.jpg)">Login</div>
 
 <div class="content">
-
-    <div class="search_thumbnail">
-        <form asp-controller="Librarian" asp-action="Login" method="post">
-            <div>
-                <label asp-for="Username">Username:</label>
-                <input asp-for="Username" />
-            </div>
-            <div>
-                <label asp-for="Password">Password:</label>
-                <input asp-for="Password" />
-            </div>
+    <form asp-controller="Librarian" asp-action="Login" method="post" class="thumbnail centered_thumbnail">
+        <div class="form_line">
+            <label asp-for="Username">Username:</label>
+            <input asp-for="Username" />
+        </div>
+        <div class="form_line">
+            <label asp-for="Password">Password:</label>
+            <input asp-for="Password" />
+        </div>
+        <div class="form_line">
             <button type="submit">Log In</button>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
