@@ -3,7 +3,7 @@
     ViewData["Title"] = "AddTool";
 }
 
-<h2>Add A Tool</h2>
+<div class="jumbotron caption" style="background-image: url(/images/AvailableTools.jpg); background-color: black; color: white; height: 200px;">Add A Tool</div>
 
 @if (!string.IsNullOrEmpty(Model.SuccessMessage))
 {
@@ -13,7 +13,7 @@
     </div>
 }
 
-<div class="search_thumbnail">
+<div class="search_thumbnail" style="color: white;">
     <form asp-action="AddTool" asp-controller="Tool" method="post">
         <label asp-for="Brand">Brand:</label>
         <input asp-for="Brand" />

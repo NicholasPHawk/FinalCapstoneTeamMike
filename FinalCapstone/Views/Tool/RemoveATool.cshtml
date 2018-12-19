@@ -3,7 +3,8 @@
     ViewData["Title"] = "RemoveATool";
 }
 
-<h2>Remove A Tool</h2>
+<div class="jumbotron caption" style="background-image: url(/images/AvailableTools.jpg); background-color: black; color: white; height: 200px;">Remove A Tool</div>
+
 <div class="content">
     @if (!string.IsNullOrEmpty(Model.SuccessMessage))
     {
@@ -16,7 +17,7 @@
     @foreach (Tool tool in Model.Tools)
     {
         <div class="col-sm-4">
-            <div class="column_thumbnail">
+            <div class="column_thumbnail" style="color: white;">
                 <img class="tool_image" src="~/images/@(tool.ImageName).jpg" alt="Tool Photo" />
                 <p><strong>Tool ID:</strong> @tool.Id</p>
                 <p><strong>Brand:</strong> @tool.Brand</p>

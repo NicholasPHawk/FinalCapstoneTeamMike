@@ -11,8 +11,14 @@ body {
     background-color: black;
     min-height: 1000px;
     background-size: cover;
-
+    
 }
+
+/*.center {
+    padding: 70px 0;
+    border: 3px solid green;
+    text-align: center;
+}*/
 
 footer {
     color: white;
