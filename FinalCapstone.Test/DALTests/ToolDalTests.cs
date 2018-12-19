@@ -88,58 +88,6 @@ namespace FinalCapstone.Test.DALTests
             }
 
             [TestMethod]
-            public void CheckedInTest()
-            {
-                int toolId = 0;
-                using (SqlConnection conn = new SqlConnection(toolDBConnectionString))
-                {
-                    const string sql1 = "INSERT INTO member (member_name, drivers_license, email, member_address) VALUES ('Han Solo', 'BO085123', 'han@starmail.com', '123 Corellian St'); SELECT CAST(SCOPE_IDENTITY() as int); SELECT CAST(SCOPE_IDENTITY() as int);";
-
-                    var cmd = conn.CreateCommand();
-                    cmd.CommandText = sql1;
-
-                    conn.Open();
-                    int memberId = (int)cmd.ExecuteScalar();
-
-                    const string sql2 =
-                       @"INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand2', 'TestTool2', 'Fake Description2', 0, @current_borrower, '2018-12-11', '2018-12-18'); SELECT CAST(SCOPE_IDENTITY() as int);";
-
-                    cmd = conn.CreateCommand();
-                    cmd.CommandText = sql2;
-                    cmd.Parameters.AddWithValue("@current_borrower", memberId);
-
-                    toolId = (int)cmd.ExecuteScalar();
-                }
-                Assert.IsFalse(_toolDal.CheckToolAvailability(toolId));
-            }
-
-            [TestMethod]
-            public void CheckedOutTest()
-            {
-                int toolId = 0;
-                using (SqlConnection conn = new SqlConnection(toolDBConnectionString))
-                {
-                    const string sql1 = "INSERT INTO member (member_name, drivers_license, email, member_address) VALUES ('Han Solo', 'BO085123', 'han@starmail.com', '123 Corellian St'); SELECT CAST(SCOPE_IDENTITY() as int); SELECT CAST(SCOPE_IDENTITY() as int);";
-
-                    var cmd = conn.CreateCommand();
-                    cmd.CommandText = sql1;
-
-                    conn.Open();
-                    int memberId = (int)cmd.ExecuteScalar();
-
-                    const string sql2 =
-                       @"INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand2', 'TestTool2', 'Fake Description2', 1, @current_borrower, '2018-12-11', '2018-12-18'); SELECT CAST(SCOPE_IDENTITY() as int);";
-
-                    cmd = conn.CreateCommand();
-                    cmd.CommandText = sql2;
-                    cmd.Parameters.AddWithValue("@current_borrower", memberId);
-
-                    toolId = (int)cmd.ExecuteScalar();
-                }
-                Assert.IsTrue(_toolDal.CheckToolAvailability(toolId));
-            }
-
-            [TestMethod]
             public void GetDetailsTest()
             {
                 int toolId = 0;

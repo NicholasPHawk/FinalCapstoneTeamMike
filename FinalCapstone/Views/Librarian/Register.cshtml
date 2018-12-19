@@ -3,37 +3,36 @@
     ViewData["Title"] = "RegisterUser";
 }
 
-<div class="jumbotron caption" style="background-image: url(/images/AvailableTools.jpg); background-color: black; color: white; height: 200px;">Register A New User</div>
+<div class="jumbotron" style="background-image: url(/images/AvailableTools.jpg)">Register A New User</div>
 
 <div class="content">
-
-    <div class="search_thumbnail">
-        <form asp-controller="Librarian" asp-action="Register" novalidation method="post">
-            <div>
-                <label asp-for="Email">Email:</label>
-                <input asp-for="Email" />
-                <span asp-validation-for="Email" class="dangertext"></span>
-            </div>
-            <div>
-                <label asp-for="Name">Name:</label>
-                <input asp-for="Name" />
-                <span asp-validation-for="Name" class="dangertext"></span>
-            </div>
-            <div>
-                <label asp-for="DriversLicense">Drivers License Number:</label>
-                <input asp-for="DriversLicense" />
-                <span asp-validation-for="DriversLicense" class="dangertext"></span>
-            </div>
-            <div>
-                <label asp-for="Address">Address:</label>
-                <input asp-for="Address" />
-                <span asp-validation-for="Address" class="dangertext"></span>
-            </div>
+    <form asp-controller="Librarian" asp-action="Register" novalidation method="post" class="thumbnail centered_thumbnail">
+        <div class="form_line">
+            <label asp-for="Email">Email:</label>
+            <input asp-for="Email" />
+            <span asp-validation-for="Email" class="dangertext"></span>
+        </div>
+        <div class="form_line">
+            <label asp-for="Name">Name:</label>
+            <input asp-for="Name" />
+            <span asp-validation-for="Name" class="dangertext"></span>
+        </div>
+        <div class="form_line">
+            <label asp-for="DriversLicense">Drivers License Number:</label>
+            <input asp-for="DriversLicense" />
+            <span asp-validation-for="DriversLicense" class="dangertext"></span>
+        </div>
+        <div class="form_line">
+            <label asp-for="Address">Address:</label>
+            <input asp-for="Address" />
+            <span asp-validation-for="Address" class="dangertext"></span>
+        </div>
+        <div class="form_line">
             <button type="submit">Register User</button>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
 
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

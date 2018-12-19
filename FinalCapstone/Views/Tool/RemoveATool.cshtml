@@ -3,7 +3,7 @@
     ViewData["Title"] = "RemoveATool";
 }
 
-<div class="jumbotron caption" style="background-image: url(/images/AvailableTools.jpg); background-color: black; color: white; height: 200px;">Remove A Tool</div>
+<div class="jumbotron" style="background-image: url(/images/AvailableTools.jpg)">Remove A Tool</div>
 
 <div class="content">
     @if (!string.IsNullOrEmpty(Model.SuccessMessage))
@@ -17,12 +17,12 @@
     @foreach (Tool tool in Model.Tools)
     {
         <div class="col-sm-4">
-            <div class="column_thumbnail" style="color: white;">
+            <div class="thumbnail column_thumbnail">
                 <img class="tool_image" src="~/images/@(tool.ImageName).jpg" alt="Tool Photo" />
-                <p><strong>Tool ID:</strong> @tool.Id</p>
-                <p><strong>Brand:</strong> @tool.Brand</p>
-                <p><strong>Tool:</strong> @tool.ToolName</p>
-                <form asp-controller="Tool" asp-action="RemoveATool" method="post">
+                <p><strong class="bold">Tool ID:</strong> @tool.Id</p>
+                <p><strong class="bold">Brand:</strong> @tool.Brand</p>
+                <p><strong class="bold">Tool:</strong> @tool.ToolName</p>
+                <form asp-controller="Tool" asp-action="RemoveATool" onclick="return confirm('Do you really want to remove this tool?');" method="post">
                     <input type="hidden" value="@tool.Id" asp-for="@tool.Id" />
                     <button>
                         Remove

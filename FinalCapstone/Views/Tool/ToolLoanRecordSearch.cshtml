@@ -1,25 +1,22 @@
 ﻿@model ToolLoanRecordSearchModel
-
 @{
     ViewData["Title"] = "ToolLoanRecordSearch";
 }
 
-<div class="jumbotron caption" style="background-image: url(/images/LoanRecords.jpg); background-color: black; color: white; height: 200px;">Loan Records</div>
+<div class="jumbotron" style="background-image: url(/images/LoanRecords.jpg)">Loan Records</div>
 
 <div class="content">
-    <form asp-controller="Tool" asp-action="ToolLoanRecordSearch" method="post" class="search_thumbnail">
-        <div>
-            <div class="search">
-                <label asp-for="SearchType">Search</label>
-                <select asp-for="SearchType" asp-items="ToolLoanRecordSearchModel.SearchOptions"></select>
-            </div>
-            <div class="search">
-                <label asp-for="SearchString">For</label>
-                <input asp-for="SearchString"/>
-            </div>
-            <div class="search">
-                <button type="submit">Submit</button>
-            </div>
+    <form asp-controller="Tool" asp-action="ToolLoanRecordSearch" method="post" class="thumbnail centered_thumbnail">
+        <div class="form_line">
+            <label asp-for="SearchType">Search</label>
+            <select asp-for="SearchType" asp-items="ToolLoanRecordSearchModel.SearchOptions"></select>
+        </div>
+        <div class="form_line">
+            <label asp-for="SearchString">For</label>
+            <input asp-for="SearchString" />
+        </div>
+        <div class="form_line">
+            <button type="submit">Submit</button>
         </div>
     </form>
 </div>

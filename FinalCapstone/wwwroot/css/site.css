@@ -11,7 +11,7 @@ body {
     background-color: black;
     min-height: 1000px;
     background-size: cover;
-
+    position: relative;
 }
 
 /*.center {
@@ -20,12 +20,15 @@ body {
     text-align: center;
 }*/
 
-footer {
-    color: white;
-    position: sticky;
+.footer {
+    position: absolute;
     bottom: 0;
     width: 100%;
-    height: 25px;
+    padding: 10px 0 0 10px;
+    color: white;
+    border-top: 2px solid #392613;
+    background-color: #604020;
+    opacity: 0.8;
 }
 
 body.HomePageBackground {
@@ -35,9 +38,8 @@ body.HomePageBackground {
     background-size: cover;
 }
 
-
 body.HomePageBackground {
-    height: 100%;   
+    height: 100%;
     margin: 0;
     background-image: url("HomePageBackground.jpg") !important;
     background-position: center;
@@ -76,9 +78,7 @@ section.HomePageBackground {
 }
 /*=======================================*/
 .body-content {
-    margin-top: 30px;
-    padding-left: 15px;
-    padding-right: 15px;
+    margin: 30px 0;
 }
 
 .carousel-caption p {
@@ -100,58 +100,40 @@ section.HomePageBackground {
     }
 }
 
-.caption {
+/* >>>>>> SELECTORS USED INSIDE body-content DIV*/
+
+.jumbotron {
+    height: 200px;
     font-size: 3em;
+    color: white;
 }
 
 .content {
     width: 75%;
     margin: 0 auto;
+    text-align: center;
     color: white;
+}
+
+.thumbnail {
+    border: 2px solid #392613;
+    background-color: #604020;
+    opacity: 0.8;
 }
 
 .column_thumbnail {
-    min-height: 375px;
     margin: 20px auto;
     padding: 20px;
-    border: 2px solid #392613;
     border-radius: 5%;
-    text-align: center;
-    background-color: #604020;
-    opacity: 0.8;
-    color: white;
+    min-height: 400px;
 }
 
-    .column_thumbnail select {
-        color: black;
-    }
-
-.search_thumbnail {
-    margin: 0px auto;
+.centered_thumbnail {
+    margin: 0 auto;
     padding: 10px 0;
-    border: 2px solid #392613;
     border-radius: 5px;
-    text-align: center;
-    background-color: #604020;
     width: 50%;
-    min-width: 300px;
-    opacity: 0.8;
-}
-
-.search {
-    margin: 10px 0;
-}
-
-label {
-    padding-right: 10px;
-}
-
-.search_thumbnail select {
-    color: black;
-}
-
-.search_thumbnail input {
-    color: black;
+    min-width: 400px;
 }
 
 .tool_image {
@@ -161,6 +143,22 @@ label {
     border: 2px solid #392613;
     border-radius: 8%;
     margin-bottom: 20px;
+}
+
+.bold {
+    font-size: 1.1em;
+}
+
+.form_line {
+    margin: 15px 0;
+}
+
+label {
+    padding-right: 10px;
+}
+
+.thumbnail select, .thumbnail input {
+    color: black;
 }
 
 button {
@@ -174,84 +172,70 @@ button {
     margin-top: 5px;
 }
 
-button:focus {
-    outline: none;
-}
+    button:focus {
+        outline: none;
+    }
 
-button:before {
-    content: '';
-    display: block;
-    position: relative;
-    height: 100%;
-    left: 0;
-    top: 0;
-    opacity: .5;
-    filter: blur(30px);
-    transform: translateX(-130px) skewX(-15deg);
-}
+    button:before {
+        content: '';
+        display: block;
+        position: relative;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: .5;
+        filter: blur(30px);
+        transform: translateX(-130px) skewX(-15deg);
+    }
 
-button:after {
-    content: '';
-    display: block;
-    position: relative;
-    background: #4CAF50;
-    color: white;
-    width: 30px;
-    height: 100%;
-    left: 30px;
-    top: 0;
-    opacity: 0;
-    filter: blur(30px);
-    transform: translateX(-100px) scaleX(-15deg);
-}
+    button:after {
+        content: '';
+        display: block;
+        position: relative;
+        background: #4CAF50;
+        color: white;
+        width: 30px;
+        height: 100%;
+        left: 30px;
+        top: 0;
+        opacity: 0;
+        filter: blur(30px);
+        transform: translateX(-100px) scaleX(-15deg);
+    }
 
-button:hover {
-background: #4CAF50;
-color: white;
-cursor: pointer;
-}
+    button:hover {
+        background: #4CAF50;
+        color: white;
+        cursor: pointer;
+    }
 
-button:hover:before {
-    transform: translateX(300px) skewX(-15deg);
-    opacity: .6;
-    transition: .7s;
-}
+        button:hover:before {
+            transform: translateX(300px) skewX(-15deg);
+            opacity: .6;
+            transition: .7s;
+        }
 
-button:hover:after {
-    transform: translateX(300px) skewX(-15deg);
-    opacity: .1;
-    transition: .7s;
-}
+        button:hover:after {
+            transform: translateX(300px) skewX(-15deg);
+            opacity: .1;
+            transition: .7s;
+        }
 
-.new-item-confirm {
-    margin: 10px 0;
-    border: 2px solid #392613;
-    border-radius: 5px;
-    text-align: center;
-    color: white;
-    background-color: #604020;
-    opacity: 0.8;
-}
+/* <<<<<< SELECTORS USED INSIDE body-content DIV*/
 
 /*==========*/
 
 
-.CenterTextContainer {
+.CenterTextContainer { /*This class isn't currently being used anywhere*/
     position: relative;
 }
 
-.centerImageText {
+.centerImageText { /*This class isn't currently being used anywhere*/
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 18px;
-}
-
-.jumbotron {
-    background: url(/images/welding.jpg) center center no-repeat;
-    height: 300px;
-    width: 100%;
 }
 
 .navbar {
@@ -305,10 +289,10 @@ section {
     text-decoration: none;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: #ff6700;
-    transition: 0.5s;
-}
+    .navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: #ff6700;
+        transition: 0.5s;
+    }
 
 .dropbtn {
     background-color: none;
@@ -333,18 +317,18 @@ section {
     opacity: 1;
 }
 
-.dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    width: 100%;
-}
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+    }
 
-.dropdown-content a:hover {
-    transition: 0.5s;
-    background-color: #444;
-}
+        .dropdown-content a:hover {
+            transition: 0.5s;
+            background-color: #444;
+        }
 
 .dropdown:hover .dropdown-content {
     display: block;
@@ -357,6 +341,3 @@ section {
 .pushRight {
     float: right;
 }
-
-
-

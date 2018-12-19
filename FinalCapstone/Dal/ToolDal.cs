@@ -27,22 +27,6 @@ namespace FinalCapstone.Dal
             return GetAllTools(checkedOut).FirstOrDefault(t => t.Id == id);
         }
 
-        public bool CheckToolAvailability(int id)
-        {
-            bool checkedOut = false;
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT checked_out FROM tool WHERE id = @id;", conn);
-                cmd.Parameters.AddWithValue("@id", id);
-
-                checkedOut = (bool)cmd.ExecuteScalar();
-            }
-
-            return checkedOut;
-        }
-
         public IList<Tool> GetAllTools(bool checkedOut)
         {
             IList<Tool> tools = new List<Tool>();
