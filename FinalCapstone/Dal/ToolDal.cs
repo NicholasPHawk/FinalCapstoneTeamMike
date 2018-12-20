@@ -1,6 +1,4 @@
-﻿
-using FinalCapstone.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using FinalCapstone.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;

@@ -1,8 +1,5 @@
 ﻿using FinalCapstone.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FinalCapstone.Dal
 {
@@ -14,8 +11,8 @@ namespace FinalCapstone.Dal
         IList<User> GetUsers();
         bool ChangeCheckedOutStatus(int id, bool checkedOut);
         bool CheckOut(Cart cart);
-        void RemoveATool(Tool tool);
         IList<Tool> RemoveAToolList();
+        void RemoveATool(Tool tool);
         bool AddTool(Tool tool);
     }
 }

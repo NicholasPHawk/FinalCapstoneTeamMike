@@ -14,12 +14,6 @@ body {
     position: relative;
 }
 
-/*.center {
-    padding: 70px 0;
-    border: 3px solid green;
-    text-align: center;
-}*/
-
 .footer {
     position: absolute;
     bottom: 0;
@@ -77,6 +71,7 @@ section.HomePageBackground {
     min-height: 100%
 }
 /*=======================================*/
+<<<<<<< HEAD
 .body-content {
     margin: 30px auto;
 }
@@ -85,34 +80,31 @@ section.HomePageBackground {
     font-size: 20px;
     line-height: 1.4;
 }
+=======
+>>>>>>> f53fdb4e6f6b96b3837d0c4fadb68666c9d3da9b
 
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-
-#qrCode {
-    margin: 15px;
-}
-
-@media screen and (max-width: 767px) {
-    .carousel-caption {
-        display: none;
-    }
+.body-content {
+    margin: 30px auto;
 }
 
 /* >>>>>> SELECTORS USED INSIDE body-content DIV*/
 
 .jumbotron {
     height: 200px;
+    margin: 0 auto;
     font-size: 3em;
     color: white;
 }
 
 .content {
     width: 75%;
-    margin: 0 auto;
+    margin: 30px auto;
     text-align: center;
     color: white;
+}
+
+.new-item-confirm {
+    border: 2px solid #3c763d;
 }
 
 .thumbnail {
@@ -224,19 +216,6 @@ button {
 /* <<<<<< SELECTORS USED INSIDE body-content DIV*/
 
 /*==========*/
-
-
-.CenterTextContainer { /*This class isn't currently being used anywhere*/
-    position: relative;
-}
-
-.centerImageText { /*This class isn't currently being used anywhere*/
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 18px;
-}
 
 .navbar {
     height: 54px;
