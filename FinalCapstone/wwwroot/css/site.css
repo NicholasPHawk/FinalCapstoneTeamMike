@@ -14,12 +14,6 @@ body {
     position: relative;
 }
 
-/*.center {
-    padding: 70px 0;
-    border: 3px solid green;
-    text-align: center;
-}*/
-
 .footer {
     position: absolute;
     bottom: 0;
@@ -77,6 +71,7 @@ section.HomePageBackground {
     min-height: 100%
 }
 /*=======================================*/
+<<<<<<< HEAD
 .body-content {
     margin: 30px auto;
 }
@@ -86,18 +81,9 @@ section.HomePageBackground {
     line-height: 1.4;
 }
 
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
 
-#qrCode {
-    margin: 15px;
-}
-
-@media screen and (max-width: 767px) {
-    .carousel-caption {
-        display: none;
-    }
+.body-content {
+    margin: 30px auto;
 }
 
 /* >>>>>> SELECTORS USED INSIDE body-content DIV*/
@@ -229,19 +215,6 @@ button {
 /* <<<<<< SELECTORS USED INSIDE body-content DIV*/
 
 /*==========*/
-
-
-.CenterTextContainer { /*This class isn't currently being used anywhere*/
-    position: relative;
-}
-
-.centerImageText { /*This class isn't currently being used anywhere*/
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 18px;
-}
 
 .navbar {
     height: 54px;

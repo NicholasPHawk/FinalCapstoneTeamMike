@@ -1,12 +1,10 @@
 ﻿using FinalCapstone.Dal;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Data.SqlClient;
-using System.Linq;
 using FinalCapstone.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Transactions;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace FinalCapstone.Test.DALTests
 {
@@ -171,7 +169,7 @@ namespace FinalCapstone.Test.DALTests
                     cmd.Parameters.AddWithValue("@current_borrower", memberId);
                     cmd.Parameters.AddWithValue("@id", tool1Id);
 
-                    cmd.ExecuteNonQuery();              
+                    cmd.ExecuteNonQuery();
                 }
 
                 Assert.AreEqual("TestTool1", _toolDal.GetTools(true)[0].ToolName);
@@ -192,7 +190,7 @@ namespace FinalCapstone.Test.DALTests
                     SqlCommand cmd = new SqlCommand("INSERT INTO member (member_name, drivers_license, email, member_address) VALUES ('Fake Member_1', 'ABC1234', 'fake_member_1@techelevator.com', '1275 Kinnear Road');" +
                         "SELECT CAST(SCOPE_IDENTITY() as int);", conn);
                     member1Id = (int)cmd.ExecuteScalar();
-                   
+
                     cmd = new SqlCommand("INSERT INTO member (member_name, drivers_license, email, member_address) VALUES ('Fake Member_2', 'DEF5678', 'fake_member_2@techelevator.com', '1275 Kinnear Road');", conn);
 
                     cmd.ExecuteNonQuery();
@@ -246,6 +244,54 @@ namespace FinalCapstone.Test.DALTests
                 Assert.IsTrue(_toolDal.CheckOut(cart));
                 _toolDal.CheckOut(cart);
                 Assert.AreEqual(member1Id, _toolDal.GetTools(true)[0].CurrentBorrowerId);
+            }
+
+            [TestMethod]
+            public void RemoveAToolTest()
+            {
+                Tool tool1 = new Tool();
+                using (SqlConnection conn = new SqlConnection(toolDBConnectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO tool(brand, tool_name, description, checked_out) VALUES('fakeBrand1', 'TestTool1', 'Fake Description1', 0);" +
+                        "SELECT CAST(SCOPE_IDENTITY() as int);", conn);
+
+                    int tool1Id = (int)cmd.ExecuteScalar();
+
+                    tool1.Id = tool1Id;
+                    tool1.Brand = "fakeBrand1";
+                    tool1.ToolName = "TestTool1";
+                    tool1.Description = "Fake Description1";
+                    tool1.CheckedOut = false;
+                }
+                Assert.IsTrue(_toolDal.RemoveATool(tool1));
+            }
+
+            [TestMethod]
+            public void AddToolTest()
+            {
+                Tool tool = new Tool();
+                tool.Brand = "NO";
+                tool.ToolName = "ONE";
+                tool.Description = "CARES";
+                tool.CheckedOut = false;
+
+                Assert.IsTrue(_toolDal.AddTool(tool));
+            }
+
+            [TestMethod]
+            public void RemoveAToolListTest()
+            {
+                IList<Tool> tools = new List<Tool>();
+                using (SqlConnection conn = new SqlConnection(toolDBConnectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO tool(brand, tool_name, description, checked_out) VALUES('fakeBrand', 'TestTool', 'Fake Description', 0);", conn);
+                    cmd.ExecuteNonQuery();
+                }
+                tools = _toolDal.RemoveAToolList();
+
+                Assert.AreEqual(1, tools.Count);
             }
         }
     }

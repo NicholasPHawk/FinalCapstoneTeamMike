@@ -1,9 +1,6 @@
 ﻿using FinalCapstone.Models;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FinalCapstone.Dal
 {
@@ -75,7 +72,7 @@ namespace FinalCapstone.Dal
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO librarian (username, password_value, salt) VALUES (@username, @password_value,  @salt)", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO librarian (username, password_value, salt) VALUES (@username, @password_value, @salt)", conn);
                     cmd.Parameters.AddWithValue("@username", librarian.Username);
                     cmd.Parameters.AddWithValue("@password_value", librarian.Password);
                     cmd.Parameters.AddWithValue("@salt", librarian.Salt);
