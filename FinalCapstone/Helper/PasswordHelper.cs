@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Web;
 using FinalCapstone.Models;
 
 namespace FinalCapstone.Helper
@@ -13,7 +10,7 @@ namespace FinalCapstone.Helper
 
         public string GenerateSHA256Hash(string password, Librarian librarian)
         {
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(password + librarian.Salt);
+            byte[] bytes = Encoding.UTF8.GetBytes(password + librarian.Salt);
             var sha256HashString = new System.Security.Cryptography.SHA256Managed();
             byte[] hash = sha256HashString.ComputeHash(bytes);
 
@@ -41,7 +38,7 @@ namespace FinalCapstone.Helper
         {
             bool match = false;
 
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(logIn.Password + librarian.Salt);
+            byte[] bytes = Encoding.UTF8.GetBytes(logIn.Password + librarian.Salt);
             var sha256HashString = new System.Security.Cryptography.SHA256Managed();
             byte[] hash = sha256HashString.ComputeHash(bytes);
             var hashedPassword = ByteArrayToHexString(hash);

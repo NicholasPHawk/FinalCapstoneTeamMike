@@ -1,12 +1,10 @@
 ﻿using FinalCapstone.Dal;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Data.SqlClient;
-using System.Linq;
 using FinalCapstone.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Transactions;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace FinalCapstone.Test.DALTests
 {
@@ -45,9 +43,9 @@ namespace FinalCapstone.Test.DALTests
                     int memberId = (int)cmd.ExecuteScalar();
 
                     const string sql2 =
-                       @"INSERT INTO tool (brand, tool_name, description, checked_out) VALUES ('fakeBrand1', 'TestTool1', 'Fake Description1', 0);
-                         INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand2', 'TestTool2', 'Fake Description2', 1, @current_borrower, '2018-12-11', '2018-12-18');
-                         INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand3', 'TestTool3', 'Fake Description3', 1, @current_borrower, '2018-12-11', '2018-12-18');";
+                       @"INSERT INTO tool (brand, tool_name, description, checked_out, image_name) VALUES ('fakeBrand1', 'TestTool1', 'Fake Description1', 0, 'Fake Image1');
+                         INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date, image_name) VALUES ('fakeBrand2', 'TestTool2', 'Fake Description2', 1, @current_borrower, '2018-12-11', '2018-12-18', 'Fake Image2');
+                         INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date, image_name) VALUES ('fakeBrand3', 'TestTool3', 'Fake Description3', 1, @current_borrower, '2018-12-11', '2018-12-18', 'Fake Image3');";
 
                     cmd = conn.CreateCommand();
                     cmd.CommandText = sql2;
@@ -73,9 +71,9 @@ namespace FinalCapstone.Test.DALTests
                     int memberId = (int)cmd.ExecuteScalar();
 
                     const string sql2 =
-                       @"INSERT INTO tool (brand, tool_name, description, checked_out) VALUES ('fakeBrand1', 'TestTool1', 'Fake Description1', 0);
-                         INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand2', 'TestTool2', 'Fake Description2', 1, @current_borrower, '2018-12-11', '2018-12-18');
-                         INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand3', 'TestTool3', 'Fake Description3', 1, @current_borrower, '2018-12-11', '2018-12-18');";
+                       @"INSERT INTO tool (brand, tool_name, description, checked_out, image_name) VALUES ('fakeBrand1', 'TestTool1', 'Fake Description1', 0, 'Fake Image1');
+                         INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date, image_name) VALUES ('fakeBrand2', 'TestTool2', 'Fake Description2', 1, @current_borrower, '2018-12-11', '2018-12-18', 'Fake Image2');
+                         INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date, image_name) VALUES ('fakeBrand3', 'TestTool3', 'Fake Description3', 1, @current_borrower, '2018-12-11', '2018-12-18', 'Fake Image3');";
 
                     cmd = conn.CreateCommand();
                     cmd.CommandText = sql2;
@@ -102,7 +100,7 @@ namespace FinalCapstone.Test.DALTests
                     int memberId = (int)cmd.ExecuteScalar();
 
                     const string sql2 =
-                       @"INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES ('fakeBrand2', 'TestTool2', 'Fake Description2', 0, @current_borrower, '2018-12-11', '2018-12-18'); SELECT CAST(SCOPE_IDENTITY() as int);";
+                       @"INSERT INTO tool (brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date, image_name) VALUES ('fakeBrand2', 'TestTool2', 'Fake Description2', 0, @current_borrower, '2018-12-11', '2018-12-18', 'Fake Image2'); SELECT CAST(SCOPE_IDENTITY() as int);";
 
                     cmd = conn.CreateCommand();
                     cmd.CommandText = sql2;
@@ -148,12 +146,12 @@ namespace FinalCapstone.Test.DALTests
 
                     memberId = (int)cmd.ExecuteScalar();
 
-                    cmd = new SqlCommand("INSERT INTO tool(brand, tool_name, description, checked_out) VALUES('fakeBrand1', 'TestTool1', 'Fake Description1', 0);" +
+                    cmd = new SqlCommand("INSERT INTO tool(brand, tool_name, description, checked_out, image_name) VALUES('fakeBrand1', 'TestTool1', 'Fake Description1', 0, 'Fake Image1');" +
                         "SELECT CAST(SCOPE_IDENTITY() as int);", conn);
 
                     tool1Id = (int)cmd.ExecuteScalar();
 
-                    cmd = new SqlCommand("INSERT INTO tool(brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date) VALUES('fakeBrand2', 'TestTool2', 'Fake Description2', 1, @current_borrower, '2018-12-11', '2018-12-18');" +
+                    cmd = new SqlCommand("INSERT INTO tool(brand, tool_name, description, checked_out, current_borrower, date_borrowed, due_date, image_name) VALUES('fakeBrand2', 'TestTool2', 'Fake Description2', 1, @current_borrower, '2018-12-11', '2018-12-18', 'Fake Image2');" +
                         "SELECT CAST(SCOPE_IDENTITY() as int);", conn);
                     cmd.Parameters.AddWithValue("@current_borrower", memberId);
 
@@ -171,7 +169,7 @@ namespace FinalCapstone.Test.DALTests
                     cmd.Parameters.AddWithValue("@current_borrower", memberId);
                     cmd.Parameters.AddWithValue("@id", tool1Id);
 
-                    cmd.ExecuteNonQuery();              
+                    cmd.ExecuteNonQuery();
                 }
 
                 Assert.AreEqual("TestTool1", _toolDal.GetTools(true)[0].ToolName);
@@ -192,17 +190,17 @@ namespace FinalCapstone.Test.DALTests
                     SqlCommand cmd = new SqlCommand("INSERT INTO member (member_name, drivers_license, email, member_address) VALUES ('Fake Member_1', 'ABC1234', 'fake_member_1@techelevator.com', '1275 Kinnear Road');" +
                         "SELECT CAST(SCOPE_IDENTITY() as int);", conn);
                     member1Id = (int)cmd.ExecuteScalar();
-                   
+
                     cmd = new SqlCommand("INSERT INTO member (member_name, drivers_license, email, member_address) VALUES ('Fake Member_2', 'DEF5678', 'fake_member_2@techelevator.com', '1275 Kinnear Road');", conn);
 
                     cmd.ExecuteNonQuery();
 
-                    cmd = new SqlCommand("INSERT INTO tool(brand, tool_name, description, checked_out) VALUES('fakeBrand1', 'TestTool1', 'Fake Description1', 1);" +
+                    cmd = new SqlCommand("INSERT INTO tool(brand, tool_name, description, checked_out, image_name) VALUES('fakeBrand1', 'TestTool1', 'Fake Description1', 1, 'Fake Image1');" +
                         "SELECT CAST(SCOPE_IDENTITY() as int);", conn);
 
                     tool1Id = (int)cmd.ExecuteScalar();
 
-                    cmd = new SqlCommand("INSERT INTO tool(brand, tool_name, description, checked_out) VALUES('fakeBrand2', 'TestTool2', 'Fake Description2', 1);" +
+                    cmd = new SqlCommand("INSERT INTO tool(brand, tool_name, description, checked_out, image_name) VALUES('fakeBrand2', 'TestTool2', 'Fake Description2', 1, 'Fake Image2');" +
                         "SELECT CAST(SCOPE_IDENTITY() as int);", conn);
 
                     tool2Id = (int)cmd.ExecuteScalar();
@@ -217,7 +215,8 @@ namespace FinalCapstone.Test.DALTests
                     CheckedOut = true,
                     CurrentBorrowerName = "Fake Member_1",
                     DateBorrowed = DateTime.Now,
-                    DueDate = DateTime.Now.AddDays(7)
+                    DueDate = DateTime.Now.AddDays(7),
+                    ImageName = "Fake Image1"
                 };
 
                 Tool tool2 = new Tool
@@ -229,7 +228,8 @@ namespace FinalCapstone.Test.DALTests
                     CheckedOut = true,
                     CurrentBorrowerName = "Fake Member_2",
                     DateBorrowed = DateTime.Now,
-                    DueDate = DateTime.Now.AddDays(7)
+                    DueDate = DateTime.Now.AddDays(7),
+                    ImageName = "Fake Image2"
                 };
 
                 IList<Tool> tools = new List<Tool>
@@ -246,6 +246,56 @@ namespace FinalCapstone.Test.DALTests
                 Assert.IsTrue(_toolDal.CheckOut(cart));
                 _toolDal.CheckOut(cart);
                 Assert.AreEqual(member1Id, _toolDal.GetTools(true)[0].CurrentBorrowerId);
+            }
+
+            [TestMethod]
+            public void RemoveAToolTest()
+            {
+                Tool tool1 = new Tool();
+                using (SqlConnection conn = new SqlConnection(toolDBConnectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO tool(brand, tool_name, description, checked_out, image_name) VALUES('fakeBrand1', 'TestTool1', 'Fake Description1', 0, 'Fake Image1');" +
+                        "SELECT CAST(SCOPE_IDENTITY() as int);", conn);
+
+                    int tool1Id = (int)cmd.ExecuteScalar();
+
+                    tool1.Id = tool1Id;
+                    tool1.Brand = "fakeBrand1";
+                    tool1.ToolName = "TestTool1";
+                    tool1.Description = "Fake Description1";
+                    tool1.CheckedOut = false;
+                    tool1.ImageName = "Fake Image1";
+                }
+                Assert.IsTrue(_toolDal.RemoveATool(tool1));
+            }
+
+            [TestMethod]
+            public void AddToolTest()
+            {
+                Tool tool = new Tool();
+                tool.Brand = "NO";
+                tool.ToolName = "ONE";
+                tool.Description = "CARES";
+                tool.CheckedOut = false;
+                tool.ImageName = "Fake Image";
+
+                Assert.IsTrue(_toolDal.AddTool(tool));
+            }
+
+            [TestMethod]
+            public void RemoveAToolListTest()
+            {
+                IList<Tool> tools = new List<Tool>();
+                using (SqlConnection conn = new SqlConnection(toolDBConnectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO tool(brand, tool_name, description, checked_out, image_name) VALUES('fakeBrand', 'TestTool', 'Fake Description', 0, 'Fake Image');", conn);
+                    cmd.ExecuteNonQuery();
+                }
+                tools = _toolDal.RemoveAToolList();
+
+                Assert.AreEqual(1, tools.Count);
             }
         }
     }

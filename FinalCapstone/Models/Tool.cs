@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Threading.Tasks;
 
 namespace FinalCapstone.Models
 {
@@ -17,12 +13,6 @@ namespace FinalCapstone.Models
         public int CurrentBorrowerId { get; set; }
         public DateTime DateBorrowed { get; set; }
         public DateTime DueDate { get; set; }
-        public string ImageName
-        {
-            get
-            {
-                return Brand + ToolName;
-            }
-        }
+        public string ImageName { get; set; }
     }
 }
