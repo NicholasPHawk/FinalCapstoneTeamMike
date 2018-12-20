@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FinalCapstone.Dal;
+﻿using FinalCapstone.Dal;
 using FinalCapstone.Models;
 using Microsoft.AspNetCore.Mvc;
 using FinalCapstone.Helper;
-using System.Web;
 using System.Text.RegularExpressions;
 using FinalCapstone.Extensions;
 
@@ -33,7 +28,7 @@ namespace FinalCapstone.Controllers
         [HttpPost]
         public IActionResult Login(LoginViewModel model)
         {
-            var user = _librarianDal.GetLibrarian(model.Username);
+            Librarian user = _librarianDal.GetLibrarian(model.Username);
 
             if (user == null)
             {
@@ -162,7 +157,7 @@ namespace FinalCapstone.Controllers
         /// "Logs" the current user in
         public void LogLibrarianIn(string username)
         {
-            HttpContext.Session.Set<string>("Tool_Geek_UserName", username);
+            HttpContext.Session.Set("Tool_Geek_UserName", username);
         }
 
         /// "Logs out" a user by removing the cookie.

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using FinalCapstone.Dal;
 using Microsoft.AspNetCore.Mvc;
 using FinalCapstone.Models;
@@ -100,10 +97,12 @@ namespace FinalCapstone.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+
             AddToolViewModel model = new AddToolViewModel
             {
                 SuccessMessage = TempData[ConfirmationKey] as string
             };
+
             ViewBag.IsLoggedIn = IsAuthenticated;
             return View(model);
         }

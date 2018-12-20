@@ -5,8 +5,6 @@ using System.Linq;
 using FinalCapstone.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Transactions;
 
 namespace FinalCapstone.Test.DALTests
 {
