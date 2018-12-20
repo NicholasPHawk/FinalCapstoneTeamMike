@@ -33,7 +33,8 @@ namespace FinalCapstone.Controllers
                 return View("Login", model);
             }
 
-            var user = _librarianDal.GetLibrarian(model.Username);
+            Librarian user = _librarianDal.GetLibrarian(model.Username);
+
 
             if (user == null)
             {
