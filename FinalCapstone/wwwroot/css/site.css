@@ -78,7 +78,7 @@ section.HomePageBackground {
 }
 /*=======================================*/
 .body-content {
-    margin: 30px 0;
+    margin: 30px auto;
 }
 
 .carousel-caption p {

@@ -33,6 +33,11 @@ namespace FinalCapstone.Controllers
         [HttpPost]
         public IActionResult Login(LoginViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Login", model);
+            }
+
             var user = _librarianDal.GetLibrarian(model.Username);
 
             if (user == null)
@@ -40,7 +45,7 @@ namespace FinalCapstone.Controllers
                 ModelState.AddModelError("invalid-user", "Invalid username or password");
                 return View("Login");
             }
-            //else if (user.Password != model.Password)
+
             else if(!passwordHelper.ValidateHash(model, user))
             {
                 ModelState.AddModelError("invalid-password", "Invalid username or password");
@@ -99,34 +104,6 @@ namespace FinalCapstone.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("RegisterLibrarian", model);
-            }
-
-            if (!Regex.IsMatch(model.Password, @"(?=.*[a-z])[a-z]{1,}"))
-            {
-                model.ErrorMessage = "Missing a lower case letter.";
-                ViewBag.IsLoggedIn = IsAuthenticated;
-                return View("RegisterLibrarian", model);
-            }
-
-            if (!Regex.IsMatch(model.Password, @"(?=.*[A-Z])[A-Z]{1,}"))
-            {
-                model.ErrorMessage = "Missing a capital letter.";
-                ViewBag.IsLoggedIn = IsAuthenticated;
-                return View("RegisterLibrarian", model);
-            }
-
-            if (!Regex.IsMatch(model.Password, @"(?=.*[0-9])[0-9]{1,}"))
-            {
-                model.ErrorMessage = "Missing a number.";
-                ViewBag.IsLoggedIn = IsAuthenticated;
-                return View("RegisterLibrarian", model);
-            }
-
-            if (!Regex.IsMatch(model.Password, @"(?=.*[@$!%*?&])[@$!%*?&]{1,}"))
-            {
-                model.ErrorMessage = "Missing a special character. (@ $ ! % * ? &)";
-                ViewBag.IsLoggedIn = IsAuthenticated;
                 return View("RegisterLibrarian", model);
             }
 
