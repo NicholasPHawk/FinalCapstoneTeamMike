@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FinalCapstone.Models
 {
@@ -17,9 +13,9 @@ namespace FinalCapstone.Models
         public string Password { get; set; }
 
         [Display(Name = "Confirm Password:")]
-        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "Passwords do not match")]
+        [Compare("Password", ErrorMessage = "Passwords do not match")]
         public string ConfirmPassword { get; set; }
 
-        public string  ErrorMessage { get; set; }
+        public string ErrorMessage { get; set; }
     }
 }

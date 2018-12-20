@@ -11,7 +11,6 @@ namespace FinalCapstone.Models
         public string Name { get; set; }
         public string DriversLicense { get; set; }
         public string Address { get; set; }
-        public string Salt { get; set; }
         public string Email { get; set; }
     }
 }
