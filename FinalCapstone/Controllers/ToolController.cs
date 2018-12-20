@@ -114,7 +114,8 @@ namespace FinalCapstone.Controllers
             {
                 Brand = model.Brand,
                 ToolName = model.ToolName,
-                Description = model.Description
+                Description = model.Description,
+                ImageName = "Default image"
             };
 
             _toolDal.AddTool(tool);

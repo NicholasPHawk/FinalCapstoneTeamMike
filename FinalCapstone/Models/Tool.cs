@@ -13,12 +13,6 @@ namespace FinalCapstone.Models
         public int CurrentBorrowerId { get; set; }
         public DateTime DateBorrowed { get; set; }
         public DateTime DueDate { get; set; }
-        public string ImageName
-        {
-            get
-            {
-                return Brand + ToolName;
-            }
-        }
+        public string ImageName { get; set; }
     }
 }

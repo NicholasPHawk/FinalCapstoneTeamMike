@@ -82,6 +82,7 @@ namespace FinalCapstone.Dal
                     {
                         tool.DueDate = Convert.ToDateTime(reader["due_date"]);
                     }
+                    tool.ImageName = Convert.ToString(reader["image_name"]);
 
                     tools.Add(tool);
                 }
@@ -116,13 +117,14 @@ namespace FinalCapstone.Dal
                         tool.CurrentBorrowerId = Convert.ToInt32(reader["current_borrower"]);
                         tool.DateBorrowed = Convert.ToDateTime(reader["date_borrowed"]);
                         tool.DueDate = Convert.ToDateTime(reader["due_date"]);
+                        tool.ImageName = Convert.ToString(reader["image_name"]);
                         tools.Add(tool);
                     }
                 }
 
                 if (searchOption == "License")
                 {
-                    SqlCommand cmd = new SqlCommand("SELECT m.member_name, m.drivers_license, t.* FROM member m, tool t WHERE m.id = t.current_borrower AND checked_out = 1 AND m.drivers_license = @drivers_license;", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT m.member_name, m.drivers_license, t.* FROM member m, tool t WHERE m.id = t.current_borrower AND checked_out = 1 AND m.drivers_license LIKE @drivers_license;", conn);
                     cmd.Parameters.AddWithValue("@drivers_license", "%" + searchString + "%");
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -139,6 +141,7 @@ namespace FinalCapstone.Dal
                         tool.CurrentBorrowerId = Convert.ToInt32(reader["current_borrower"]);
                         tool.DateBorrowed = Convert.ToDateTime(reader["date_borrowed"]);
                         tool.DueDate = Convert.ToDateTime(reader["due_date"]);
+                        tool.ImageName = Convert.ToString(reader["image_name"]);
                         tools.Add(tool);
                     }
                 }
@@ -171,6 +174,7 @@ namespace FinalCapstone.Dal
                         tool.CurrentBorrowerId = Convert.ToInt32(reader["current_borrower"]);
                         tool.DateBorrowed = Convert.ToDateTime(reader["date_borrowed"]);
                         tool.DueDate = Convert.ToDateTime(reader["due_date"]);
+                        tool.ImageName = Convert.ToString(reader["image_name"]);
                         tools.Add(tool);
                     }
                 }
@@ -268,6 +272,7 @@ namespace FinalCapstone.Dal
                     tool.Id = Convert.ToInt32(reader["id"]);
                     tool.Brand = Convert.ToString(reader["brand"]);
                     tool.ToolName = Convert.ToString(reader["tool_name"]);
+                    tool.ImageName = Convert.ToString(reader["image_name"]);
                     allTools.Add(tool);
                 }
                 return allTools;
@@ -294,11 +299,12 @@ namespace FinalCapstone.Dal
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO tool (brand, tool_name, description, checked_out) VALUES (@brand, @tool_name, @description, @checked_out);", conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO tool (brand, tool_name, description, checked_out, image_name) VALUES (@brand, @tool_name, @description, @checked_out, @image_name);", conn);
                 cmd.Parameters.AddWithValue("@brand", tool.Brand);
                 cmd.Parameters.AddWithValue("@tool_name", tool.ToolName);
                 cmd.Parameters.AddWithValue("@description", tool.Description);
                 cmd.Parameters.AddWithValue("@checked_out", 0);
+                cmd.Parameters.AddWithValue("@image_name", tool.ImageName);
                 if (cmd.ExecuteNonQuery() == 0)
                 {
                     return false;
