@@ -28,16 +28,12 @@ namespace FinalCapstone.Controllers
         [HttpPost]
         public IActionResult Login(LoginViewModel model)
         {
-<<<<<<< HEAD
             if (!ModelState.IsValid)
             {
                 return View("Login", model);
             }
 
-            var user = _librarianDal.GetLibrarian(model.Username);
-=======
             Librarian user = _librarianDal.GetLibrarian(model.Username);
->>>>>>> 0dba659b5b2c31455de20500b0b521fb5d6e6b43
 
             if (user == null)
             {
