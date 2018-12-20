@@ -12,7 +12,7 @@ namespace FinalCapstone.Dal
         bool ChangeCheckedOutStatus(int id, bool checkedOut);
         bool CheckOut(Cart cart);
         IList<Tool> RemoveAToolList();
-        void RemoveATool(Tool tool);
+        bool RemoveATool(Tool tool);
         bool AddTool(Tool tool);
     }
 }

@@ -274,14 +274,18 @@ namespace FinalCapstone.Dal
             }
         }
 
-        public void RemoveATool(Tool tool)
+        public bool RemoveATool(Tool tool)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("DELETE FROM tool WHERE id = @id;", conn);
                 cmd.Parameters.AddWithValue("@id", tool.Id);
-                cmd.ExecuteNonQuery();
+                if(cmd.ExecuteNonQuery() == 0)
+                {
+                    return false;
+                }
+                return true;
             }
         }
 
