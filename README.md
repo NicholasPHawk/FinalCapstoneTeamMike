@@ -1,1 +1,0 @@
-To log in, use Username "DefaultLibrarian" and Password "Library1!".
